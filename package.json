@@ -1,0 +1,30 @@
+{
+    "name": "tech-blog",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Deven1991/Tech-Blog.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Deven1991/Tech-Blog/issues"
+    },
+    "homepage": "https://github.com/Deven1991/Tech-Blog#readme",
+    "dependencies": {
+        "bcrypt": "^5.0.0",
+        "connect-session-sequelize": "^6.1.1",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-handlebars": "^5.2.0",
+        "express-session": "^1.17.2",
+        "mysql2": "^2.2.5",
+        "nodemon": "^2.0.16",
+        "sequelize": "^6.3.5"
+    }
+}
