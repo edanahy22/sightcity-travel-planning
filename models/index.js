@@ -6,7 +6,7 @@ User.hasMany(Trip, {
   onDelete: 'CASCADE'
 });
 
-Project.belongsTo(User, {
+Trip.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
