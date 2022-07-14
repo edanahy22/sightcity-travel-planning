@@ -20,7 +20,7 @@
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5",
-    "bulma-start": "^0.0.5"
+    "materialize": "^1.0.0"
   },
   "devDependencies": {
     "eslint": "^7.12.1",

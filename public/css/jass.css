@@ -1688,10 +1688,6 @@ label form [type='radio'] {
   }
 }
 
-.aligncenter {
-  text-align: center;
-}
-
 /* col-xl */
 @media screen and (min-width: 1200px) {
   .col-xl-1 {
