@@ -24,6 +24,8 @@ CREATE TABLE trip (
 CREATE TABLE hotel (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     hotel_name VARCHAR(30) NOT NULL,
+    hotel_address VARCHAR(100) NOT NULL,
+    hotel_img VARCHAR(400) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
     trip_id INT,
         FOREIGN KEY (trip_id)

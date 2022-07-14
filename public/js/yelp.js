@@ -19,6 +19,7 @@ function findHotels(city) {
         })
         .then(function (data) {
             console.log(data);
+            genHotel(data)
         })
         .catch(function (err) {
             console.error(err)
@@ -67,3 +68,39 @@ $('#search-activity-button').on("click", function (event) {
 // var priceRange = document.querySelector("#price-range");
 // var rating = document.querySelector("#rating");
 // var numberReviews = document.querySelector("#number-of-reviews");
+
+let contentBlok = document.getElementById('content')
+
+function genHotel(data) {
+    for (let i = 0; i < 5; i++){
+        let hotelDiv = document.createElement('div');
+        let hotelTitleEl = document.createElement('h3')
+        let hotelAddressEl = document.createElement('h6')
+        let hotelPriceEl = document.createElement('h6')
+        let hotelImgEl = document.createElement('img')
+        let hotelBtnEl = document.createElement('button')
+
+        hotelBtnEl.setAttribute('data-title', data.businesses[i].name)
+        hotelBtnEl.setAttribute('data-address', `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`)
+        hotelBtnEl.setAttribute('data-price', data.businesses[i].price)
+        hotelBtnEl.setAttribute('data-img', data.businesses[i].image_url)
+
+        hotelTitleEl.textContent = data.businesses[i].name
+        hotelAddressEl.textContent = `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`
+        hotelPriceEl.textContent = data.businesses[i].price
+        hotelImgEl.setAttribute('src', data.businesses[i].image_url)
+        hotelBtnEl.innerHTML = 'Select'
+        hotelBtnEl.addEventListener('click', selectHotel);
+
+        hotelDiv.appendChild(hotelTitleEl)
+        hotelDiv.appendChild(hotelAddressEl)
+        hotelDiv.appendChild(hotelPriceEl)
+        hotelDiv.appendChild(hotelImgEl)
+        hotelDiv.appendChild(hotelBtnEl)
+        contentBlok.appendChild(hotelDiv)
+    }
+};
+
+function selectHotel() {
+
+}
