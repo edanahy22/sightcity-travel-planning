@@ -2,16 +2,16 @@
     {
         "excursion": "Upstairs Cricus",
         "excursion_date": "12/24/2022",
-        "price": 125
+        "price": "$$$$"
     },
     {
         "excursion": "Blue Hole Regional Park",
         "excursion_date": "12/24/2022",
-        "price": 100
+        "price": "$"
     },
     {
         "excursion": "The Partheonon",
         "excursion_date": "12/24/2022",
-        "price": 80
+        "price": "$$$"
     }
 ]

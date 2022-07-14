@@ -19,6 +19,7 @@ function findHotels(city) {
         })
         .then(function (data) {
             console.log(data);
+            genHotel(data)
         })
         .catch(function (err) {
             console.error(err)
@@ -67,3 +68,68 @@ $('#search-activity-button').on("click", function (event) {
 // var priceRange = document.querySelector("#price-range");
 // var rating = document.querySelector("#rating");
 // var numberReviews = document.querySelector("#number-of-reviews");
+
+let contentBlock = document.getElementById('content')
+
+function genHotel(data) {
+    for (let i = 0; i < 5; i++){
+        let hotelDiv = document.createElement('div');
+        let hotelTitleEl = document.createElement('h3')
+        let hotelAddressEl = document.createElement('h6')
+        let hotelPriceEl = document.createElement('h6')
+        let hotelImgEl = document.createElement('img')
+        let hotelBtnEl = document.createElement('button')
+
+        hotelBtnEl.setAttribute('data-title', data.businesses[i].name)
+        hotelBtnEl.setAttribute('data-address', `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`)
+        hotelBtnEl.setAttribute('data-price', data.businesses[i].price)
+        hotelBtnEl.setAttribute('data-img', data.businesses[i].image_url)
+
+        hotelTitleEl.textContent = data.businesses[i].name
+        hotelAddressEl.textContent = `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`
+        hotelPriceEl.textContent = data.businesses[i].price
+        hotelImgEl.setAttribute('src', data.businesses[i].image_url)
+        hotelBtnEl.innerHTML = 'Select'
+        hotelBtnEl.setAttribute('href', '/api/hotel')
+        hotelBtnEl.addEventListener('click', selectHotel);
+
+        hotelDiv.appendChild(hotelTitleEl)
+        hotelDiv.appendChild(hotelAddressEl)
+        hotelDiv.appendChild(hotelPriceEl)
+        hotelDiv.appendChild(hotelImgEl)
+        hotelDiv.appendChild(hotelBtnEl)
+        contentBlock.appendChild(hotelDiv)
+    }
+};
+
+async function selectHotel(e) {
+    e.preventDefault()
+    const hotel_name = this.dataset.title;
+    const hotel_address = this.dataset.address;
+    const hotel_img = this.dataset.img;
+    const hotel_price = this.dataset.price;
+
+    const response = await fetch('/api/hotels', {
+        method: 'POST',
+        body: JSON.stringify({ hotel_name, hotel_address, hotel_img, hotel_price }),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+
+    if (response.ok) {
+        contentBlock.textContent = '\n\nPosted to database!';
+        sendMail();
+    } else {
+        alert('Failed to post to database')
+    }
+};
+
+async function sendMail() {
+    const response = await fetch('/api/hotels', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    }).then(res => res.json())
+
+    return console.log(res.json(response))
+}
