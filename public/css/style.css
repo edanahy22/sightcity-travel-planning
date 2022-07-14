@@ -1,4 +1,9 @@
-header, .project:not(:last-child) {
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+header,
+.trip:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
 
