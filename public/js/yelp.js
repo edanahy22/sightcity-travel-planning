@@ -69,7 +69,7 @@ $('#search-activity-button').on("click", function (event) {
 // var rating = document.querySelector("#rating");
 // var numberReviews = document.querySelector("#number-of-reviews");
 
-let contentBlok = document.getElementById('content')
+let contentBlock = document.getElementById('content')
 
 function genHotel(data) {
     for (let i = 0; i < 5; i++){
@@ -90,6 +90,7 @@ function genHotel(data) {
         hotelPriceEl.textContent = data.businesses[i].price
         hotelImgEl.setAttribute('src', data.businesses[i].image_url)
         hotelBtnEl.innerHTML = 'Select'
+        hotelBtnEl.setAttribute('href', '/api/hotel')
         hotelBtnEl.addEventListener('click', selectHotel);
 
         hotelDiv.appendChild(hotelTitleEl)
@@ -97,11 +98,39 @@ function genHotel(data) {
         hotelDiv.appendChild(hotelPriceEl)
         hotelDiv.appendChild(hotelImgEl)
         hotelDiv.appendChild(hotelBtnEl)
-        contentBlok.appendChild(hotelDiv)
+        contentBlock.appendChild(hotelDiv)
     }
 };
 
-function selectHotel() {
+async function selectHotel(e) {
+    e.preventDefault()
     //Hotel title is this.dataset.title
-    contentBlok.textContent('')
+    const hotel_name = this.dataset.title;
+    const hotel_address = this.dataset.address;
+    const hotel_img = this.dataset.img;
+    const hotel_price = this.dataset.price;
+
+    const response = await fetch('/api/hotel', {
+        method: 'POST',
+        body: JSON.stringify({ hotel_name, hotel_address, hotel_img, hotel_price }),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+
+    if (response.ok) {
+        contentBlock.textContent = '\n\nPosted to database!';
+        sendMail();
+    } else {
+        alert('Failed to post to database')
+    }
+};
+
+async function sendMail() {
+    const response = await fetch('/api/hotel', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    }).then(res => res.json())
+
+    return console.log(res.json(response))
 }

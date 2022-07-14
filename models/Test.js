@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Hotel extends Model {}
+class Test extends Model {}
 
-Hotel.init(
+Test.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -26,13 +26,6 @@ Hotel.init(
     hotel_price: {
       type: DataTypes.STRING,
     },
-    trip_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'trip',
-        key: 'id',
-      },
-    },
   },
   {
     sequelize,
@@ -43,4 +36,4 @@ Hotel.init(
   }
 );
 
-module.exports = Hotel;
+module.exports = Test;
