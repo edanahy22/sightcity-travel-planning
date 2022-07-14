@@ -1,14 +1,20 @@
 [
     {
         "hotel_name": "LondonHouse Chicago, Curio Collection by Hilton",
-        "price": 650 
+        "hotel_address": "1234 S Michigan",
+        "hotel_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
+        "price": "$$$"
     },
     {
         "hotel_name": "Chicago Athletic Association Hotel",
-        "price": 525
+        "hotel_address": "1234 N Michigan",
+        "hotel_img": "https://s3-media3.fl.yelpcdn.com/bphoto/B7C7ozr4B3jHkhwIX2VlVQ/o.jpg",
+        "price": "$$"
     },
     {
         "hotel_name": "The Langham, Chicago",
-        "price": 475
+        "hotel_address": "1234 W Michigan",
+        "hotel_img": "https://s3-media1.fl.yelpcdn.com/bphoto/yxJjgjO7IrJAobfZwgdJiQ/o.jpg",
+        "price": "$$"
     }
 ]

@@ -26,7 +26,7 @@ CREATE TABLE hotel (
     hotel_name VARCHAR(30) NOT NULL,
     hotel_address VARCHAR(100) NOT NULL,
     hotel_img VARCHAR(400) NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
+    price VARCHAR(5) NOT NULL,
     trip_id INT,
         FOREIGN KEY (trip_id)
         REFERENCES trip(id)
@@ -37,7 +37,7 @@ CREATE TABLE thingstodo (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     excursion VARCHAR(30) NOT NULL,
     excursion_date DATE NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
+    price VARCHAR(5) NOT NULL,
     trip_id INT,
         FOREIGN KEY (trip_id)
         REFERENCES trip(id)

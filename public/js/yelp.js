@@ -102,5 +102,6 @@ function genHotel(data) {
 };
 
 function selectHotel() {
-
+    //Hotel title is this.dataset.title
+    contentBlok.textContent('')
 }
