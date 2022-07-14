@@ -5,6 +5,6 @@ const hotelRoutes = require('./hotelRoutes')
 
 router.use('/users', userRoutes);
 router.use('/trips', projectRoutes);
-router.use('/hotel', hotelRoutes)
+// router.use('/hotels', hotelRoutes);
 
 module.exports = router;

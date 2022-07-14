@@ -104,13 +104,12 @@ function genHotel(data) {
 
 async function selectHotel(e) {
     e.preventDefault()
-    //Hotel title is this.dataset.title
     const hotel_name = this.dataset.title;
     const hotel_address = this.dataset.address;
     const hotel_img = this.dataset.img;
     const hotel_price = this.dataset.price;
 
-    const response = await fetch('/api/hotel', {
+    const response = await fetch('/api/hotels', {
         method: 'POST',
         body: JSON.stringify({ hotel_name, hotel_address, hotel_img, hotel_price }),
         headers: {
@@ -127,7 +126,7 @@ async function selectHotel(e) {
 };
 
 async function sendMail() {
-    const response = await fetch('/api/hotel', {
+    const response = await fetch('/api/hotels', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     }).then(res => res.json())
