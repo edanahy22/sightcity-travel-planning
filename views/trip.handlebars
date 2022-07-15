@@ -1,0 +1,18 @@
+<!-- Loop over each object in the trips array -->
+{{#each trips as |trip| }}
+<div class="row mb-4 trip">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      {{{get_emoji}}}
+      <a href="/trip/{{trip.id}}">{{trip.location}}</a>
+    </h2>
+    <p>Created by {{trip.user.first_name}} on {{format_date trip.start_date}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{trip.location}}
+    </p>
+  </div>
+</div>
+{{/each}}
