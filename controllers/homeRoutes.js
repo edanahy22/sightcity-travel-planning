@@ -58,8 +58,30 @@ router.get('/trip', withAuth, async (req, res) => {
 
     const trips = tripData.map((trip) => trip.get({ plain: true}));
 
-    res.render('project', {
+    res.render('alltrips', {
       trips,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/trip/:id', withAuth, async (req, res) => {
+  try {
+    const tripData = await Trip.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['first_name']
+        }
+      ]
+    });
+
+    const trip = tripData.get({ plain: true });
+
+    res.render('trip', {
+      ...trip,
       logged_in: req.session.logged_in
     });
   } catch (err) {
