@@ -109,14 +109,14 @@ async function selectHotel(e) {
     const hotel_img = this.dataset.img;
     const hotel_price = this.dataset.price;
 
-    const response = await fetch('/api/hotels', {
+    const response = await fetch('/api/hotel', {
         method: 'POST',
         body: JSON.stringify({ hotel_name, hotel_address, hotel_img, hotel_price }),
         headers: {
             'Content-Type': 'application/json'
         },
     })
-
+    console.log(response)
     if (response.ok) {
         contentBlock.textContent = '\n\nPosted to database!';
         sendMail();
@@ -126,7 +126,7 @@ async function selectHotel(e) {
 };
 
 async function sendMail() {
-    const response = await fetch('/api/hotels', {
+    const response = await fetch('/api/hotel', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     }).then(res => res.json())

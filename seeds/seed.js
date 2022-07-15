@@ -21,6 +21,13 @@ const seedDatabase = async () => {
     });
   }
 
+  for (const hotel of hotelData) {
+    await Hotel.create({
+      ...hotel,
+      trip_id: users[Math.floor(Math.random() * users.length)].id,
+    });
+  }
+
   process.exit(0);
 };
 

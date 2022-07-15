@@ -25,6 +25,7 @@ Hotel.init(
     },
     hotel_price: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     trip_id: {
       type: DataTypes.INTEGER,
