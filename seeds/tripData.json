@@ -10,6 +10,21 @@
     "end_date": "04/17/2023"
   },
   {
+    "location": "Seattle, WA",
+    "start_date": "09/05/2025",
+    "end_date": "09/13/2025"
+  },
+  {
+    "location": "Portland, ME",
+    "start_date": "12/11/2034",
+    "end_date": "12/30/2034"
+  },
+  {
+    "location": "Los Angeles, CA",
+    "start_date": "03/15/2022",
+    "end_date": "03/30/2022"
+  },
+  {
     "location": "Nashville, TN",
     "start_date": "11/12/2022",
     "end_date": "11/17/2022"
