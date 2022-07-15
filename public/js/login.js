@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace('/profile');
     } else {
-      alert(response.statusText);
+      console.log(response.statusText);
     }
   }
 };
@@ -25,20 +25,20 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const fName = document.querySelector('#first-name-signup').value.trim();
-  const lName = document.querySelector('#last-name-signup').value.trim();
+  const first_name = document.querySelector('#first-name-signup').value.trim();
+  const last_name = document.querySelector('#last-name-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
-  if (fName && lName && email && password) {
+  if (first_name && last_name && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ fName, lName, email, password }),
+      body: JSON.stringify({ first_name, last_name, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace('/newtrip');
     } else {
       alert(response.statusText);
     }

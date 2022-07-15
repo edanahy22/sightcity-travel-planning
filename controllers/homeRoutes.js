@@ -18,13 +18,15 @@ router.get('/', async (req, res) => {
     // const trips = tripData.map((trip) => trip.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('landingpage');
+    res.render('landingpage', {
+      logged_in: req.session.logged_in
+    });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// router.get('/trip/:id', async (req, res) => {
+// router.get('/trips', withAuth, async (req, res) => {
 //   try {
 //     const tripData = await Trip.findByPk(req.params.id, {
 //       include: [
@@ -46,9 +48,30 @@ router.get('/', async (req, res) => {
 //   }
 // });
 
+router.get('/trip', withAuth, async (req, res) => {
+  try {
+    const tripData = await Trip.findAll({
+      where: {
+        user_id: req.session.user_id
+      },
+  });
+
+    const trips = tripData.map((trip) => trip.get({ plain: true}));
+
+    res.render('project', {
+      trips,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/newtrip', withAuth, async (req, res) => {
   try {
-    res.status(200).render('newtrip')
+    res.status(200).render('newtrip', {
+      logged_in: req.session.logged_in
+    })
   } catch (err) {
     res.status(500).json(err)
   }
@@ -99,7 +122,7 @@ router.get('/profile', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('profile');
     return;
   }
 
