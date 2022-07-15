@@ -15,8 +15,17 @@ Hotel.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    price: {
+    hotel_address: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    hotel_img: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    hotel_price: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     trip_id: {
       type: DataTypes.INTEGER,

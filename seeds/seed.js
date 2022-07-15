@@ -1,8 +1,10 @@
 const sequelize = require('../config/connection');
-const { User, Trip } = require('../models');
+const { User, Trip, Hotel, ThingsToDo } = require('../models');
 
 const userData = require('./userData.json');
 const tripData = require('./tripData.json');
+const hotelData = require('./hotel.json')
+const thingsData = require('./thingsToDo.json')
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -12,7 +14,7 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  for (const project of tripData) {
+  for (const trip of tripData) {
     await Trip.create({
       ...trip,
       user_id: users[Math.floor(Math.random() * users.length)].id,
