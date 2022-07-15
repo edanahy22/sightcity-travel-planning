@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Test } = require('../../models');
+const { Hotel } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
-        const newHotel = await Test.create({
+        const newHotel = await Hotel.create({
             ...req.body,
         });
 
@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const hotelData = await Test.findAll;
+        const hotelData = await Hotel.findAll;
         const hotels = hotelData.map((hotel) => hotel.get({ plain: true}))
 
         res.status(200).json(hotels)
@@ -23,3 +23,5 @@ router.get('/', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+module.exports = router;
