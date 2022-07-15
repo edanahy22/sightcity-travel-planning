@@ -4,50 +4,55 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    // Get all trips and JOIN with user data
-    const tripData = await Trip.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['first_name'],
-        },
-      ],
-    });
+    // // Get all trips and JOIN with user data
+    // const tripData = await Trip.findAll({
+    //   include: [
+    //     {
+    //       model: User,
+    //       attributes: ['first_name'],
+    //     },
+    //   ],
+    // });
 
-    // Serialize data so the template can read it
-    const trips = tripData.map((trip) => trip.get({ plain: true }));
+    // // Serialize data so the template can read it
+    // const trips = tripData.map((trip) => trip.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('welcomepage', { 
-      trips, 
-      logged_in: req.session.logged_in 
-    });
+    res.render('landingpage');
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/trip/:id', async (req, res) => {
+// router.get('/trip/:id', async (req, res) => {
+//   try {
+//     const tripData = await Trip.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['first_name'],
+//         },
+//       ],
+//     });
+
+//     const trip = tripData.get({ plain: true });
+
+//     res.render('trip', {
+//       ...trip,
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
+router.get('/newtrip', withAuth, async (req, res) => {
   try {
-    const tripData = await Trip.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['first_name'],
-        },
-      ],
-    });
-
-    const trip = tripData.get({ plain: true });
-
-    res.render('trip', {
-      ...trip,
-      logged_in: req.session.logged_in
-    });
+    res.status(200).render('newtrip')
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err)
   }
-});
+})
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
@@ -68,6 +73,28 @@ router.get('/profile', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// router.get('/', async (req, res) => {
+//   try {
+//     // Get all trips and JOIN with user data
+//     const tripData = await Trip.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['first_name'],
+//         },
+//       ],
+//     });
+
+//     // Serialize data so the template can read it
+//     const trips = tripData.map((trip) => trip.get({ plain: true }));
+
+//     // Pass serialized data and session flag into template
+//     res.render('landingpage');
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
