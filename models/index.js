@@ -8,6 +8,7 @@ User.hasMany(Trip, {
   onDelete: 'CASCADE'
 });
 
+//check to make sure if this is correct relationship
 Trip.belongsTo(User, {
   foreignKey: 'user_id'
 });
@@ -22,7 +23,6 @@ Trip.hasOne(Hotel, {
   onDelete: 'CASCADE',
 });
 
-
 Hotel.belongsTo(Trip, {
   foreignKey: 'trip_id'
 })
@@ -30,4 +30,5 @@ Hotel.belongsTo(Trip, {
 ThingsToDo.belongsTo(Trip, {
   foreignKey: 'trip_id'
 });
+
 module.exports = { User, Trip, Hotel, ThingsToDo };
