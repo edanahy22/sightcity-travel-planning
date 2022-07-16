@@ -1,26 +1,28 @@
-# sight-city-travel
+# SightCity Travel Planning
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+A trip planning app where you can enter upcoming travel dates/cities saved to the database to assist travelers to make their own iterneries. It can serve up things to do and places to stay from various api’s like Yelp. The user could select a few options and assign them to dates during the trip. When the user completes their travel itinerary, the application sends them an email with their full itinerary for their trip via gmail
 
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
+![alt text](/public/images/logo.png)
 
-## Table of Contents (Optional)
 
-If your README is long, add a table of contents to make it easy for users to find what they need.
+## Table of Contents 
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
+- [User Story](#User_Story)
+- [Acceptance Criteria](#Acceptance_Criteria)
+- [Features](#features)
+- [Future Development Goals](#Future_Developemnt_Goals)
+- [Links](#Links)
+- [Team](#team)
+
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+In order to run the application, you can clone the repo locally. On the command line, run "npm i" in order to run all necessary package installs. Next, you can start the server using "node server.js" on the commnad line.
+
 
 ## Usage
 
@@ -28,40 +30,71 @@ Provide instructions and examples for use. Include screenshots as needed.
 
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+<Insert Link to Demo>
 
-## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
+## User_Story
 
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
+AS a world traveler who likes to plan trips and excursions,
+I WANT to be able to login to a trip planner application 
+SO THAT I can view planned trips and events, as well as create, update and delete others.
+AND SO I can search for things to do and places to stay in your selected city.
 
-If you followed tutorials, include links to those here as well.
 
-## License
+## Acceptance_Criteria
 
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+GIVEN I am presented with a landing page, 
+THEN I am prompted to either login or sign up.
 
----
+WHEN I login or sign up, 
+THEN I am presented with a page with my planned trips listed, with an option to create a new one with a create new trip button.
 
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
+WHEN I click on a planned trip, 
+THEN I am presented with information I have saved for where to stay, dates, and things to do
 
-## Badges
+WHEN I click on “create a new trip”,
+THEN I am prompted to fill in the city and dates of travel
+THEN I am presented with a search bar to look up different hotels and things to do in that city provided with data from the Yelp api
 
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
+WHEN I find something I want to add to my itinerary, 
+THEN I can click an add button to link to add it to a certain day on my itinerary plan
 
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
+WHEN I have finished constructing my itinerary,
+THEN I can select that I am finished and an email will be sent with the completed plan.
+
 
 ## Features
 
-If your project has a lot of features, list them here.
+Technologies and features used in this application are listed below:
 
-## How to Contribute
+- Node.js
+- Express.js
+- Handlebars.js
+- Sequelize
+- MySQL
+- Bcrypt
+- NPM Node Mailer
+- Yelp! API to pull in hotel and things to do information and images
 
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
 
-## Tests
+## Future_Developemnt_Goals
 
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+- Have the application send them a reminder email with the itinerary a couple days before their trip
+- Toggle for dark/light theme
+- Ability to share itineraries between site members
+- Private/Public itineraries
+
+
+## Links
+
+- Repo: https://github.com/edanahy22/sightcity-travel-planning.git
+- Heroku: https://sightcity-travel-planning.herokuapp.com/
+
+
+## Team
+
+Our team consisted of:
+
+- Elaine Danahy (https://github.com/edanahy22)
+- Ian Sieg (https://github.com/ian-sieg)
+- Melissa Deven (https://github.com/deven1991)
