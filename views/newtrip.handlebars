@@ -1,15 +1,14 @@
 <h1>Plan your trip</h1>
 
- {{!-- <label for="location">Where do you want to go?</label>
-<input type="text" id="location" name="location" placeholder="Los Angeles">  --}}
+{{! <label for="location">Where do you want to go?</label>
+<input type="text" id="location" name="location" placeholder="Los Angeles">  }}
 
 <div class="form-group">
         <form>
             <label for="location">Where do you want to go?</label>
             <input type="text" id="city" name="location" placeholder="i.e. Los Angeles">
-            
             <input type="text" class="datepicker" id="start-date" placeholder="Start Date">
-            <input type="text" class="datepicker" id="end-date" placeholder="End Date"> 
+            <input type="text" class="datepicker" id="end-date" placeholder="End Date">
             <button type="submit" class="btn btn-primary" id="search-hotel-button">Find Hotels</button>
         </form>
         <form>
@@ -18,25 +17,12 @@
         </form>
 </div>
 
-    <main id="content"></main>
+<main id='content'></main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-    
-  document.addEventListener('DOMContentLoaded', function() {
-    let elems = document.querySelectorAll('#start-date');
-    let instances = M.Datepicker.init(elems);
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    let elems = document.querySelectorAll('#end-date');
-    let instances = M.Datepicker.init(elems, minDate=()=>{document.getElementById("start-date").val()});
-  }); 
-
-</script>
-
+<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='/js/materialize.js'></script>
 
 <!-- Materialize -->
 
-<script src="/js/yelp.js"></script>
+<script src='/js/yelp.js'></script>

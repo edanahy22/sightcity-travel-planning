@@ -1,10 +1,10 @@
 const sequelize = require('../config/connection');
-const { User, Trip, Hotel, ThingsToDo } = require('../models');
+const { User, Trip, Hotel, Activity } = require('../models');
 
 const userData = require('./userData.json');
 const tripData = require('./tripData.json');
 const hotelData = require('./hotel.json')
-const thingsData = require('./thingsToDo.json')
+const thingsData = require('./activity.json')
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
