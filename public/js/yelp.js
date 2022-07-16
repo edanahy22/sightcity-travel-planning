@@ -140,7 +140,7 @@ async function selectHotel(e) {
             html: 'Hotel Added!',
             classes: 'amber'
         })
-        document.location.replace('/thingstodo')
+        document.location.replace('/activity')
     } else {
         alert('Failed to post to database')
     }

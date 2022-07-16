@@ -1,6 +1,6 @@
 const User = require('./User');
 const Trip = require('./Trip');
-const ThingsToDo = require('./ThingsToDo');
+const Activity = require('./Activity');
 const Hotel = require('./Hotel');
 
 User.hasMany(Trip, {
@@ -13,7 +13,7 @@ Trip.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
-Trip.hasMany(ThingsToDo, {
+Trip.hasMany(Activity, {
   foreignKey: 'trip_id',
   onDelete: 'CASCADE',
 });
@@ -27,8 +27,8 @@ Hotel.belongsTo(Trip, {
   foreignKey: 'trip_id'
 })
 
-ThingsToDo.belongsTo(Trip, {
+Activity.belongsTo(Trip, {
   foreignKey: 'trip_id'
 });
 
-module.exports = { User, Trip, Hotel, ThingsToDo };
+module.exports = { User, Trip, Hotel, Activity };
