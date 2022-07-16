@@ -83,9 +83,6 @@ $('#search-activity-button').on("click", function (event) {
     findActivities(city);
 });
 
-// var priceRange = document.querySelector("#price-range");
-// var rating = document.querySelector("#rating");
-// var numberReviews = document.querySelector("#number-of-reviews");
 
 let contentBlock = document.getElementById('content')
 
@@ -138,6 +135,63 @@ async function selectHotel(e) {
     if (response.ok) {
         M.toast({
             html: 'Hotel Added!',
+            classes: 'amber'
+        })
+        document.location.replace('/activity')
+    } else {
+        alert('Failed to post to database')
+    }
+};
+
+function genActivity(data) {
+    for (let i = 0; i < 5; i++){
+        let activityDiv = document.createElement('div');
+        let activityTitleEl = document.createElement('h3')
+        let activityAddressEl = document.createElement('h6')
+        let activityPriceEl = document.createElement('h6')
+        let activityImgEl = document.createElement('img')
+        let activityBtnEl = document.createElement('button')
+
+        activityBtnEl.setAttribute('data-title', data.businesses[i].name)
+        activityBtnEl.setAttribute('data-address', `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`)
+        activityBtnEl.setAttribute('data-price', data.businesses[i].price)
+        activityBtnEl.setAttribute('data-img', data.businesses[i].image_url)
+
+        activityTitleEl.textContent = data.businesses[i].name
+        activityAddressEl.textContent = `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`
+        activityPriceEl.textContent = data.businesses[i].price
+        activityImgEl.setAttribute('src', data.businesses[i].image_url)
+        activityBtnEl.innerHTML = 'Select'
+        activityBtnEl.setAttribute('href', '/api/activity')
+        activityBtnEl.addEventListener('click', selectActivity);
+
+        activityDiv.appendChild(activityTitleEl)
+        activityDiv.appendChild(activityAddressEl)
+        activityDiv.appendChild(activityPriceEl)
+        activityDiv.appendChild(activityImgEl)
+        activityDiv.appendChild(activityBtnEl)
+        contentBlock.appendChild(activityDiv)
+    }
+};
+
+async function selectActivity(e) {
+    e.preventDefault()
+    const activity_name = this.dataset.title;
+    const activity_address = this.dataset.address;
+    const activity_img = this.dataset.img;
+    const activity_price = this.dataset.price;
+
+    const response = await fetch('/api/activity', {
+        method: 'POST',
+        body: JSON.stringify({ activity_name, activity_address, activity_img, activity_price }),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    console.log(response)
+    if (response.ok) {
+        M.toast({
+            html: 'Activity Added!',
             classes: 'amber'
         })
         document.location.replace('/activity')
