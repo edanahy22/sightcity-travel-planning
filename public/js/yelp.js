@@ -35,6 +35,7 @@ function findActivities(city) {
         })
         .then(function (data) {
             console.log(data);
+            genActivity(data)
         })
         .catch(function (err) {
             console.error(err)
@@ -71,18 +72,17 @@ $('#search-hotel-button').on("click", async function (event) {
     findHotels(location);
 });
 
-$('#search-activity-button').on("click", function (event) {
+const searchActivity = (event) => {
     event.preventDefault();
-    let city = $(this).siblings("#cityActivity").val();
-    console.log(city);
+    let location= $("#city").val().trim();
+    console.log(location);
 
-    if ($('#cityActivity').val() === "" || $('#cityActivity').val() === null){
+    if (location === "" || location === null){
         return;
     }
-
-    findActivities(city);
-});
-
+    
+    findActivities(location);
+};
 
 let contentBlock = document.getElementById('content')
 
@@ -137,7 +137,12 @@ async function selectHotel(e) {
             html: 'Hotel Added!',
             classes: 'amber'
         })
-        document.location.replace('/activity')
+        contentBlock.textContent= '';
+        let activityBtn = document.createElement('button');
+        contentBlock.appendChild(activityBtn);
+        activityBtn.innerHTML = 'Find Activities';
+        activityBtn.addEventListener('click', searchActivity);
+        
     } else {
         alert('Failed to post to database')
     }
