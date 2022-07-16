@@ -30,6 +30,7 @@ router.post('/', withAuth, async (req, res) => {
 
     req.session.save(() => {
       req.session.trip_id = newTrip.id;
+      req.session.location = newTrip.location;
       res.status(200).json(newTrip);
     })
   } catch (err) {
