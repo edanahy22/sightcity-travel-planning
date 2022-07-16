@@ -1,8 +1,10 @@
 const router = require('express').Router();
-const { Hotel } = require('../../models');
+const { Hotel, Trip } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
+        // const tripData = await Trip.findByPk
+
         const newHotel = await Hotel.create({
             ...req.body,
         });
