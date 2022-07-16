@@ -3,10 +3,9 @@ const { Hotel, Trip } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
-        // const tripData = await Trip.findByPk
-
         const newHotel = await Hotel.create({
             ...req.body,
+            trip_id: req.session.trip_id,
         });
 
         res.status(200).json(newHotel)

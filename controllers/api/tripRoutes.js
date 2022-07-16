@@ -28,10 +28,10 @@ router.post('/', withAuth, async (req, res) => {
       user_id: req.session.user_id,
     });
 
-    console.log(newTrip)
-    console.log(JSON.stringify(newTrip))
-
-    res.status(200).json(newTrip);
+    req.session.save(() => {
+      req.session.trip_id = newTrip.id;
+      res.status(200).json(newTrip);
+    })
   } catch (err) {
     res.status(400).json(err);
   }

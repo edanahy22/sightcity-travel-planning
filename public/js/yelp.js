@@ -136,18 +136,12 @@ async function selectHotel(e) {
     })
     console.log(response)
     if (response.ok) {
-        contentBlock.textContent = '\n\nPosted to database!';
-        sendMail();
+        M.toast({
+            html: 'Hotel Added!',
+            classes: 'amber'
+        })
+        document.location.replace('/thingstodo')
     } else {
         alert('Failed to post to database')
     }
 };
-
-async function sendMail() {
-    const response = await fetch('/api/hotel', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-    }).then(res => res.json())
-
-    return console.log(res.json(response))
-}
