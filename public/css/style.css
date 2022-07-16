@@ -27,3 +27,22 @@ header,
   font-weight: bold;
   margin-left: -5px;
 }
+
+
+/* keeps footer sticky */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+#wrapper {
+  width: 70%;
+  /* specify a width! */
+  margin: 0 auto;
+  /* center */
+}

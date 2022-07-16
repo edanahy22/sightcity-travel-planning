@@ -9,12 +9,9 @@
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
 
-
   <!-- Compiled and minified CSS -->
-
   <!-- Materialize -->
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 </head>
 
@@ -22,29 +19,31 @@
 
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="world">🗺️</span>
-        <a href="/">SightCity Travel Planning</a>
-      </h1>
+
+      {{!-- Materialize Navigation Bar --}}
       <nav>
-        <!-- Conditionally render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <a href="/trip">saved trips</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo center">🗺️ SightCity Travel Planning</a>
+          <ul class="left hide-on-med-and-down">
+            <!-- Conditionally render login or logout links -->
+            {{#if logged_in}}
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/trip">Saved Trips</a></li>
+            <li><a href="/about">About Us</a></li>
+            <button class="no-button" id="logout">Logout</button>
+            {{else}}
+            <li><a href="/login">Login</a></li>
+            {{/if}}
+          </ul>
+        </div>
       </nav>
     </header>
+
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
 
-    <footer>
-      
-    </footer>
   </div>
 
   <!-- Render script for logged in users only -->
@@ -52,27 +51,28 @@
   <script src="/js/logout.js"></script>
   {{/if}}
 
-
-
-<!--html for yelp-->
+  <!--html for yelp-->
   {{!-- <div class="form-group">
-        <form>
-            <input type="text" class="form-control input" id="city" />
-            <button type="submit" class="btn btn-primary" id="search-hotel-button">Find Hotels</button>
-        </form>
-        <form>
-            <input type="text" class="form-control input" id="cityActivity" />
-            <button type="submit" class="btn btn-primary" id="search-activity-button">Find Activities</button>
-        </form>
-    </div>
+    <form>
+      <input type="text" class="form-control input" id="city" />
+      <button type="submit" class="btn btn-primary" id="search-hotel-button">Find Hotels</button>
+    </form>
+    <form>
+      <input type="text" class="form-control input" id="cityActivity" />
+      <button type="submit" class="btn btn-primary" id="search-activity-button">Find Activities</button>
+    </form>
+  </div>
 
-    <main id="content"></main> --}}
-    {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+  <main id="content"></main> --}}
+  {{!--
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
 
-<!-- Materialize -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-{{!-- <script src="/js/yelp.js"></script> --}}
+  <!-- Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  {{!--
+  <script src="/js/yelp.js"></script> --}}
 
 </body>
+
 
 </html>
