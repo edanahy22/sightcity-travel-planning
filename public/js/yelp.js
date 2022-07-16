@@ -41,21 +41,39 @@ function findActivities(city) {
         })
 }
 
-$('#search-hotel-button').on("click", function (event) {
+$('#search-hotel-button').on("click", async function (event) {
     event.preventDefault();
-    var city = $(this).siblings("#city").val();
-    console.log(city);
+    const location = $(this).siblings("#city").val().trim();
+    const start_date = $(this).siblings("#start-date").val().trim();
+    const end_date = $(this).siblings("#end-date").val().trim();
+
+    if (location && start_date && end_date) {
+        const response = await fetch('/api/trip' , {
+            method: 'POST',
+            body: JSON.stringify({location, start_date, end_date}),
+            headers: {'Content-Type': 'application/json'},
+        })
+
+        if (response.ok) {
+            M.toast({
+                html: 'Trip Started!',
+                classes: 'amber'
+            })
+        } else {
+            alert(response.statusText)
+        }
+    }
 
     if ($('#city').val() === "" || $('#city').val() === null){
         return;
     }
 
-    findHotels(city);
+    findHotels(location);
 });
 
 $('#search-activity-button').on("click", function (event) {
     event.preventDefault();
-    var city = $(this).siblings("#cityActivity").val();
+    let city = $(this).siblings("#cityActivity").val();
     console.log(city);
 
     if ($('#cityActivity').val() === "" || $('#cityActivity').val() === null){
@@ -118,18 +136,12 @@ async function selectHotel(e) {
     })
     console.log(response)
     if (response.ok) {
-        contentBlock.textContent = '\n\nPosted to database!';
-        sendMail();
+        M.toast({
+            html: 'Hotel Added!',
+            classes: 'amber'
+        })
+        document.location.replace('/thingstodo')
     } else {
         alert('Failed to post to database')
     }
 };
-
-async function sendMail() {
-    const response = await fetch('/api/hotel', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-    }).then(res => res.json())
-
-    return console.log(res.json(response))
-}

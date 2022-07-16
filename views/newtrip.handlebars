@@ -1,23 +1,22 @@
 <h1>Plan your trip</h1>
 
- <label for="location">Where do you want to go?</label>
-<input type="text" id="location" name="location" placeholder="Los Angeles"> 
+ {{!-- <label for="location">Where do you want to go?</label>
+<input type="text" id="location" name="location" placeholder="Los Angeles">  --}}
 
 <div class="form-group">
         <form>
             <label for="location">Where do you want to go?</label>
-<input type="text" id="location" name="location" placeholder="Los Angeles">
+            <input type="text" id="city" name="location" placeholder="i.e. Los Angeles">
             
             <input type="text" class="datepicker" id="start-date" placeholder="Start Date">
             <input type="text" class="datepicker" id="end-date" placeholder="End Date"> 
-            <input type="text" class="form-control input" id="city" />
             <button type="submit" class="btn btn-primary" id="search-hotel-button">Find Hotels</button>
         </form>
         <form>
             <input type="text" class="form-control input" id="cityActivity" />
             <button type="submit" class="btn btn-primary" id="search-activity-button">Find Activities</button>
         </form>
-    </div>
+</div>
 
     <main id="content"></main>
 
@@ -33,7 +32,6 @@
   document.addEventListener('DOMContentLoaded', function() {
     let elems = document.querySelectorAll('#end-date');
     let instances = M.Datepicker.init(elems, minDate=()=>{document.getElementById("start-date").val()});
-    console.log(instances);
   }); 
 
 </script>
