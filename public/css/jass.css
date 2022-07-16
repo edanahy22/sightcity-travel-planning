@@ -5,7 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-html {
+ html {
   line-height: 1.15;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -13,36 +13,36 @@ html {
 }
 
 /* Sections
-   ========================================================================== */
+ ========================================================================== */
 /**
- * Remove the margin in all browsers.
- */
+* Remove the margin in all browsers.
+*/
 body {
   margin: 0;
 }
 
 /**
- * Render the `main` element consistently in IE.
- */
+* Render the `main` element consistently in IE.
+*/
 main {
   display: block;
 }
 
 /**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
+* Correct the font size and margin on `h1` elements within `section` and
+* `article` contexts in Chrome, Firefox, and Safari.
+*/
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 
 /* Grouping content
-   ========================================================================== */
+ ========================================================================== */
 /**
- * 1. Add the correct box sizing in Firefox.
- * 2. Show the overflow in Edge and IE.
- */
+* 1. Add the correct box sizing in Firefox.
+* 2. Show the overflow in Edge and IE.
+*/
 hr {
   box-sizing: content-box;
   /* 1 */
@@ -53,9 +53,9 @@ hr {
 }
 
 /**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
+* 1. Correct the inheritance and scaling of font size in all browsers.
+* 2. Correct the odd `em` font sizing in all browsers.
+*/
 pre {
   font-family: monospace, monospace;
   /* 1 */
@@ -64,18 +64,18 @@ pre {
 }
 
 /* Text-level semantics
-   ========================================================================== */
+ ========================================================================== */
 /**
- * Remove the gray background on active links in IE 10.
- */
+* Remove the gray background on active links in IE 10.
+*/
 a {
   background-color: transparent;
 }
 
 /**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
+* 1. Remove the bottom border in Chrome 57-
+* 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+*/
 abbr[title] {
   border-bottom: none;
   /* 1 */
@@ -86,17 +86,17 @@ abbr[title] {
 }
 
 /**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
+* Add the correct font weight in Chrome, Edge, and Safari.
+*/
 b,
 strong {
   font-weight: bolder;
 }
 
 /**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- */
+* 1. Correct the inheritance and scaling of font size in all browsers.
+* 2. Correct the odd `em` font sizing in all browsers.
+*/
 code,
 kbd,
 samp {
@@ -107,16 +107,16 @@ samp {
 }
 
 /**
- * Add the correct font size in all browsers.
- */
+* Add the correct font size in all browsers.
+*/
 small {
   font-size: 80%;
 }
 
 /**
- * Prevent `sub` and `sup` elements from affecting the line height in
- * all browsers.
- */
+* Prevent `sub` and `sup` elements from affecting the line height in
+* all browsers.
+*/
 sub,
 sup {
   font-size: 75%;
@@ -134,20 +134,20 @@ sup {
 }
 
 /* Embedded content
-   ========================================================================== */
+ ========================================================================== */
 /**
- * Remove the border on images inside links in IE 10.
- */
+* Remove the border on images inside links in IE 10.
+*/
 img {
   border-style: none;
 }
 
 /* Forms
-   ========================================================================== */
+ ========================================================================== */
 /**
- * 1. Change the font styles in all browsers.
- * 2. Remove the margin in Firefox and Safari.
- */
+* 1. Change the font styles in all browsers.
+* 2. Remove the margin in Firefox and Safari.
+*/
 button,
 input,
 optgroup,
@@ -164,9 +164,9 @@ textarea {
 }
 
 /**
- * Show the overflow in IE.
- * 1. Show the overflow in Edge.
- */
+* Show the overflow in IE.
+* 1. Show the overflow in Edge.
+*/
 button,
 input {
   /* 1 */
@@ -174,9 +174,9 @@ input {
 }
 
 /**
- * Remove the inheritance of text transform in Edge, Firefox, and IE.
- * 1. Remove the inheritance of text transform in Firefox.
- */
+* Remove the inheritance of text transform in Edge, Firefox, and IE.
+* 1. Remove the inheritance of text transform in Firefox.
+*/
 button,
 select {
   /* 1 */
@@ -184,8 +184,8 @@ select {
 }
 
 /**
- * Correct the inability to style clickable types in iOS and Safari.
- */
+* Correct the inability to style clickable types in iOS and Safari.
+*/
 button,
 [type='button'],
 [type='reset'],
@@ -194,8 +194,8 @@ button,
 }
 
 /**
- * Remove the inner border and padding in Firefox.
- */
+* Remove the inner border and padding in Firefox.
+*/
 button::-moz-focus-inner,
 [type='button']::-moz-focus-inner,
 [type='reset']::-moz-focus-inner,
@@ -205,8 +205,8 @@ button::-moz-focus-inner,
 }
 
 /**
- * Restore the focus styles unset by the previous rule.
- */
+* Restore the focus styles unset by the previous rule.
+*/
 button:-moz-focusring,
 [type='button']:-moz-focusring,
 [type='reset']:-moz-focusring,
@@ -215,18 +215,18 @@ button:-moz-focusring,
 }
 
 /**
- * Correct the padding in Firefox.
- */
+* Correct the padding in Firefox.
+*/
 fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
 
 /**
- * 1. Correct the text wrapping in Edge and IE.
- * 2. Correct the color inheritance from `fieldset` elements in IE.
- * 3. Remove the padding so developers are not caught out when they zero out
- *    `fieldset` elements in all browsers.
- */
+* 1. Correct the text wrapping in Edge and IE.
+* 2. Correct the color inheritance from `fieldset` elements in IE.
+* 3. Remove the padding so developers are not caught out when they zero out
+*    `fieldset` elements in all browsers.
+*/
 legend {
   box-sizing: border-box;
   /* 1 */
@@ -243,23 +243,23 @@ legend {
 }
 
 /**
- * Add the correct vertical alignment in Chrome, Firefox, and Opera.
- */
+* Add the correct vertical alignment in Chrome, Firefox, and Opera.
+*/
 progress {
   vertical-align: baseline;
 }
 
 /**
- * Remove the default vertical scrollbar in IE 10+.
- */
+* Remove the default vertical scrollbar in IE 10+.
+*/
 textarea {
   overflow: auto;
 }
 
 /**
- * 1. Add the correct box sizing in IE 10.
- * 2. Remove the padding in IE 10.
- */
+* 1. Add the correct box sizing in IE 10.
+* 2. Remove the padding in IE 10.
+*/
 [type='checkbox'],
 [type='radio'] {
   box-sizing: border-box;
@@ -269,17 +269,17 @@ textarea {
 }
 
 /**
- * Correct the cursor style of increment and decrement buttons in Chrome.
- */
+* Correct the cursor style of increment and decrement buttons in Chrome.
+*/
 [type='number']::-webkit-inner-spin-button,
 [type='number']::-webkit-outer-spin-button {
   height: auto;
 }
 
 /**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
- */
+* 1. Correct the odd appearance in Chrome and Safari.
+* 2. Correct the outline style in Safari.
+*/
 [type='search'] {
   -webkit-appearance: textfield;
   /* 1 */
@@ -288,16 +288,16 @@ textarea {
 }
 
 /**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
+* Remove the inner padding in Chrome and Safari on macOS.
+*/
 [type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
 /**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
+* 1. Correct the inability to style clickable types in iOS and Safari.
+* 2. Change font properties to `inherit` in Safari.
+*/
 ::-webkit-file-upload-button {
   -webkit-appearance: button;
   /* 1 */
@@ -306,33 +306,33 @@ textarea {
 }
 
 /* Interactive
-   ========================================================================== */
+ ========================================================================== */
 /*
- * Add the correct display in Edge, IE 10+, and Firefox.
- */
+* Add the correct display in Edge, IE 10+, and Firefox.
+*/
 details {
   display: block;
 }
 
 /*
- * Add the correct display in all browsers.
- */
+* Add the correct display in all browsers.
+*/
 summary {
   display: list-item;
 }
 
 /* Misc
-   ========================================================================== */
+ ========================================================================== */
 /**
- * Add the correct display in IE 10+.
- */
+* Add the correct display in IE 10+.
+*/
 template {
   display: none;
 }
 
 /**
- * Add the correct display in IE 10.
- */
+* Add the correct display in IE 10.
+*/
 [hidden] {
   display: none;
 }
@@ -1159,8 +1159,8 @@ form [type='radio'] {
   display: inline-block;
 }
 
-label form [type='checkbox'], label
-form [type='radio'] {
+label form [type='checkbox'],
+label form [type='radio'] {
   display: inline-block;
 }
 
@@ -1331,375 +1331,474 @@ form [type='radio'] {
 /* col-sm */
 @media screen and (min-width: 640px) {
   .col-sm-auto {
-    flex-grow: 1;
-    flex-basis: 0;
+      flex-grow: 1;
+      flex-basis: 0;
   }
+
   .col-sm-1 {
-    flex: 0 0 8.33333%;
-    max-width: 8.33333%;
+      flex: 0 0 8.33333%;
+      max-width: 8.33333%;
   }
+
   .col-sm-2 {
-    flex: 0 0 16.66667%;
-    max-width: 16.66667%;
+      flex: 0 0 16.66667%;
+      max-width: 16.66667%;
   }
+
   .col-sm-3 {
-    flex: 0 0 25%;
-    max-width: 25%;
+      flex: 0 0 25%;
+      max-width: 25%;
   }
+
   .col-sm-4 {
-    flex: 0 0 33.33333%;
-    max-width: 33.33333%;
+      flex: 0 0 33.33333%;
+      max-width: 33.33333%;
   }
+
   .col-sm-5 {
-    flex: 0 0 41.66667%;
-    max-width: 41.66667%;
+      flex: 0 0 41.66667%;
+      max-width: 41.66667%;
   }
+
   .col-sm-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
   }
+
   .col-sm-7 {
-    flex: 0 0 58.33333%;
-    max-width: 58.33333%;
+      flex: 0 0 58.33333%;
+      max-width: 58.33333%;
   }
+
   .col-sm-8 {
-    flex: 0 0 66.66667%;
-    max-width: 66.66667%;
+      flex: 0 0 66.66667%;
+      max-width: 66.66667%;
   }
+
   .col-sm-9 {
-    flex: 0 0 75%;
-    max-width: 75%;
+      flex: 0 0 75%;
+      max-width: 75%;
   }
+
   .col-sm-10 {
-    flex: 0 0 83.33333%;
-    max-width: 83.33333%;
+      flex: 0 0 83.33333%;
+      max-width: 83.33333%;
   }
+
   .col-sm-11 {
-    flex: 0 0 91.66667%;
-    max-width: 91.66667%;
+      flex: 0 0 91.66667%;
+      max-width: 91.66667%;
   }
+
   .col-sm-12 {
-    flex: 0 0 100%;
-    max-width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
   }
+
   .justify-space-between-sm {
-    justify-content: space-between;
+      justify-content: space-between;
   }
+
   .justify-space-around-sm {
-    justify-content: space-around;
+      justify-content: space-around;
   }
+
   .justify-flex-start-sm {
-    justify-content: flex-start;
+      justify-content: flex-start;
   }
+
   .justify-flex-end-sm {
-    justify-content: flex-end;
+      justify-content: flex-end;
   }
+
   .justify-center-sm {
-    justify-content: center;
+      justify-content: center;
   }
+
   .align-start-sm {
-    align-items: flex-start;
+      align-items: flex-start;
   }
+
   .align-stretch-sm {
-    align-items: stretch;
+      align-items: stretch;
   }
+
   .align-end-sm {
-    align-items: flex-end;
+      align-items: flex-end;
   }
+
   .align-center-sm {
-    align-items: center;
+      align-items: center;
   }
+
   .align-content-start-sm {
-    align-content: flex-start;
+      align-content: flex-start;
   }
+
   .align-content-stretch-sm {
-    align-content: stretch;
+      align-content: stretch;
   }
+
   .align-content-end-sm {
-    align-content: flex-end;
+      align-content: flex-end;
   }
+
   .align-content-center-sm {
-    align-content: center;
+      align-content: center;
   }
 }
 
 /* col-md */
 @media screen and (min-width: 768px) {
   .col-md-auto {
-    flex-grow: 1;
-    flex-basis: 0;
+      flex-grow: 1;
+      flex-basis: 0;
   }
+
   .col-md-1 {
-    flex: 0 0 8.33333%;
-    max-width: 8.33333%;
+      flex: 0 0 8.33333%;
+      max-width: 8.33333%;
   }
+
   .col-md-2 {
-    flex: 0 0 16.66667%;
-    max-width: 16.66667%;
+      flex: 0 0 16.66667%;
+      max-width: 16.66667%;
   }
+
   .col-md-3 {
-    flex: 0 0 25%;
-    max-width: 25%;
+      flex: 0 0 25%;
+      max-width: 25%;
   }
+
   .col-md-4 {
-    flex: 0 0 33.33333%;
-    max-width: 33.33333%;
+      flex: 0 0 33.33333%;
+      max-width: 33.33333%;
   }
+
   .col-md-5 {
-    flex: 0 0 41.66667%;
-    max-width: 41.66667%;
+      flex: 0 0 41.66667%;
+      max-width: 41.66667%;
   }
+
   .col-md-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
   }
+
   .col-md-7 {
-    flex: 0 0 58.33333%;
-    max-width: 58.33333%;
+      flex: 0 0 58.33333%;
+      max-width: 58.33333%;
   }
+
   .col-md-8 {
-    flex: 0 0 66.66667%;
-    max-width: 66.66667%;
+      flex: 0 0 66.66667%;
+      max-width: 66.66667%;
   }
+
   .col-md-9 {
-    flex: 0 0 75%;
-    max-width: 75%;
+      flex: 0 0 75%;
+      max-width: 75%;
   }
+
   .col-md-10 {
-    flex: 0 0 83.33333%;
-    max-width: 83.33333%;
+      flex: 0 0 83.33333%;
+      max-width: 83.33333%;
   }
+
   .col-md-11 {
-    flex: 0 0 91.66667%;
-    max-width: 91.66667%;
+      flex: 0 0 91.66667%;
+      max-width: 91.66667%;
   }
+
   .col-md-12 {
-    flex: 0 0 100%;
-    max-width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
   }
+
   .justify-space-between-md {
-    justify-content: space-between;
+      justify-content: space-between;
   }
+
   .justify-space-around-md {
-    justify-content: space-around;
+      justify-content: space-around;
   }
+
   .justify-flex-start-md {
-    justify-content: flex-start;
+      justify-content: flex-start;
   }
+
   .justify-flex-end-md {
-    justify-content: flex-end;
+      justify-content: flex-end;
   }
+
   .justify-center-md {
-    justify-content: center;
+      justify-content: center;
   }
+
   .align-start-md {
-    align-items: flex-start;
+      align-items: flex-start;
   }
+
   .align-stretch-md {
-    align-items: stretch;
+      align-items: stretch;
   }
+
   .align-end-md {
-    align-items: flex-end;
+      align-items: flex-end;
   }
+
   .align-center-md {
-    align-items: center;
+      align-items: center;
   }
+
   .align-content-start-md {
-    align-content: flex-start;
+      align-content: flex-start;
   }
+
   .align-content-stretch-md {
-    align-content: stretch;
+      align-content: stretch;
   }
+
   .align-content-end-md {
-    align-content: flex-end;
+      align-content: flex-end;
   }
+
   .align-content-center-md {
-    align-content: center;
+      align-content: center;
   }
 }
 
 /* col-lg */
 @media screen and (min-width: 992px) {
   .col-md-auto {
-    flex-grow: 1;
-    flex-basis: 0;
+      flex-grow: 1;
+      flex-basis: 0;
   }
+
   .col-lg-1 {
-    flex: 0 0 8.33333%;
-    max-width: 8.33333%;
+      flex: 0 0 8.33333%;
+      max-width: 8.33333%;
   }
+
   .col-lg-2 {
-    flex: 0 0 16.66667%;
-    max-width: 16.66667%;
+      flex: 0 0 16.66667%;
+      max-width: 16.66667%;
   }
+
   .col-lg-3 {
-    flex: 0 0 25%;
-    max-width: 25%;
+      flex: 0 0 25%;
+      max-width: 25%;
   }
+
   .col-lg-4 {
-    flex: 0 0 33.33333%;
-    max-width: 33.33333%;
+      flex: 0 0 33.33333%;
+      max-width: 33.33333%;
   }
+
   .col-lg-5 {
-    flex: 0 0 41.66667%;
-    max-width: 41.66667%;
+      flex: 0 0 41.66667%;
+      max-width: 41.66667%;
   }
+
   .col-lg-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
   }
+
   .col-lg-7 {
-    flex: 0 0 58.33333%;
-    max-width: 58.33333%;
+      flex: 0 0 58.33333%;
+      max-width: 58.33333%;
   }
+
   .col-lg-8 {
-    flex: 0 0 66.66667%;
-    max-width: 66.66667%;
+      flex: 0 0 66.66667%;
+      max-width: 66.66667%;
   }
+
   .col-lg-9 {
-    flex: 0 0 75%;
-    max-width: 75%;
+      flex: 0 0 75%;
+      max-width: 75%;
   }
+
   .col-lg-10 {
-    flex: 0 0 83.33333%;
-    max-width: 83.33333%;
+      flex: 0 0 83.33333%;
+      max-width: 83.33333%;
   }
+
   .col-lg-11 {
-    flex: 0 0 91.66667%;
-    max-width: 91.66667%;
+      flex: 0 0 91.66667%;
+      max-width: 91.66667%;
   }
+
   .col-lg-12 {
-    flex: 0 0 100%;
-    max-width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
   }
+
   .justify-space-between-lg {
-    justify-content: space-between;
+      justify-content: space-between;
   }
+
   .justify-space-around-lg {
-    justify-content: space-around;
+      justify-content: space-around;
   }
+
   .justify-flex-start-lg {
-    justify-content: flex-start;
+      justify-content: flex-start;
   }
+
   .justify-flex-end-lg {
-    justify-content: flex-end;
+      justify-content: flex-end;
   }
+
   .justify-center-lg {
-    justify-content: center;
+      justify-content: center;
   }
+
   .align-start-lg {
-    align-items: flex-start;
+      align-items: flex-start;
   }
+
   .align-stretch-lg {
-    align-items: stretch;
+      align-items: stretch;
   }
+
   .align-end-lg {
-    align-items: flex-end;
+      align-items: flex-end;
   }
+
   .align-center-lg {
-    align-items: center;
+      align-items: center;
   }
+
   .align-content-start-lg {
-    align-content: flex-start;
+      align-content: flex-start;
   }
+
   .align-content-stretch-lg {
-    align-content: stretch;
+      align-content: stretch;
   }
+
   .align-content-end-lg {
-    align-content: flex-end;
+      align-content: flex-end;
   }
+
   .align-content-center-lg {
-    align-content: center;
+      align-content: center;
   }
 }
 
 /* col-xl */
 @media screen and (min-width: 1200px) {
   .col-xl-1 {
-    flex: 0 0 8.33333%;
-    max-width: 8.33333%;
+      flex: 0 0 8.33333%;
+      max-width: 8.33333%;
   }
+
   .col-xl-2 {
-    flex: 0 0 16.66667%;
-    max-width: 16.66667%;
+      flex: 0 0 16.66667%;
+      max-width: 16.66667%;
   }
+
   .col-xl-3 {
-    flex: 0 0 25%;
-    max-width: 25%;
+      flex: 0 0 25%;
+      max-width: 25%;
   }
+
   .col-xl-4 {
-    flex: 0 0 33.33333%;
-    max-width: 33.33333%;
+      flex: 0 0 33.33333%;
+      max-width: 33.33333%;
   }
+
   .col-xl-5 {
-    flex: 0 0 41.66667%;
-    max-width: 41.66667%;
+      flex: 0 0 41.66667%;
+      max-width: 41.66667%;
   }
+
   .col-xl-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
   }
+
   .col-xl-7 {
-    flex: 0 0 58.33333%;
-    max-width: 58.33333%;
+      flex: 0 0 58.33333%;
+      max-width: 58.33333%;
   }
+
   .col-xl-8 {
-    flex: 0 0 66.66667%;
-    max-width: 66.66667%;
+      flex: 0 0 66.66667%;
+      max-width: 66.66667%;
   }
+
   .col-xl-9 {
-    flex: 0 0 75%;
-    max-width: 75%;
+      flex: 0 0 75%;
+      max-width: 75%;
   }
+
   .col-xl-10 {
-    flex: 0 0 83.33333%;
-    max-width: 83.33333%;
+      flex: 0 0 83.33333%;
+      max-width: 83.33333%;
   }
+
   .col-xl-11 {
-    flex: 0 0 100%;
-    max-width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
   }
+
   .col-xl-12 {
-    flex: 0 0 100%;
-    max-width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
   }
+
   .justify-space-between-xl {
-    justify-content: space-between;
+      justify-content: space-between;
   }
+
   .justify-space-around-xl {
-    justify-content: space-around;
+      justify-content: space-around;
   }
+
   .justify-flex-start-xl {
-    justify-content: flex-start;
+      justify-content: flex-start;
   }
+
   .justify-flex-end-xl {
-    justify-content: flex-end;
+      justify-content: flex-end;
   }
+
   .justify-center-xl {
-    justify-content: center;
+      justify-content: center;
   }
+
   .align-start-xl {
-    align-items: flex-start;
+      align-items: flex-start;
   }
+
   .align-stretch-xl {
-    align-items: stretch;
+      align-items: stretch;
   }
+
   .align-end-xl {
-    align-items: flex-end;
+      align-items: flex-end;
   }
+
   .align-center-xl {
-    align-items: center;
+      align-items: center;
   }
+
   .align-content-start-xl {
-    align-content: flex-start;
+      align-content: flex-start;
   }
+
   .align-content-stretch-xl {
-    align-content: stretch;
+      align-content: stretch;
   }
+
   .align-content-end-xl {
-    align-content: flex-end;
+      align-content: flex-end;
   }
+
   .align-content-center-xl {
-    align-content: center;
+      align-content: center;
   }
 }
