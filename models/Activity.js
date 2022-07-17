@@ -11,14 +11,17 @@ Activity.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    excursion: {
+    activity_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    excursion_date: {
-      type: DataTypes.DATE,
+    activity_address: {
+      type: DataTypes.STRING,
     },
-    price: {
+    activity_img: {
+      type: DataTypes.STRING,
+    },
+    activity_price: {
       type: DataTypes.STRING,
     },
     trip_id: {

@@ -14,12 +14,16 @@ const seedDatabase = async () => {
     returning: true,
   });
 
+  await Hotel.bulkCreate(hotelData);
+ await Activity.bulkCreate(thingsData);
+
   for (const trip of tripData) {
     await Trip.create({
-      ...trip,
+      ...trip, 
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }
+  
 
   process.exit(0);
 };
