@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Trip, User } = require('../models');
+const {Sequelize, Op} = require('sequelize');
+const { Trip, User, Hotel, Activity} = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -48,40 +49,50 @@ router.get('/', async (req, res) => {
 //   }
 // });
 
-router.get('/trip', withAuth, async (req, res) => {
-  try {
-    const tripData = await Trip.findAll({
-      where: {
-        user_id: req.session.user_id
-      },
-  });
+// router.get('/trip', withAuth, async (req, res) => {
+//   try {
+//     const tripData = await Trip.findAll({
+//       where: {
+//         user_id: req.session.user_id
+//       },
+//   });
 
-    const trips = tripData.map((trip) => trip.get({ plain: true}));
+//     const trips = tripData.map((trip) => trip.get({ plain: true}));
 
-    res.render('alltrips', {
-      trips,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render('alltrips', {
+//       trips,
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.get('/trip/:id', withAuth, async (req, res) => {
   try {
     const tripData = await Trip.findByPk(req.params.id, {
       include: [
         {
+          model: Hotel,
+        },
+        {
           model: User,
           attributes: ['first_name']
         }
       ]
     });
-
     const trip = tripData.get({ plain: true });
-
+    const activityData = await Activity.findAll({
+      where: {
+        trip_id: {
+          [Op.eq]: `${req.params.id}`
+        }
+      }
+    })
+    const activities = activityData.map((activity) => activity.get({ plain: true }))
     res.render('trip', {
       ...trip,
+      activities,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -89,9 +100,59 @@ router.get('/trip/:id', withAuth, async (req, res) => {
   }
 });
 
+router.get('/socialtrip/:id', withAuth, async (req, res) => {
+  try {
+    const tripData = await Trip.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['first_name', 'last_name']
+        },
+        {
+          model: Hotel,
+        }
+      ]
+    });
+
+    const activityData = await Activity.findAll({
+      where: {
+        trip_id: {
+          [Op.eq]: `${req.params.id}`
+        }
+      }
+    })
+
+    const activities = activityData.map((activity) => activity.get({ plain: true }))
+
+    const trip = tripData.get({ plain: true });
+    // console.log(trip)
+    res.render('socialtrip', {
+      ...trip,
+      activities,
+      logged_in: req.session.logged_in,
+    })
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
 router.get('/newtrip', withAuth, async (req, res) => {
   try {
+    const tripData = await Trip.findAll({
+      where: {
+        user_id: {
+          [Op.ne]: `${req.session.user_id}`
+        }
+      },
+      include : [{
+        model: User,
+        attributes: ['first_name', 'last_name']
+      }],
+    })
+    const trips = tripData.map((trip) => trip.get({ plain: true }));
+    console.log(trips)
     res.status(200).render('newtrip', {
+      trips,
       logged_in: req.session.logged_in
     })
   } catch (err) {

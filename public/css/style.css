@@ -47,6 +47,20 @@ main {
   /* center */
 }
 
+.social-trips {
+  border: solid green;
+}
+
+.newtrip-prof-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/images/plane.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 /* autocomplete styling */
 .autocomplete-container {
   margin-bottom: 20px;
@@ -87,11 +101,6 @@ main {
 
 .autocomplete-items div:hover {
   /*when hovering an item:*/
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.autocomplete-items .autocomplete-active {
-  /*when navigating through the items using the arrow keys:*/
   background-color: rgba(0, 0, 0, 0.1);
 }
 

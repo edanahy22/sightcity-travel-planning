@@ -3,8 +3,8 @@ const { User, Trip, Hotel, Activity } = require('../models');
 
 const userData = require('./userData.json');
 const tripData = require('./tripData.json');
-const hotelData = require('./hotel.json')
-const thingsData = require('./activity.json')
+const hotelData = require('./hotelData.json')
+const activityData = require('./activityData.json')
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -14,16 +14,26 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  await Hotel.bulkCreate(hotelData);
- await Activity.bulkCreate(thingsData);
-
   for (const trip of tripData) {
     await Trip.create({
       ...trip, 
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
-  }
-  
+  };
+
+  for (const hotel of hotelData) {
+    await Hotel.create({
+      ...hotel,
+      trip_id: tripData[hotelData.indexOf(hotel)].id,
+    });
+  };
+
+  for (const activity of activityData) {
+    await Activity.create({
+      ...activity,
+      trip_id: tripData[Math.floor(Math.random() * tripData.length)].id
+    });
+  };
 
   process.exit(0);
 };

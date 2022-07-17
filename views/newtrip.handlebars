@@ -1,31 +1,33 @@
-<h1>Plan your trip</h1>
+<div class="row">
+  <h1 class="col s12">Plan your trip</h1>
+  <div class="col s12 m9">
+    <form>
+      <div class="col s9">
+        <label for="location">Where do you want to go?</label>
+        <div class="autocomplete-container" id="location" name="location"></div>
+      </div>
+      
+      <div class="col s3 mt-3">
+        {{!-- <label for="dates">When do you want to go?</label> --}}
+        <input type="text" name="start date" class="datepicker" id="start-date" placeholder="Start Date">
+        <input type="text" name="end date" class="datepicker" id="end-date" placeholder="End Date">
+      </div>
+    </form>
+    <div id='content'>
+      <button type="submit" class="btn btn-primary" id="search-hotel-button">Find Hotels</button>
+    </div> 
+  </div>
 
-{{! <label for="location">Where do you want to go?</label>
-<input type="text" id="location" name="location" placeholder="Los Angeles"> }}
-
-<div class="form-group">
-  <form>
-    <label for="location">Where do you want to go?</label>
-    {{!-- autocomplete stuff --}}
-    <div class="autocomplete-container" id="location" name="location"></div>
-    {{!-- ------------------ --}}
-    <input type="text" class="datepicker" id="start-date" placeholder="Start Date">
-    <input type="text" class="datepicker" id="end-date" placeholder="End Date">
-    <button type="submit" class="btn btn-primary" id="search-hotel-button">Find Hotels</button>
-  </form>
-
+  <aside class="col s2 offset-s1">
+    <h2>Trips by Other Users</h2>
+    <div class="social-trips">
+      {{#each trips as |trip| }}
+      <a href="/socialtrip/{{trip.id}}"><h3>{{trip.location}}</h3></a>
+      Planned by: {{user.first_name}} {{user.last_name}}
+      {{/each}}
+    </div>
+  </aside>
 </div>
 
-<main id='content'></main>
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-
-<script>
- document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(elems, {autoClose: true});
-  });
-</script>
 <script src='/js/yelp.js'></script>
 <script src='/js/autocomplete.js'></script>

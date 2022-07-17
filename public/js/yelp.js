@@ -4,6 +4,16 @@ const yelpURL = "https://api.yelp.com/v3/businesses/search";
 //yelp does not support cross origin requests, so this is the work around:
 const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
 
+//Datepicker function
+$(document).ready(function () {
+    $('.datepicker').datepicker();
+});
+
+let requestObj = {
+    url: yelpURL,
+    data: {term: 'hotels', location: '60622'},
+    headers: {'Authorization': yelpKey}
+}
 
 function findHotels(location) {
     fetch(`${corsAnywhereUrl}/${yelpURL}?term=hotels&location=${location}`, {
@@ -40,8 +50,8 @@ function findActivities(location) {
 $('#search-hotel-button').on("click", async function (event) {
     event.preventDefault();
     const location = $("#location").children().children().val().trim();
-    const start_date = $(this).siblings("#start-date").val().trim();
-    const end_date = $(this).siblings("#end-date").val().trim();
+    const start_date = $("#start-date").val().trim();
+    const end_date = $("#end-date").val().trim();
 
     if (location && start_date && end_date) {
         const response = await fetch('/api/trip' , {
@@ -53,7 +63,7 @@ $('#search-hotel-button').on("click", async function (event) {
         if (response.ok) {
             M.toast({
                 html: 'Trip Started!',
-                classes: 'amber'
+                classes: 'teal accent-3'
             })
         } else {
             alert(response.statusText)
@@ -131,7 +141,7 @@ async function selectHotel(e) {
     if (response.ok) {
         M.toast({
             html: 'Hotel Added!',
-            classes: 'amber'
+            classes: 'teal accent-3'
         })
         contentBlock.textContent= '';
         let activityBtn = document.createElement('button');
