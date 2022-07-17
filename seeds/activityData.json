@@ -1,0 +1,83 @@
+[
+    {
+        "excursion": "Upstairs Cricus",
+        "excursion_date": "12/24/2022",
+        "price": "$$$$"
+    },
+    {
+        "excursion": "Blue Hole Regional Park",
+        "excursion_date": "12/24/2022",
+        "price": "$"
+    },
+    {
+        "excursion": "The Partheonon",
+        "excursion_date": "12/24/2022",
+        "price": "$$$"
+    },
+    {
+        "excursion": "The Bean",
+        "excursion_date": "03/24/2022",
+        "price": "$"
+    },
+    {
+        "excursion": "Luya",
+        "excursion_date": "10/2/2023",
+        "price": "$$$"
+    },
+    {
+        "excursion": "Pitchfork",
+        "excursion_date": "07/24/2022",
+        "price": "$$$$"
+    },
+    {
+        "excursion": "Lolla",
+        "excursion_date": "10/18/2021",
+        "price": "$$$$$"
+    },
+    {
+        "excursion": "Taste of the City",
+        "excursion_date": "05/02/2022",
+        "price": "$$"
+    },
+
+    {
+        "excursion": "Downstairs Circus",
+        "excursion_date": "1/24/2022",
+        "price": "$$$$"
+    },
+    {
+        "excursion": "Green Hole Regional Park",
+        "excursion_date": "2/24/2022",
+        "price": "$"
+    },
+    {
+        "excursion": "Eataly",
+        "excursion_date": "5/21/2022",
+        "price": "$$$"
+    },
+    {
+        "excursion": "Fireworks",
+        "excursion_date": "07/24/2022",
+        "price": "$"
+    },
+    {
+        "excursion": "Marathon",
+        "excursion_date": "08/02/2023",
+        "price": "$$$"
+    },
+    {
+        "excursion": "Boat Tour",
+        "excursion_date": "07/29/2022",
+        "price": "$$$$"
+    },
+    {
+        "excursion": "Underground Tour",
+        "excursion_date": "04/12/2021",
+        "price": "$$$"
+    },
+    {
+        "excursion": "Ribfest",
+        "excursion_date": "08/02/2022",
+        "price": "$$"
+    }
+]

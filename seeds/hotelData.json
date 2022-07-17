@@ -1,0 +1,38 @@
+[
+    {
+        "hotel_name": "LondonHouse Chicago, Curio Collection by Hilton",
+        "hotel_address": "1234 S Michigan",
+        "hotel_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
+        "hotel_price": "$$$"
+    },
+    {
+        "hotel_name": "Austin Athletic Association Hotel",
+        "hotel_address": "1234 N Mission",
+        "hotel_img": "https://s3-media3.fl.yelpcdn.com/bphoto/B7C7ozr4B3jHkhwIX2VlVQ/o.jpg",
+        "hotel_price": "$$"
+    },
+    {
+        "hotel_name": "The Langham, Seattle",
+        "hotel_address": "1234 W Mercer",
+        "hotel_img": "https://s3-media1.fl.yelpcdn.com/bphoto/yxJjgjO7IrJAobfZwgdJiQ/o.jpg",
+        "hotel_price": "$$"
+    },
+    {
+        "hotel_name": "The Hilton, Portland",
+        "hotel_address": "1234 W Hawthorne",
+        "hotel_img": "https://s3-media1.fl.yelpcdn.com/bphoto/yxJjgjO7IrJAobfZwgdJiQ/o.jpg",
+        "hotel_price": "$$$$"
+    },
+    {
+        "hotel_name": "Best Western, LA",
+        "hotel_address": "1234 W Sunset Blvd",
+        "hotel_img": "https://s3-media1.fl.yelpcdn.com/bphoto/yxJjgjO7IrJAobfZwgdJiQ/o.jpg",
+        "hotel_price": "$"
+    },
+    {
+        "hotel_name": "Super 8 Motel, Nashville",
+        "hotel_address": "1234 N Slowpoke Rd",
+        "hotel_img": "https://s3-media1.fl.yelpcdn.com/bphoto/yxJjgjO7IrJAobfZwgdJiQ/o.jpg",
+        "hotel_price": "$$$"
+    }
+]
