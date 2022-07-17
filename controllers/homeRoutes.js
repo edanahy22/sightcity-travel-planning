@@ -74,7 +74,10 @@ router.get('/trip/:id', withAuth, async (req, res) => {
       include: [
         {
           model: Hotel,
-          //model: Activity
+        },
+        {
+          model: User,
+          attributes: ['first_name']
         }
       ]
     });
@@ -98,10 +101,9 @@ router.get('/newtrip', withAuth, async (req, res) => {
           [Op.ne]: `${req.session.user_id}`
         }
       },
-      //Working on including the user's first name who created the trip=============================================
       include : [{
         model: User,
-        attributes: ['first_name']
+        attributes: ['first_name', 'last_name']
       }],
     })
     const trips = tripData.map((trip) => trip.get({ plain: true }));

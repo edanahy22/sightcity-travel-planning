@@ -16,9 +16,11 @@
 </head>
 
 <body>
+{{!-- jquery   --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
+  <div class="flex-column">
+    <header class="display-flex justify-space-between align-center">
 
       {{!-- Materialize Navigation Bar --}}
       <nav>
@@ -39,8 +41,7 @@
       </nav>
     </header>
 
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
+    <main class="container container-fluid">
       {{{ body }}}
     </main>
 
@@ -51,27 +52,8 @@
   <script src="/js/logout.js"></script>
   {{/if}}
 
-  <!--html for yelp-->
-  {{!-- <div class="form-group">
-    <form>
-      <input type="text" class="form-control input" id="city" />
-      <button type="submit" class="btn btn-primary" id="search-hotel-button">Find Hotels</button>
-    </form>
-    <form>
-      <input type="text" class="form-control input" id="cityActivity" />
-      <button type="submit" class="btn btn-primary" id="search-activity-button">Find Activities</button>
-    </form>
-  </div>
-
-  <main id="content"></main> --}}
-  {{!--
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
-
   <!-- Materialize -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  {{!--
-  <script src="/js/yelp.js"></script> --}}
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 
