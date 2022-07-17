@@ -52,7 +52,6 @@ $('#search-hotel-button').on("click", async function (event) {
     const location = $("#location").children().children().val().trim();
     const start_date = $("#start-date").val().trim();
     const end_date = $("#end-date").val().trim();
-
     if (location && start_date && end_date) {
         const response = await fetch('/api/trip' , {
             method: 'POST',
@@ -79,7 +78,7 @@ $('#search-hotel-button').on("click", async function (event) {
 
 const searchActivity = (event) => {
     event.preventDefault();
-    let location= $("#location").children().children().val().trim();
+    const location= $("#location").children().children().val().trim();
     console.log(location);
 
     if (location === "" || location === null){
@@ -112,6 +111,7 @@ function genHotel(data) {
         hotelBtnEl.innerHTML = 'Select'
         hotelBtnEl.setAttribute('href', '/api/hotel')
         hotelBtnEl.addEventListener('click', selectHotel);
+        hotelBtnEl.addEventListener('click', searchActivity);
 
         hotelDiv.appendChild(hotelTitleEl)
         hotelDiv.appendChild(hotelAddressEl)
@@ -144,10 +144,15 @@ async function selectHotel(e) {
             classes: 'teal accent-3'
         })
         contentBlock.textContent= '';
-        let activityBtn = document.createElement('button');
-        contentBlock.appendChild(activityBtn);
-        activityBtn.innerHTML = 'Find Activities';
-        activityBtn.addEventListener('click', searchActivity);
+        const location = $("#location").children().children().val().trim();
+        let activityTitle = document.createElement('h1')
+        activityTitle.textContent = `What would you like to do in ${location}?`
+        contentBlock.appendChild(activityTitle)
+
+        // let activityBtn = document.createElement('button');
+        // contentBlock.appendChild(activityBtn);
+        // activityBtn.innerHTML = 'Find Activities';
+        // activityBtn.addEventListener('click', searchActivity);
         
     } else {
         alert('Failed to post to database')
