@@ -10,8 +10,8 @@ let requestObj = {
     headers: {'Authorization': yelpKey}
 }
 
-function findHotels(city) {
-    fetch(`${corsAnywhereUrl}/${yelpURL}?term=hotels&location=${city}`, {
+function findHotels(location) {
+    fetch(`${corsAnywhereUrl}/${yelpURL}?term=hotels&location=${location}`, {
         headers: { Authorization: yelpKey }
     })
         .then(function (res) {
@@ -26,8 +26,8 @@ function findHotels(city) {
         })
 }
 
-function findActivities(city) {
-    fetch(`${corsAnywhereUrl}/${yelpURL}?term=activities&location=${city}`, {
+function findActivities(location) {
+    fetch(`${corsAnywhereUrl}/${yelpURL}?term=activities&location=${location}`, {
         headers: { Authorization: yelpKey }
     })
         .then(function (res) {
@@ -44,7 +44,7 @@ function findActivities(city) {
 
 $('#search-hotel-button').on("click", async function (event) {
     event.preventDefault();
-    const location = $(this).siblings("#city").val().trim();
+    const location = $("#location").children().children().val().trim();
     const start_date = $(this).siblings("#start-date").val().trim();
     const end_date = $(this).siblings("#end-date").val().trim();
 
@@ -65,7 +65,7 @@ $('#search-hotel-button').on("click", async function (event) {
         }
     }
 
-    if ($('#city').val() === "" || $('#city').val() === null){
+    if ($('#location').children().children().val() === "" || $('#location').children().children().val() === null){
         return;
     }
 
@@ -74,11 +74,11 @@ $('#search-hotel-button').on("click", async function (event) {
 
 const searchActivity = (event) => {
     event.preventDefault();
-    let location= $("#city").val().trim();
+    let location= $("#location").children().children().val().trim();
     console.log(location);
 
     if (location === "" || location === null){
-        return;
+        alert('Please enter a location');
     }
     
     findActivities(location);

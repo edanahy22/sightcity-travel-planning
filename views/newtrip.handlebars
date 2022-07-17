@@ -6,7 +6,9 @@
 <div class="form-group">
   <form>
     <label for="location">Where do you want to go?</label>
-    <input type="text" id="city" name="location" placeholder="i.e. Los Angeles">
+    {{!-- autocomplete stuff --}}
+    <div class="autocomplete-container" id="location" name="location"></div>
+    {{!-- ------------------ --}}
     <input type="text" class="datepicker" id="start-date" placeholder="Start Date">
     <input type="text" class="datepicker" id="end-date" placeholder="End Date">
     <button type="submit" class="btn btn-primary" id="search-hotel-button">Find Hotels</button>
@@ -24,6 +26,5 @@
     $('.datepicker').datepicker();
   });
 </script>
-
-<!-- Materialize -->
 <script src='/js/yelp.js'></script>
+<script src='/js/autocomplete.js'></script>
