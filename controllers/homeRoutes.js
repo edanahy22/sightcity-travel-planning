@@ -144,21 +144,23 @@ router.get('/newtrip', withAuth, async (req, res) => {
   }
 })
 
-router.get('/activity', withAuth, async (req, res) => {
-  try {
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-    });
-    const tripData = await Trip.findByPk(req.session.trip_id)
-    res.status(200).render('activity', {
-      logged_in: req.session.logged_in,
-      ...userData.get(),
-      ...tripData.get()
-    })
-  } catch (err) {
-    res.status(500).json(err)
-  }
-})
+// Not sure if we need this code now that activities is not on a separate page
+
+// router.get('/activity', withAuth, async (req, res) => {
+//   try {
+//     const userData = await User.findByPk(req.session.user_id, {
+//       attributes: { exclude: ['password'] },
+//     });
+//     const tripData = await Trip.findByPk(req.session.trip_id)
+//     res.status(200).render('activity', {
+//       logged_in: req.session.logged_in,
+//       ...userData.get(),
+//       ...tripData.get()
+//     })
+//   } catch (err) {
+//     res.status(500).json(err)
+//   }
+// })
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
@@ -172,6 +174,25 @@ router.get('/profile', withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
 
     res.render('profile', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/about', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Trip }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('about', {
       ...user,
       logged_in: true
     });

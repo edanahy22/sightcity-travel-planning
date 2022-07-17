@@ -4,6 +4,7 @@ const yelpURL = "https://api.yelp.com/v3/businesses/search";
 //yelp does not support cross origin requests, so this is the work around:
 const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
 
+<<<<<<< HEAD
 //Datepicker function
 $(document).ready(function () {
     $('.datepicker').datepicker();
@@ -14,6 +15,8 @@ let requestObj = {
     data: {term: 'hotels', location: '60622'},
     headers: {'Authorization': yelpKey}
 }
+=======
+>>>>>>> main
 
 function findHotels(location) {
     fetch(`${corsAnywhereUrl}/${yelpURL}?term=hotels&location=${location}`, {
@@ -128,6 +131,7 @@ async function selectHotel(e) {
     const hotel_address = this.dataset.address;
     const hotel_img = this.dataset.img;
     const hotel_price = this.dataset.price;
+    console.log(this);
 
     const response = await fetch('/api/hotel', {
         method: 'POST',
@@ -185,11 +189,12 @@ function genActivity(data) {
 };
 
 async function selectActivity(e) {
-    e.preventDefault()
+    e.preventDefault();
     const activity_name = this.dataset.title;
     const activity_address = this.dataset.address;
     const activity_img = this.dataset.img;
     const activity_price = this.dataset.price;
+    console.log(this);
 
     const response = await fetch('/api/activity', {
         method: 'POST',
@@ -204,7 +209,7 @@ async function selectActivity(e) {
             html: 'Activity Added!',
             classes: 'amber'
         })
-        document.location.replace('/activity')
+        // document.location.replace('/activity')
     } else {
         alert('Failed to post to database')
     }
