@@ -1,33 +1,35 @@
-<div>
+{{!-- <div>
   <h5 class="center-align">
 
     <a class="waves-effect waves-light btn-large" href="/newtrip">Create New Trip</a>
     <a class="waves-effect waves-light btn-large" href="/trip">View Saved Trips</a>
-  </div>
+  </div> --}}
 
 {{!-- add list of saved trips, maybe make it scrollable??=============================== --}}
 
-  <div>
-    {{#each trips as |trip| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-      {{!-- {{{get_emoji}}} --}}
-      <a href="/trip/{{trip.id}}">{{trip.location}}</a>
-    </h2>
-    <p>
-      <span for="img" aria-label="pin">📍</span>
-      <!-- Pass needed_funding value to the helper function -->
-      Trip Start: {{trip.start_date}}<br>
-      Trip End: {{trip.end_date}}
-    </p>
+<div>
+  <div class="row mt-2">
+    <div class="col m4">
+      <h2>Your Upcoming Trips</h2>
+      <hr>
+      <div>
+        {{#each trips as |trip| }}
+        <h3>
+          <span for="img" aria-label="pin">📍</span>
+          <a href="/trip/{{trip.id}}">{{trip.location}}</a>
+        </h3>
+        <p class="ml-5">
+          <!-- Pass needed_funding value to the helper function -->
+          Trip Start: {{trip.start_date}}<br>
+          Trip End: {{trip.end_date}}
+        </p>
+        {{/each}}
+      </div>
+    </div>
+
+    <div class="col m7 ml-1 newtrip-prof-btn">
+      <a class="waves-effect waves-light btn-large" href="/newtrip">Plan A New Trip</a>
+    </div>
   </div>
 </div>
-{{/each}}
-  </div>
-
-  <div>
-
-  </div>
 </body>

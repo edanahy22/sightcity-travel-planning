@@ -18,12 +18,15 @@
     </div> 
   </div>
 
-  <div class="col s2 offset-s1 social-trips">
-    {{#each trips as |trip| }}
-    <a href="/socialtrip/{{trip.id}}"><h3>{{trip.location}}</h3></a>
-    Planned by: {{user.first_name}} {{user.last_name}}
-    {{/each}}
-  </div>
+  <aside class="col s2 offset-s1">
+    <h2>Trips by Other Users</h2>
+    <div class="social-trips">
+      {{#each trips as |trip| }}
+      <a href="/socialtrip/{{trip.id}}"><h3>{{trip.location}}</h3></a>
+      Planned by: {{user.first_name}} {{user.last_name}}
+      {{/each}}
+    </div>
+  </aside>
 </div>
 
 <script src='/js/yelp.js'></script>
