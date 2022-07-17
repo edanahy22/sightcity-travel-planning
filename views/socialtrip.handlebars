@@ -1,1 +1,9 @@
-testing testing
+<h1>{{location}}</h1>
+<h2>{{start_date}} - {{end_date}}</h2>
+Planned by: {{user.first_name}} {{user.last_name}}
+<hr>
+<h3>Activities</h3>
+    {{#each activities as |activity| }}
+    <a href="/socialtrip/{{activity.id}}"><h3>{{activity.activity_name}}</h3></a>
+    {{activity.activity_date}}
+    {{/each}}

@@ -81,11 +81,18 @@ router.get('/trip/:id', withAuth, async (req, res) => {
         }
       ]
     });
-
     const trip = tripData.get({ plain: true });
-
+    const activityData = await Activity.findAll({
+      where: {
+        trip_id: {
+          [Op.eq]: `${req.params.id}`
+        }
+      }
+    })
+    const activities = activityData.map((activity) => activity.get({ plain: true }))
     res.render('trip', {
       ...trip,
+      activities,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -99,20 +106,29 @@ router.get('/socialtrip/:id', withAuth, async (req, res) => {
       include: [
         {
           model: User,
+          attributes: ['first_name', 'last_name']
         },
         {
           model: Hotel,
-        },
-        {
-          model: Activity,
         }
       ]
     });
 
+    const activityData = await Activity.findAll({
+      where: {
+        trip_id: {
+          [Op.eq]: `${req.params.id}`
+        }
+      }
+    })
+
+    const activities = activityData.map((activity) => activity.get({ plain: true }))
+
     const trip = tripData.get({ plain: true });
-console.log(trip)
+    // console.log(trip)
     res.render('socialtrip', {
       ...trip,
+      activities,
       logged_in: req.session.logged_in,
     })
   } catch (err) {

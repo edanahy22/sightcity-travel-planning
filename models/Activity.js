@@ -21,6 +21,9 @@ Activity.init(
     activity_img: {
       type: DataTypes.STRING,
     },
+    activity_date: {
+      type: DataTypes.STRING,
+    },
     activity_price: {
       type: DataTypes.STRING,
     },
