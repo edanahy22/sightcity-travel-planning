@@ -1,17 +1,20 @@
 [
     {
-        "excursion": "Upstairs Cricus",
-        "excursion_date": "12/24/2022",
-        "price": "$$$$"
+        "activity_name": "Upstairs Cricus",
+        "activity_address": "122 Circle Way",
+        "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
+        "activity_price": "$$$$"
     },
     {
-        "excursion": "Blue Hole Regional Park",
-        "excursion_date": "12/24/2022",
-        "price": "$"
+        "activity_name": "Blue Hole Regional Park",
+        "activity_address": "123 Blue Street",
+        "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
+        "activity_price": "$"
     },
     {
-        "excursion": "The Partheonon",
-        "excursion_date": "12/24/2022",
-        "price": "$$$"
+        "activity_name": "The Partheonon",
+        "activity_address": "124 Historical Ave",
+        "activity_img":"https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
+        "activity_price": "$$$"
     }
 ]
