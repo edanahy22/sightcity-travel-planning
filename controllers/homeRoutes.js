@@ -135,6 +135,25 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
+router.get('/about', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Trip }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('about', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // router.get('/', async (req, res) => {
 //   try {
 //     // Get all trips and JOIN with user data

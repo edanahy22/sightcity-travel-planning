@@ -60,7 +60,7 @@ main {
 .input-container input {
   flex: 1;
   outline: none;
-  
+
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 10px;
   padding-right: 31px;
@@ -98,7 +98,7 @@ main {
 .clear-button {
   color: rgba(0, 0, 0, 0.4);
   cursor: pointer;
-  
+
   position: absolute;
   right: 5px;
   top: 0;
@@ -115,3 +115,4 @@ main {
 .clear-button:hover {
   color: rgba(0, 0, 0, 0.6);
 }
+
