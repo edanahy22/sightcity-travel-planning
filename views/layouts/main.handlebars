@@ -23,12 +23,12 @@
       {{!-- Materialize Navigation Bar --}}
       <nav>
         <div class="nav-wrapper">
-          <a href="#!" class="brand-logo center">🗺️ SightCity Travel Planning</a>
+          <a href="/" class="brand-logo center">🗺️ SightCity Travel Planning</a>
           <ul class="left hide-on-med-and-down">
             <!-- Conditionally render login or logout links -->
             {{#if logged_in}}
             <li><a href="/profile">Profile</a></li>
-            <li><a href="/trip">Saved Trips</a></li>
+            <li><a href="/newtrip">Plan a New Trip</a></li>
             <li><a href="/about">About Us</a></li>
             <button class="no-button" id="logout">Logout</button>
             {{else}}
