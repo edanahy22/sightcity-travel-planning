@@ -93,6 +93,33 @@ router.get('/trip/:id', withAuth, async (req, res) => {
   }
 });
 
+router.get('/socialtrip/:id', withAuth, async (req, res) => {
+  try {
+    const tripData = await Trip.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+        },
+        {
+          model: Hotel,
+        },
+        {
+          model: Activity,
+        }
+      ]
+    });
+
+    const trip = tripData.get({ plain: true });
+console.log(trip)
+    res.render('socialtrip', {
+      ...trip,
+      logged_in: req.session.logged_in,
+    })
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
 router.get('/newtrip', withAuth, async (req, res) => {
   try {
     const tripData = await Trip.findAll({

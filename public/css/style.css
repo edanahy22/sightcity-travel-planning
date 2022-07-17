@@ -47,6 +47,10 @@ main {
   /* center */
 }
 
+.social-trips {
+  border: solid green;
+}
+
 /* autocomplete styling */
 .autocomplete-container {
   margin-bottom: 20px;
@@ -87,11 +91,6 @@ main {
 
 .autocomplete-items div:hover {
   /*when hovering an item:*/
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.autocomplete-items .autocomplete-active {
-  /*when navigating through the items using the arrow keys:*/
   background-color: rgba(0, 0, 0, 0.1);
 }
 

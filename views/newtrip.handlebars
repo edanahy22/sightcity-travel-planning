@@ -9,8 +9,8 @@
       
       <div class="col s3 mt-3">
         {{!-- <label for="dates">When do you want to go?</label> --}}
-        <input type="text" name="dates" class="datepicker" id="start-date" placeholder="Start Date">
-        <input type="text" name="dates" class="datepicker" id="end-date" placeholder="End Date">
+        <input type="text" name="start date" class="datepicker" id="start-date" placeholder="Start Date">
+        <input type="text" name="end date" class="datepicker" id="end-date" placeholder="End Date">
       </div>
     </form>
     <div id='content'>
@@ -18,9 +18,9 @@
     </div> 
   </div>
 
-  <div class="col s2 offset-s1">
+  <div class="col s2 offset-s1 social-trips">
     {{#each trips as |trip| }}
-    <h3>{{trip.location}}</h3>
+    <a href="/socialtrip/{{trip.id}}"><h3>{{trip.location}}</h3></a>
     Planned by: {{user.first_name}} {{user.last_name}}
     {{/each}}
   </div>
