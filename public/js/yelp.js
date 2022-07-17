@@ -5,15 +5,10 @@ const yelpURL = "https://api.yelp.com/v3/businesses/search";
 const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
 
 //Datepicker function
-$(document).ready(function () {
-    $('.datepicker').datepicker();
-});
-
-let requestObj = {
-    url: yelpURL,
-    data: {term: 'hotels', location: '60622'},
-    headers: {'Authorization': yelpKey}
-}
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, {autoClose: true});
+  });
 
 function findHotels(location) {
     fetch(`${corsAnywhereUrl}/${yelpURL}?term=hotels&location=${location}`, {
