@@ -87,3 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.Datepicker.init(elems, {autoClose: true});
   });
 
+//Navbar desktop and mobile function
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {edge: true});
+  });

@@ -12,7 +12,7 @@ header,
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #1b89bc;
+  color: white;
   text-decoration: none;
   font-size: 100%;
 }
@@ -124,4 +124,3 @@ main {
 .clear-button:hover {
   color: rgba(0, 0, 0, 0.6);
 }
-
