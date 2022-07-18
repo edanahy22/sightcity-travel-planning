@@ -249,4 +249,37 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/summary', withAuth, async (req, res) => {
+  try{
+     const tripData= await Trip.findByPk(req.session.trip_id, {
+         include: [{ model: Hotel }]
+     });
+
+     const activityData = await Activity.findAll({
+      where: {
+        trip_id: {
+          [Op.eq]: `${req.session.trip_id}`
+        }
+      }
+    })
+
+    const userData = await User.findByPk(req.session.user_id);
+
+    const activities = activityData.map((activity) => activity.get({ plain: true }))
+    const user= userData.get({ plain: true});
+    const trip = tripData.get({ plain: true });
+    console.log(trip);
+    console.log(activities);
+     
+     
+     res.render('summary', {
+      user, trip, activities, logged_in: req.session.logged_in
+     })
+
+  }
+  catch (err) {
+      res.status(500).json(err);
+  }
+})
+
 module.exports = router;

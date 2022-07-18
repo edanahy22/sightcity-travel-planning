@@ -1,0 +1,10 @@
+<h1>Trip Summary Page</h1>
+<h1>{{trip.location}}</h1>
+<h2>{{trip.start_date}} - {{trip.end_date}}</h2>
+Planned by: {{user.first_name}} {{user.last_name}}
+<hr>
+<h3>Activities</h3>
+    {{#each activities as |activity| }}
+    <a href="/summary/{{activity.id}}"><h3>{{activity.activity_name}}</h3></a>
+    {{activity.activity_date}}
+    {{/each}}
