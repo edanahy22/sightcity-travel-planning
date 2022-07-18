@@ -4,16 +4,7 @@ const yelpURL = "https://api.yelp.com/v3/businesses/search";
 //yelp does not support cross origin requests, so this is the work around:
 const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
 
-//Datepicker function
-$(document).ready(function () {
-    $('.datepicker').datepicker();
-});
 
-let requestObj = {
-    url: yelpURL,
-    data: {term: 'hotels', location: '60622'},
-    headers: {'Authorization': yelpKey}
-}
 
 function findHotels(location) {
     fetch(`${corsAnywhereUrl}/${yelpURL}?term=hotels&location=${location}`, {

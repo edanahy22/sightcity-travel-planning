@@ -8,7 +8,6 @@ User.hasMany(Trip, {
   onDelete: 'CASCADE'
 });
 
-//check to make sure if this is correct relationship
 Trip.belongsTo(User, {
   foreignKey: 'user_id'
 });
