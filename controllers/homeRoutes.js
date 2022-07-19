@@ -252,7 +252,8 @@ router.get('/login', (req, res) => {
 router.get('/summary', withAuth, async (req, res) => {
   try{
      const tripData= await Trip.findByPk(req.session.trip_id, {
-         include: [{ model: Hotel }]
+         include: [{ model: Hotel }],
+        //  order: [['start_date','ASC']],
      });
 
      const activityData = await Activity.findAll({
