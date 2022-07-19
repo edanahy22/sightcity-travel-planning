@@ -3,7 +3,6 @@ function emailInit() {
 }
 emailInit();
 
-//CHANGE TARGET OF EVENT LISTENER
 window.onload = function() {
     document.getElementById('itinerary-form').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -19,7 +18,45 @@ window.onload = function() {
                 console.log('FAILED...', error);
             });
     });
-};
+}
+
+//date function
+Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
+function getDates(startDate, stopDate) {
+    var dateArray = new Array();
+    var currentDate = startDate;
+    while (currentDate <= stopDate) {
+        dateArray.push(new Date (currentDate));
+        currentDate = currentDate.addDays(1);
+    }
+    return dateArray;
+}
+
+//Input trip dates and activities
+function emailFormat(trip, activities) {
+    const start_date = trip.start_date;
+    const end_date = trip.end_date;
+    const tripDates = getDates(start_date, end_date)
+    let tableTextArr = []
+    // let tableRowsArr = []
+    //Render table headers with the dates of the triip
+    for (let i=0; i < tripDates.length; i++) {
+        tableTextArr.push(`<tr style="border: 1px solid black;"><th style="border: 1px solid black;">${tripDates[i]}</th></tr>`);
+    }
+    //Creates table data tag with the image, name and address of the activity if the activity date matches the trip date in the calendar
+    for (let i=0; i<tripDates.length; i++) {
+        for (let j=0; j<activities.length; j++) {
+            if(activities[j].activity_date == tripDates[i]) {
+                tableTextArr[i] + `<tr><img src="${activities[i].activity_img}">\n <td>${activities[i].activity_name}\n${activities[i].activity_address}\n${activities[i]}</td></tr>`
+            }
+        }
+    }
+}
 
 //include in whatever page this will be implemented in, so probably finalpage.handlebars
 //<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>

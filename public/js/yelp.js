@@ -91,7 +91,7 @@ const searchActivity = (event) => {
     event.preventDefault();
     const criteria = {
         location: $("#location").children().children().val().trim(),
-        price: "4",
+        price: "1",
     }
     // const location= $("#location").children().children().val().trim();
     if (criteria.location === "" || criteria.location === null){
@@ -140,7 +140,6 @@ function genHotel(data) {
         // hotelDiv.appendChild(hotelPriceEl)
         // hotelDiv.appendChild(hotelImgEl)
         // hotelDiv.appendChild(hotelBtnEl)
-       
 
         //materialize classes for styling
         
@@ -243,8 +242,6 @@ function scheduleActivity(e) {
             console.log(input)
         },
     });
-
-    console.log(instances)
     // selectActivity
 }
 
