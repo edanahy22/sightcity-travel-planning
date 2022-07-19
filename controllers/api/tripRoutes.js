@@ -38,12 +38,15 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+
 router.delete('/:id', withAuth, async (req, res) => {
+  
   try {
+    console.log("here");
     const tripData = await Trip.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        // user_id: req.session.user_id,
       },
     });
 
@@ -52,7 +55,7 @@ router.delete('/:id', withAuth, async (req, res) => {
       return;
     }
 
-    res.status(200).json(tripData);
+    res.status(200).end();
   } catch (err) {
     res.status(500).json(err);
   }

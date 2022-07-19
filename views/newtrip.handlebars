@@ -1,35 +1,75 @@
-<div class="row">
-  <h1 class="col s12">Plan your trip</h1>
-  <div class="col s12 m9">
+<div class='row'>
+  <h1 class='col s12'>Plan your trip</h1>
+  <div class='col s12 m9'>
     <form>
-      <div class="col s9">
-        <label for="location">Where do you want to go?</label>
-        <div class="autocomplete-container" id="location" name="location"></div>
+      <div class='col s9'>
+        <label for='location'>Where do you want to go?</label>
+        <div class='autocomplete-container' id='location' name='location'></div>
       </div>
-      
-      <div class="col s3 mt-3">
-        {{!-- <label for="dates">When do you want to go?</label> --}}
-        <input type="text" name="start date" class="datepicker" id="start-date" placeholder="Start Date">
-        <input type="text" name="end date" class="datepicker" id="end-date" placeholder="End Date">
+
+      <div class='col s3 mt-3'>
+        <input
+          type='text'
+          name='start date'
+          class='datepicker'
+          id='start-date'
+          placeholder='Start Date'
+        />
+        <input
+          type='text'
+          name='end date'
+          class='datepicker'
+          id='end-date'
+          placeholder='End Date'
+        />
       </div>
+
+
+{{!-- <div class="container">
+  <div class="card-panel">
+    <div class="input-field">
+      <select>
+        <option value=""selected disabled>Choose Your Price</option>
+        <option value="1">$</option>
+        <option value="2">$$</option>
+        <option value="3">$$$</option>
+        <option value="4">$$$$</option>
+      </select>
+    </div>
+  </div>
+</div> --}}
+
     </form>
+
     <div id='content'>
-      <button type="submit" class="btn btn-primary" id="search-hotel-button">Find Hotels</button>
-    </div> 
+      <button
+        type='submit'
+        class='btn btn-primary'
+        id='search-hotel-button'
+      >Find Hotels</button>
+    </div>
+
   </div>
 
-  <aside class="col s2 offset-s1">
+  <aside class='col s2 offset-s1'>
     <h2>Trips by Other Users</h2>
-    <div class="social-trips">
-      {{#each trips as |trip| }}
-      <a href="/socialtrip/{{trip.id}}"><h3>{{trip.location}}</h3></a>
-      Planned by: {{user.first_name}} {{user.last_name}}
+    <div class='social-trips'>
+      {{#each trips as |trip|}}
+        <a href='/socialtrip/{{trip.id}}'>
+          <h3>{{trip.location}}</h3>
+        </a>
+        Planned by:
+        {{user.first_name}}
+        {{user.last_name}}
       {{/each}}
     </div>
   </aside>
 </div>
 
- <a class="btn-floating btn-large waves-effect waves-light red" href="/summary"><i class="material-icons">done</i></a>
+<a
+  class='btn-floating btn-large waves-effect waves-light red pulse'
+  href='/summary'
+><i class='material-icons'>done</i></a>
 
 <script src='/js/yelp.js'></script>
 <script src='/js/materialize.js'></script>

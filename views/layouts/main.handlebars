@@ -8,6 +8,8 @@
   <title>SightCity Travel Planning</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
+  {{!-- Import Google Icon Font --}}
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- Compiled and minified CSS -->
   <!-- Materialize -->
@@ -16,18 +18,19 @@
 </head>
 
 <body>
-{{!-- jquery   --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  {{!-- jquery --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-  <div class="flex-column">
-    <header class="display-flex justify-space-between align-center">
+  {{!-- <div class="flex-column">
+    <header class="display-flex justify-space-between align-center"> --}}
 
       {{!-- Materialize Navigation Bar --}}
       <nav>
-        <div class="nav-wrapper">
-          <a href="/" class="brand-logo center">🗺️ SightCity Travel Planning</a>
-          <ul class="left hide-on-med-and-down">
+        <div class="nav-wrapper blue">
+          <a href="#!" class="brand-logo">🗺️ SightCity Travel Planning</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
             <!-- Conditionally render login or logout links -->
             {{#if logged_in}}
             <li><a href="/profile">Profile</a></li>
@@ -40,6 +43,19 @@
           </ul>
         </div>
       </nav>
+
+      <ul class="sidenav" id="mobile-demo">
+            <!-- Conditionally render login or logout links -->
+            {{#if logged_in}}
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/newtrip">Plan a New Trip</a></li>
+            <li><a href="/about">About Us</a></li>
+            <button class="no-button" id="logout">Logout</button>
+            {{else}}
+            <li><a href="/login">Login</a></li>
+            {{/if}}
+      </ul>
+
     </header>
 
     <main class="container container-fluid">
@@ -53,7 +69,6 @@
   <script src="/js/logout.js"></script>
   {{/if}}
 
-  <!-- Materialize -->
 </body>
 
 </html>

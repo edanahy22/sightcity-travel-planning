@@ -4,8 +4,10 @@ const yelpURL = "https://api.yelp.com/v3/businesses/search";
 //yelp does not support cross origin requests, so this is the work around:
 const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
 
-function findHotels(location) {
-    fetch(`${corsAnywhereUrl}/${yelpURL}?term=hotels&location=${location}`, {
+
+function findHotels(criteria) {
+    console.log(criteria)
+    fetch(`${corsAnywhereUrl}/${yelpURL}?term=${criteria.term}&location=${criteria.location}&price=${criteria.price}`, {
         headers: { Authorization: yelpKey }
     })
         .then(function (res) {
@@ -20,8 +22,9 @@ function findHotels(location) {
         })
 }
 
-function findActivities(location) {
-    fetch(`${corsAnywhereUrl}/${yelpURL}?term=activities&location=${location}`, {
+function findActivities(criteria) {
+    console.log(criteria)
+    fetch(`${corsAnywhereUrl}/${yelpURL}?term=activities&location=${criteria.location}&price=${criteria.price}`, {
         headers: { Authorization: yelpKey }
     })
         .then(function (res) {
@@ -45,6 +48,7 @@ function sqlDate(date) {
 
 $('#search-hotel-button').on("click", async function (event) {
     event.preventDefault();
+
     const location = $("#location").children().children().val().trim();
     const unf_start_date = sessionStorage.getItem('start-date')
     const unf_end_date = sessionStorage.getItem('end-date')
@@ -54,9 +58,24 @@ $('#search-hotel-button').on("click", async function (event) {
     if (location && start_date && end_date) {
         console.log(end_date)
         console.log(start_date)
+
+//Melissas code
+//    const criteria = {
+  //      location: $("#location").children().children().val().trim(),
+    //    price: "4",
+      //  term: "hotels"
+//    }
+//    const start_date = $("#start-date").val().trim();
+//    const end_date = $("#end-date").val().trim();
+//    if (criteria.location && start_date && end_date) {
+
         const response = await fetch('/api/trip' , {
             method: 'POST',
-            body: JSON.stringify({location, start_date, end_date}),
+            body: JSON.stringify({
+                location: criteria.location, 
+                start_date, 
+                end_date
+            }),
             headers: {'Content-Type': 'application/json'},
         })
 
@@ -70,11 +89,11 @@ $('#search-hotel-button').on("click", async function (event) {
         }
     }
 
-    if ($('#location').children().children().val() === "" || $('#location').children().children().val() === null){
+    if (criteria.location === "" || criteria.location === null){
         return;
     }
 
-    findHotels(location);
+    findHotels(criteria);
 });
 
 const searchActivity = (event) => {
@@ -86,12 +105,14 @@ const searchActivity = (event) => {
         alert('Please enter a location');
     }
     
-    findActivities(location);
+    findActivities(criteria);
 };
 
 let contentBlock = document.getElementById('content')
 
+
 function genHotel(data) {
+    console.log(data)
     for (let i = 0; i < 5; i++){
         let hotelDiv = document.createElement('div');
         let hotelTitleEl = document.createElement('h3')
