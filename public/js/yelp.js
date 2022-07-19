@@ -49,26 +49,17 @@ function sqlDate(date) {
 $('#search-hotel-button').on("click", async function (event) {
     event.preventDefault();
 
-    const location = $("#location").children().children().val().trim();
-    const unf_start_date = sessionStorage.getItem('start-date')
-    const unf_end_date = sessionStorage.getItem('end-date')
-    const start_date = sqlDate(unf_start_date)
-    const end_date = sqlDate(unf_end_date);
-    console.log(end_date)
-    if (location && start_date && end_date) {
-        console.log(end_date)
-        console.log(start_date)
+    const criteria = {
+        location: $("#location").children().children().val().trim(),
+        price: "4",
+        term: "hotels"
+    }
+    const start_date = sessionStorage.getItem('start-date')
+    const end_date = sessionStorage.getItem('end-date')
+    // const start_date = sqlDate(unf_start_date)
+    // const end_date = sqlDate(unf_end_date);
 
-//Melissas code
-//    const criteria = {
-  //      location: $("#location").children().children().val().trim(),
-    //    price: "4",
-      //  term: "hotels"
-//    }
-//    const start_date = $("#start-date").val().trim();
-//    const end_date = $("#end-date").val().trim();
-//    if (criteria.location && start_date && end_date) {
-
+    if (criteria.location && start_date && end_date) {
         const response = await fetch('/api/trip' , {
             method: 'POST',
             body: JSON.stringify({
@@ -98,10 +89,12 @@ $('#search-hotel-button').on("click", async function (event) {
 
 const searchActivity = (event) => {
     event.preventDefault();
-    const location= $("#location").children().children().val().trim();
-    console.log(location);
-
-    if (location === "" || location === null){
+    const criteria = {
+        location: $("#location").children().children().val().trim(),
+        price: "4",
+    }
+    // const location= $("#location").children().children().val().trim();
+    if (criteria.location === "" || criteria.location === null){
         alert('Please enter a location');
     }
     
@@ -246,7 +239,6 @@ function scheduleActivity(e) {
     const end_date = $("#end-date").val().trim();
     let instances = M.Datepicker.init(elems, {
         autoClose: true,
-        // minDate: start_date,
         onSelect: function(input) {
             console.log(input)
         },

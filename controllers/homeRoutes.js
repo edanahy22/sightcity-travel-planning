@@ -156,7 +156,6 @@ router.get('/newtrip', withAuth, async (req, res) => {
       }],
     })
     const trips = tripData.map((trip) => trip.get({ plain: true }));
-    console.log(trips)
     res.status(200).render('newtrip', {
       trips,
       logged_in: req.session.logged_in
