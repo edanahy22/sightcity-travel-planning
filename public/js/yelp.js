@@ -119,7 +119,6 @@ async function selectHotel(e) {
     const hotel_address = this.dataset.address;
     const hotel_img = this.dataset.img;
     const hotel_price = this.dataset.price;
-    console.log(this);
 
     const response = await fetch('/api/hotel', {
         method: 'POST',
@@ -128,7 +127,7 @@ async function selectHotel(e) {
             'Content-Type': 'application/json'
         },
     })
-    console.log(response)
+
     if (response.ok) {
         M.toast({
             html: 'Hotel Added!',
@@ -139,12 +138,6 @@ async function selectHotel(e) {
         let activityTitle = document.createElement('h1')
         activityTitle.textContent = `What would you like to do in ${location}?`
         contentBlock.appendChild(activityTitle)
-
-        // let activityBtn = document.createElement('button');
-        // contentBlock.appendChild(activityBtn);
-        // activityBtn.innerHTML = 'Find Activities';
-        // activityBtn.addEventListener('click', searchActivity);
-        
     } else {
         alert('Failed to post to database')
     }
@@ -168,18 +161,37 @@ function genActivity(data) {
         activityAddressEl.textContent = `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`
         activityPriceEl.textContent = data.businesses[i].price
         activityImgEl.setAttribute('src', data.businesses[i].image_url)
-        activityBtnEl.innerHTML = 'Select'
+        activityBtnEl.innerHTML = 'Schedule'
         activityBtnEl.setAttribute('href', '/api/activity')
-        activityBtnEl.addEventListener('click', selectActivity);
+        activityBtnEl.setAttribute('id', 'act-datepicker')
+        activityBtnEl.classList.add('datepicker')
+        activityBtnEl.addEventListener('focus', scheduleActivity);
 
         activityDiv.appendChild(activityTitleEl)
         activityDiv.appendChild(activityAddressEl)
         activityDiv.appendChild(activityPriceEl)
         activityDiv.appendChild(activityImgEl)
         activityDiv.appendChild(activityBtnEl)
+
         contentBlock.appendChild(activityDiv)
     }
 };
+
+function scheduleActivity(e) {
+    // e.preventDefault();
+    const elems = document.querySelectorAll('#act-datepicker');
+    const start_date = $("#start-date").val().trim();
+    const end_date = $("#end-date").val().trim();
+    let instances = M.Datepicker.init(elems, {
+        autoClose: true,
+        onSelect: function(input) {
+            console.log(input)
+        },
+    });
+
+    console.log(instances)
+    // selectActivity
+}
 
 async function selectActivity(e) {
     e.preventDefault();
@@ -200,7 +212,7 @@ async function selectActivity(e) {
     if (response.ok) {
         M.toast({
             html: 'Activity Added!',
-            classes: 'amber'
+            classes: 'teal accent-3'
         })
         // document.location.replace('/activity')
     } else {

@@ -79,11 +79,32 @@
 // 	}
 // };
 
-
+let getStartDate = () => localStorage.getItem('start-date')
 
 //Datepicker function
 document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(elems, {autoClose: true});
+    let elems = document.querySelectorAll('#start-date');
+    let instances = M.Datepicker.init(elems, {
+      autoClose: true,
+      format: 'mm/dd/yyyy',
+      onSelect: function(date) {
+        sessionStorage.setItem('sql-start-date', $('#start-date').val());
+        // let format = date.split(' ').slice(1,4).join(' ')
+        sessionStorage.setItem('format-start-date', date)
+      },
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    let elems = document.querySelectorAll('#end-date');
+    let instances = M.Datepicker.init(elems, {
+      autoClose: true,
+      format: 'mm/dd/yyyy',
+      onSelect: function(date) {
+        sessionStorage.setItem('sql-end-date', $('#end-date').val());
+        // let format = date.split(' ').slice(1,4).join(' ')
+        sessionStorage.setItem('format-end-date', date)
+      }
+    });
   });
 
