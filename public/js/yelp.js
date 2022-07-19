@@ -81,6 +81,7 @@ const searchActivity = (event) => {
 
 let contentBlock = document.getElementById('content')
 
+
 function genHotel(data) {
     for (let i = 0; i < 5; i++){
         let hotelDiv = document.createElement('div');
