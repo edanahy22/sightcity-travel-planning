@@ -2,16 +2,16 @@
 //     $("input[class*='datepicker-']").datepicker({
 //         selectMonths: true,
 //         selectYears: 10,
-//         format: 'yyyy-mm-dd',  
+//         format: 'yyyy-mm-dd',
 //         onSet: function (obj) {
 //             let thisPicker = $(this)[0].$node;
 //             let classes = thisPicker.attr("class");
 //             if (classes === undefined || classes.length === 0 || classes.indexOf("datepicker-start") < 0) {
 //                 return;
 //             }
-//             let parent1 = thisPicker.parent("#wrapper1"); // This picker's parent 
+//             let parent1 = thisPicker.parent("#wrapper1"); // This picker's parent
 //             let parent2 = parent1.sibling("#wrapper2"); // Next picker's parent let picker2 =
-//             parent2.child(".datepicker-end"); 
+//             parent2.child(".datepicker-end");
 //             if (obj.select) {
 //                 let dt = new Date(obj.select);
 //                 picker2.datepicker('picker').set('min', dt);
@@ -32,7 +32,6 @@
 // //Set min date for #to
 // var minDateTo = new Date(date.setDate(nextWeekFrom.getDate() + 1));
 
-
 // // SET OPTIONS FOR FROM DATEPICKER
 // var optionsFrom = {
 //     format: "yyyy-mm-dd",
@@ -48,7 +47,6 @@
 // 	}
 // };
 
-
 // // SET OPTIONS FOR TO DATEPICKER
 // var optionsTo = {
 //     format: "yyyy-mm-dd",
@@ -58,13 +56,11 @@
 // 	autoClose: true
 // };
 
-
 // // INITIATE DATEPICKERS
 // $(document).ready(function() {
 // 	var $from = $("#start1").datepicker(optionsFrom);
 // 	var $to = $("#end1").datepicker(optionsTo);
 // });
-
 
 // // FUNCTION TO SET MINIMUM DATE WHEN FROM DATE SELECTED
 // var setMinTo = function(vad) {
@@ -79,16 +75,20 @@
 // 	}
 // };
 
-
-
 //Datepicker function
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(elems, {autoClose: true});
-  });
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.datepicker');
+  var instances = M.Datepicker.init(elems, { autoClose: true });
+});
 
 //Navbar desktop and mobile function
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, {edge: true});
-  });
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems, { edge: true });
+});
+
+//https://materializecss.com/select.html
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(elems, options);
+});
