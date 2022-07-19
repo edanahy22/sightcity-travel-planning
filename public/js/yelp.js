@@ -4,8 +4,6 @@ const yelpURL = "https://api.yelp.com/v3/businesses/search";
 //yelp does not support cross origin requests, so this is the work around:
 const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
 
-
-
 function findHotels(location) {
     fetch(`${corsAnywhereUrl}/${yelpURL}?term=hotels&location=${location}`, {
         headers: { Authorization: yelpKey }
@@ -38,12 +36,26 @@ function findActivities(location) {
         })
 }
 
+//function to change date to sql friendly format
+function sqlDate(date) {
+    const [month, day, year] = date.split('/')
+    return `${year}-${month}-${day}`
+}
+function unSqlDate(date) {
+    const [year, month, day] = date.split('-')
+    return `${month}/${day}/${year}`
+}
+
 $('#search-hotel-button').on("click", async function (event) {
     event.preventDefault();
     const location = $("#location").children().children().val().trim();
-    const start_date = $("#start-date").val().trim();
-    const end_date = $("#end-date").val().trim();
+    const unf_start_date = sessionStorage.getItem('start-date')
+    const unf_end_date = sessionStorage.getItem('end-date')
+    const start_date = sqlDate(unf_start_date)
+    const end_date = sqlDate(unf_end_date);
     if (location && start_date && end_date) {
+        console.log(end_date)
+        console.log(start_date)
         const response = await fetch('/api/trip' , {
             method: 'POST',
             body: JSON.stringify({location, start_date, end_date}),

@@ -2,37 +2,37 @@
   {
     "id": "1",
     "location": "Chicago, IL",
-    "start_date": "12/24/2022",
-    "end_date": "12/28/2022"
+    "start_date": "2022-06-27",
+    "end_date": "2022-05-27"
   },
   {
     "id": "2",
     "location": "Austin, TX",
-    "start_date": "04/01/2023",
-    "end_date": "04/17/2023"
+    "start_date": "2023-04-01",
+    "end_date": "2023-04-07"
   },
   {
     "id": "3",
     "location": "Seattle, WA",
-    "start_date": "09/05/2023",
-    "end_date": "09/13/2023"
+    "start_date": "2023-09-07",
+    "end_date": "2023-12-17"
   },
   {
     "id": "4",
     "location": "Portland, ME",
-    "start_date": "12/12/2024",
-    "end_date": "12/30/2024"
+    "start_date": "2023-02-03",
+    "end_date": "2023-02-11"
   },
   {
     "id": "5",
     "location": "Los Angeles, CA",
-    "start_date": "03/15/2022",
-    "end_date": "03/30/2022"
+    "start_date": "2022-11-07",
+    "end_date": "2022-11-09"
   },
   {
     "id": "6",
     "location": "Nashville, TN",
-    "start_date": "11/12/2022",
-    "end_date": "11/17/2022"
+    "start_date": "2023-06-07",
+    "end_date": "2023-06-24"
   }
 ]

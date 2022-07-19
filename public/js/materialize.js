@@ -87,10 +87,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let instances = M.Datepicker.init(elems, {
       autoClose: true,
       format: 'mm/dd/yyyy',
-      onSelect: function(date) {
-        sessionStorage.setItem('sql-start-date', $('#start-date').val());
-        // let format = date.split(' ').slice(1,4).join(' ')
-        sessionStorage.setItem('format-start-date', date)
+      onSelect: function() {
+        let date = $('#start-date').val()
+        sessionStorage.setItem('start-date', date);
       },
     });
   });
@@ -100,10 +99,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let instances = M.Datepicker.init(elems, {
       autoClose: true,
       format: 'mm/dd/yyyy',
-      onSelect: function(date) {
-        sessionStorage.setItem('sql-end-date', $('#end-date').val());
-        // let format = date.split(' ').slice(1,4).join(' ')
-        sessionStorage.setItem('format-end-date', date)
+      onSelect: function() {
+        let date = $('#end-date').val()
+        sessionStorage.setItem('end-date', date);
       }
     });
   });
