@@ -93,10 +93,13 @@ $('#search-hotel-button').on("click", async function (event) {
 
 const searchActivity = (event) => {
     event.preventDefault();
-    const location= $("#location").children().children().val().trim();
-    console.log(location);
-
-    if (location === "" || location === null){
+    const criteria = {
+        location: $("#location").children().children().val().trim(),
+        price: "4",
+        term: "hotels"
+    }
+    // const location= $("#location").children().children().val().trim();
+    if (criteria.location === "" || criteria.location === null){
         alert('Please enter a location');
     }
     
@@ -207,10 +210,11 @@ function scheduleActivity(e) {
     // e.preventDefault();
     const elems = document.querySelectorAll('#act-datepicker');
     const start_date = sessionStorage.getItem('start-date');
+    console.log(new Date(start_date))
     const end_date = $("#end-date").val().trim();
     let instances = M.Datepicker.init(elems, {
         autoClose: true,
-        // minDate: start_date,
+        minDate: Date.now(),
         onSelect: function(input) {
             console.log(input)
         },
