@@ -92,8 +92,9 @@ let contentBlock = document.getElementById('content')
 
 function genHotel(data) {
     console.log(data)
-    let rowDiv = document.createElement('div')
+    const rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
+    
     for (let i = 0; i < 5; i++){
         // let rowDiv = document.createElement('div')
         let colDiv = document.createElement('div')
@@ -130,15 +131,12 @@ function genHotel(data) {
 
         //materialize classes for styling
         
-        colDiv.classList.add('col');
-        colDiv.classList.add('s3');
-        // colDiv.classList.add('m6');
+        colDiv.classList.add('col', 's12', 'm3');
         hotelDiv.classList.add('card');
-        hotelDiv.classList.add('medium');
+        hotelDiv.classList.add('small');
         imgDiv.classList.add('card-image');
         hotelTitleEl.classList.add('card-title');
         hotelBtnEl.classList.add('btn');
-        // hotelBtnEl.classList.add('fab')
         contentDiv.classList.add('card-content');
 
         rowDiv.appendChild(colDiv);
