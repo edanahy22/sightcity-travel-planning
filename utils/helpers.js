@@ -20,3 +20,11 @@
 //     }
 //   },
 // };
+
+module.exports = function unSqlDate(date) {
+    const dateArr = date.split('')
+    const year = dateArr.slice(0,4)
+    const month = dateArr.slice(4,6)
+    const day = dateArr.slice(6)
+    return `${month}/${day}/${year}`
+}

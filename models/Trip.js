@@ -16,11 +16,11 @@ Trip.init(
       allowNull: false,
     },
     start_date: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
     },
     end_date: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.INTEGER.UNSIGNED,
       allowNull: false,
     },
     user_id: {

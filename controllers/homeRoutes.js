@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {Sequelize, Op} = require('sequelize');
 const { Trip, User, Hotel, Activity} = require('../models');
 const withAuth = require('../utils/auth');
+const unSqlDate = require('../utils/helpers')
 
 router.get('/', async (req, res) => {
   try {
@@ -123,9 +124,14 @@ router.get('/socialtrip/:id', withAuth, async (req, res) => {
     })
 
     const activities = activityData.map((activity) => activity.get({ plain: true }))
-
+    //format date into more readable text
+    for (let i=0; i<activities.length; i++) {
+      activities[i].activity_date = unSqlDate(activities[i].activity_date)
+    }
     const trip = tripData.get({ plain: true });
-    // console.log(trip)
+    trip.start_date = unSqlDate(trip.start_date)
+    trip.end_date = unSqlDate(trip.end_date)
+
     res.render('socialtrip', {
       ...trip,
       activities,
@@ -186,9 +192,12 @@ router.get('/profile', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{ model: Trip }],
     });
-
     const user = userData.get({ plain: true });
-
+    //renders the dates from sql into more human readable format
+    for (let i=0; i<user.trips.length; i++){
+      user.trips[i].start_date = unSqlDate(user.trips[i].start_date)
+      user.trips[i].end_date = unSqlDate(user.trips[i].end_date)
+    };
     res.render('profile', {
       ...user,
       logged_in: true

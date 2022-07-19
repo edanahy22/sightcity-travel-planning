@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let instances = M.Datepicker.init(elems, {
       autoClose: true,
       format: 'mm/dd/yyyy',
-      onSelect: function() {
+      onClose: function() {
         let date = $('#start-date').val()
         sessionStorage.setItem('start-date', date);
       },
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let instances = M.Datepicker.init(elems, {
       autoClose: true,
       format: 'mm/dd/yyyy',
-      onSelect: function() {
+      onClose: function() {
         let date = $('#end-date').val()
         sessionStorage.setItem('end-date', date);
       }
