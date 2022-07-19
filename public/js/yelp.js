@@ -4,6 +4,7 @@ const yelpURL = "https://api.yelp.com/v3/businesses/search";
 //yelp does not support cross origin requests, so this is the work around:
 const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
 
+
 function findHotels(criteria) {
     console.log(criteria)
     fetch(`${corsAnywhereUrl}/${yelpURL}?term=${criteria.term}&location=${criteria.location}&price=${criteria.price}`, {
@@ -38,16 +39,36 @@ function findActivities(criteria) {
         })
 }
 
+//function to change date to a sortable friendly 
+function sqlDate(date) {
+    const [month, day, year] = date.split('/')
+    return `${year}${month}${day}`
+}
+
+
 $('#search-hotel-button').on("click", async function (event) {
     event.preventDefault();
-    const criteria = {
-        location: $("#location").children().children().val().trim(),
-        price: "4",
-        term: "hotels"
-    }
-    const start_date = $("#start-date").val().trim();
-    const end_date = $("#end-date").val().trim();
-    if (criteria.location && start_date && end_date) {
+
+    const location = $("#location").children().children().val().trim();
+    const unf_start_date = sessionStorage.getItem('start-date')
+    const unf_end_date = sessionStorage.getItem('end-date')
+    const start_date = sqlDate(unf_start_date)
+    const end_date = sqlDate(unf_end_date);
+    console.log(end_date)
+    if (location && start_date && end_date) {
+        console.log(end_date)
+        console.log(start_date)
+
+//Melissas code
+//    const criteria = {
+  //      location: $("#location").children().children().val().trim(),
+    //    price: "4",
+      //  term: "hotels"
+//    }
+//    const start_date = $("#start-date").val().trim();
+//    const end_date = $("#end-date").val().trim();
+//    if (criteria.location && start_date && end_date) {
+
         const response = await fetch('/api/trip' , {
             method: 'POST',
             body: JSON.stringify({
@@ -129,7 +150,6 @@ async function selectHotel(e) {
     const hotel_address = this.dataset.address;
     const hotel_img = this.dataset.img;
     const hotel_price = this.dataset.price;
-    console.log(this);
 
     const response = await fetch('/api/hotel', {
         method: 'POST',
@@ -138,7 +158,7 @@ async function selectHotel(e) {
             'Content-Type': 'application/json'
         },
     })
-    console.log(response)
+
     if (response.ok) {
         M.toast({
             html: 'Hotel Added!',
@@ -149,12 +169,6 @@ async function selectHotel(e) {
         let activityTitle = document.createElement('h1')
         activityTitle.textContent = `What would you like to do in ${location}?`
         contentBlock.appendChild(activityTitle)
-
-        // let activityBtn = document.createElement('button');
-        // contentBlock.appendChild(activityBtn);
-        // activityBtn.innerHTML = 'Find Activities';
-        // activityBtn.addEventListener('click', searchActivity);
-        
     } else {
         alert('Failed to post to database')
     }
@@ -178,18 +192,38 @@ function genActivity(data) {
         activityAddressEl.textContent = `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`
         activityPriceEl.textContent = data.businesses[i].price
         activityImgEl.setAttribute('src', data.businesses[i].image_url)
-        activityBtnEl.innerHTML = 'Select'
+        activityBtnEl.innerHTML = 'Schedule'
         activityBtnEl.setAttribute('href', '/api/activity')
-        activityBtnEl.addEventListener('click', selectActivity);
+        activityBtnEl.setAttribute('id', 'act-datepicker')
+        activityBtnEl.classList.add('datepicker')
+        activityBtnEl.addEventListener('focus', scheduleActivity);
 
         activityDiv.appendChild(activityTitleEl)
         activityDiv.appendChild(activityAddressEl)
         activityDiv.appendChild(activityPriceEl)
         activityDiv.appendChild(activityImgEl)
         activityDiv.appendChild(activityBtnEl)
+
         contentBlock.appendChild(activityDiv)
     }
 };
+
+function scheduleActivity(e) {
+    // e.preventDefault();
+    const elems = document.querySelectorAll('#act-datepicker');
+    const start_date = sessionStorage.getItem('start-date');
+    const end_date = $("#end-date").val().trim();
+    let instances = M.Datepicker.init(elems, {
+        autoClose: true,
+        // minDate: start_date,
+        onSelect: function(input) {
+            console.log(input)
+        },
+    });
+
+    console.log(instances)
+    // selectActivity
+}
 
 async function selectActivity(e) {
     e.preventDefault();
@@ -210,7 +244,7 @@ async function selectActivity(e) {
     if (response.ok) {
         M.toast({
             html: 'Activity Added!',
-            classes: 'amber'
+            classes: 'teal accent-3'
         })
         // document.location.replace('/activity')
     } else {
