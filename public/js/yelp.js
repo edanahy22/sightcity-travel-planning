@@ -48,26 +48,21 @@ function sqlDate(date) {
 
 $('#search-hotel-button').on("click", async function (event) {
     event.preventDefault();
+    //Ian's code
+    // const location = $("#location").children().children().val().trim();
 
-    const location = $("#location").children().children().val().trim();
+    //Melissa's code
+    const criteria = {
+        location: $("#location").children().children().val().trim(),
+        price: "4",
+        term: "hotels"
+    }
     const unf_start_date = sessionStorage.getItem('start-date')
     const unf_end_date = sessionStorage.getItem('end-date')
     const start_date = sqlDate(unf_start_date)
     const end_date = sqlDate(unf_end_date);
-    console.log(end_date)
-    if (location && start_date && end_date) {
-        console.log(end_date)
-        console.log(start_date)
 
-//Melissas code
-//    const criteria = {
-  //      location: $("#location").children().children().val().trim(),
-    //    price: "4",
-      //  term: "hotels"
-//    }
-//    const start_date = $("#start-date").val().trim();
-//    const end_date = $("#end-date").val().trim();
-//    if (criteria.location && start_date && end_date) {
+    if (criteria.location && start_date && end_date) {
 
         const response = await fetch('/api/trip' , {
             method: 'POST',
