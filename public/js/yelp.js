@@ -92,13 +92,20 @@ let contentBlock = document.getElementById('content')
 
 function genHotel(data) {
     console.log(data)
+    let rowDiv = document.createElement('div')
+    rowDiv.classList.add('row');
     for (let i = 0; i < 5; i++){
+        // let rowDiv = document.createElement('div')
+        let colDiv = document.createElement('div')
         let hotelDiv = document.createElement('div');
-        let hotelTitleEl = document.createElement('h3')
-        let hotelAddressEl = document.createElement('h6')
-        let hotelPriceEl = document.createElement('h6')
+        let imgDiv = document.createElement('div')
+        let hotelTitleEl = document.createElement('span')
+        let hotelAddressEl = document.createElement('p')
+        let hotelPriceEl = document.createElement('p')
         let hotelImgEl = document.createElement('img')
         let hotelBtnEl = document.createElement('button')
+        let contentDiv = document.createElement('div')
+
 
         hotelBtnEl.setAttribute('data-title', data.businesses[i].name)
         hotelBtnEl.setAttribute('data-address', `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`)
@@ -114,11 +121,35 @@ function genHotel(data) {
         hotelBtnEl.addEventListener('click', selectHotel);
         hotelBtnEl.addEventListener('click', searchActivity);
 
-        hotelDiv.appendChild(hotelTitleEl)
-        hotelDiv.appendChild(hotelAddressEl)
-        hotelDiv.appendChild(hotelPriceEl)
-        hotelDiv.appendChild(hotelImgEl)
-        hotelDiv.appendChild(hotelBtnEl)
+        // hotelDiv.appendChild(hotelTitleEl)
+        // hotelDiv.appendChild(hotelAddressEl)
+        // hotelDiv.appendChild(hotelPriceEl)
+        // hotelDiv.appendChild(hotelImgEl)
+        // hotelDiv.appendChild(hotelBtnEl)
+       
+
+        //materialize classes for styling
+        
+        colDiv.classList.add('col');
+        colDiv.classList.add('s3');
+        // colDiv.classList.add('m6');
+        hotelDiv.classList.add('card');
+        hotelDiv.classList.add('medium');
+        imgDiv.classList.add('card-image');
+        hotelTitleEl.classList.add('card-title');
+        hotelBtnEl.classList.add('btn');
+        // hotelBtnEl.classList.add('fab')
+        contentDiv.classList.add('card-content');
+
+        rowDiv.appendChild(colDiv);
+        colDiv.appendChild(hotelDiv);
+        hotelDiv.appendChild(imgDiv);
+        hotelDiv.appendChild(contentDiv);
+        imgDiv.appendChild(hotelImgEl);
+        imgDiv.appendChild(hotelTitleEl);
+        contentDiv.appendChild(hotelAddressEl);
+        contentDiv.appendChild(hotelPriceEl);
+        contentDiv.appendChild(hotelBtnEl);
         contentBlock.appendChild(hotelDiv)
     }
 };
