@@ -136,17 +136,10 @@ function genHotel(data) {
         hotelBtnEl.addEventListener('click', selectHotel);
         hotelBtnEl.addEventListener('click', searchActivity);
 
-        // hotelDiv.appendChild(hotelTitleEl)
-        // hotelDiv.appendChild(hotelAddressEl)
-        // hotelDiv.appendChild(hotelPriceEl)
-        // hotelDiv.appendChild(hotelImgEl)
-        // hotelDiv.appendChild(hotelBtnEl)
-
         //materialize classes for styling
         
-        colDiv.classList.add('col', 's12', 'm3');
-        hotelDiv.classList.add('card');
-        hotelDiv.classList.add('small');
+        colDiv.classList.add('col', 's12', 'm4');
+        hotelDiv.classList.add('card', 'medium');
         imgDiv.classList.add('card-image');
         hotelTitleEl.classList.add('card-title');
         hotelBtnEl.classList.add('btn');
@@ -161,7 +154,7 @@ function genHotel(data) {
         contentDiv.appendChild(hotelAddressEl);
         contentDiv.appendChild(hotelPriceEl);
         contentDiv.appendChild(hotelBtnEl);
-        contentBlock.appendChild(hotelDiv)
+        contentBlock.appendChild(rowDiv)
     }
 };
 
