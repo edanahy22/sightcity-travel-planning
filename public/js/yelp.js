@@ -48,22 +48,18 @@ function sqlDate(date) {
 
 $('#search-hotel-button').on("click", async function (event) {
     event.preventDefault();
-    //Ian's code
-    // const location = $("#location").children().children().val().trim();
 
-    //Melissa's code
     const criteria = {
         location: $("#location").children().children().val().trim(),
         price: "4",
         term: "hotels"
     }
-    const unf_start_date = sessionStorage.getItem('start-date')
-    const unf_end_date = sessionStorage.getItem('end-date')
-    const start_date = sqlDate(unf_start_date)
-    const end_date = sqlDate(unf_end_date);
+    const start_date = sessionStorage.getItem('start-date')
+    const end_date = sessionStorage.getItem('end-date')
+    // const start_date = sqlDate(unf_start_date)
+    // const end_date = sqlDate(unf_end_date);
 
     if (criteria.location && start_date && end_date) {
-
         const response = await fetch('/api/trip' , {
             method: 'POST',
             body: JSON.stringify({
@@ -96,7 +92,6 @@ const searchActivity = (event) => {
     const criteria = {
         location: $("#location").children().children().val().trim(),
         price: "4",
-        term: "hotels"
     }
     // const location= $("#location").children().children().val().trim();
     if (criteria.location === "" || criteria.location === null){
@@ -210,11 +205,9 @@ function scheduleActivity(e) {
     // e.preventDefault();
     const elems = document.querySelectorAll('#act-datepicker');
     const start_date = sessionStorage.getItem('start-date');
-    console.log(new Date(start_date))
     const end_date = $("#end-date").val().trim();
     let instances = M.Datepicker.init(elems, {
         autoClose: true,
-        minDate: Date.now(),
         onSelect: function(input) {
             console.log(input)
         },

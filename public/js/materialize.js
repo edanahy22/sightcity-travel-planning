@@ -75,8 +75,6 @@
 // 	}
 // };
 
-let getStartDate = () => localStorage.getItem('start-date')
-
 //Datepicker function
 document.addEventListener('DOMContentLoaded', function() {
     let elems = document.querySelectorAll('#start-date');
@@ -96,10 +94,10 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(date)
     let instances = M.Datepicker.init(elems, {
       autoClose: true,
-      minDate: getStartDate(),
-      onOpen: function() {
+      onClose: function() {
         let date = $('#end-date').val()
-        sessionStorage.setItem('end-date', date);
+        let formatDate = new Date(date)
+        sessionStorage.setItem('end-date', formatDate);
       }
     });
   });
