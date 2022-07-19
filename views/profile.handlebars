@@ -23,8 +23,8 @@
           Trip Start: {{trip.start_date}}<br>
           Trip End: {{trip.end_date}}
         </p>
-        <button id="deleteBtn" onclick="delButtonHandler({{trip.id}})">Delete</button>
-        {{!-- <a class="btn-floating waves-effect waves-light red" ><i id="deleteBtn" class="material-icons" data-id="{{trip.id}}">delete</i></a> --}}
+        
+        <a class="btn-floating waves-effect waves-light red"  id="deleteBtn" onclick="delButtonHandler({{trip.id}})"><i class="material-icons">delete</i></a>
         {{/each}}
       </div>
     </div>

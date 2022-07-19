@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //https://materializecss.com/select.html
-document.addEventListener('DOMContentLoaded', function () {
-  var elems = document.querySelectorAll('select');
-  var instances = M.FormSelect.init(elems);
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//   var elems = document.querySelectorAll('select');
+//   var instances = M.FormSelect.init(elems, options);
+// });
