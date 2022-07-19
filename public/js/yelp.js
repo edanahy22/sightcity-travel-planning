@@ -190,10 +190,11 @@ function genActivity(data) {
 function scheduleActivity(e) {
     // e.preventDefault();
     const elems = document.querySelectorAll('#act-datepicker');
-    const start_date = $("#start-date").val().trim();
+    const start_date = sessionStorage.getItem('start-date');
     const end_date = $("#end-date").val().trim();
     let instances = M.Datepicker.init(elems, {
         autoClose: true,
+        // minDate: start_date,
         onSelect: function(input) {
             console.log(input)
         },
