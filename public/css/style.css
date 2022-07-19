@@ -124,3 +124,7 @@ main {
 .clear-button:hover {
   color: rgba(0, 0, 0, 0.6);
 }
+
+.card {
+  max-width: 500px;
+}
