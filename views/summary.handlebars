@@ -3,8 +3,14 @@
 <h2>{{trip.start_date}} - {{trip.end_date}}</h2>
 Planned by: {{user.first_name}} {{user.last_name}}
 <hr>
+<h2>{{trip.hotel.hotel_name}}</h2>
+<hr>
 <h3>Activities</h3>
     {{#each activities as |activity| }}
     <a href="/summary/{{activity.id}}"><h3>{{activity.activity_name}}</h3></a>
     {{activity.activity_date}}
     {{/each}}
+
+<button id="email-button">Email it!</button>
+
+<script src="/js/summary.js"></script>
