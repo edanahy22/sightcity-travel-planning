@@ -125,8 +125,9 @@ main {
 }
 
 .cursive-font {
-  font-family: 'Sacramento', 'cursive'; 
-  margin-left: 1rem;
+  font-family: 'Kalam', sans-serif; 
+  
+  font-size:20px;
 }
 
 .text-font {
