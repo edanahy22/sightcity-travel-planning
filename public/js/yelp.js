@@ -6,6 +6,25 @@ const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
 
 let contentBlock = document.getElementById('content')
 
+//Datepickers
+const tripStart = datepicker('.start', {
+    id:1,
+    onSelect: (instance, date) => {
+        const start_date = date.toISOString().split('T')[0]
+        sessionStorage.setItem('start-date', start_date)
+    }
+})
+
+const tripEnd = datepicker('.end', {
+    id:1,
+    onSelect: (instance, date) => {
+        const end_date = date.toISOString().split('T')[0]
+        sessionStorage.setItem('end-date', end_date)
+    }
+})
+//Sets minDate for second calendar
+tripEnd.getRange()
+
 let searchBtnEl = document.getElementById('search-hotel-button')
 searchBtnEl.addEventListener('click', searchHotel);
 
