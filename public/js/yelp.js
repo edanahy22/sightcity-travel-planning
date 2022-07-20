@@ -9,9 +9,10 @@ function findHotels(criteria) {
 
     let priceRange = document.querySelector("#price-range");
     let price = "";
-    // let rating = document.querySelector("#rating");
     let yelpQuery;
 
+
+    
     if (!priceRange.value && !rating.value) {
         yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=${criteria.term}&location=${criteria.location}`         
     } else if (priceRange.value && !rating.value) {
@@ -60,7 +61,6 @@ function sqlDate(date) {
     return `${year}${month}${day}`
 }
 
-
 // var submitButton = document.querySelector("#filter-btn");
 
 // submitButton.addEventListener("click", function (event) {
@@ -91,12 +91,16 @@ $('#search-hotel-button').on("click", async function (event) {
     let priceRange = document.querySelector("#price-range");
     // let rating = document.querySelector("#rating");
 
+    let rating = document.querySelector("#rating")
+    rating = rating.value
+
     const criteria = {
         location: $("#location").children().children().val().trim(),
         price: priceRange.value,
         term: "hotels",
-        rating: rating.value
+        rating: rating
     }
+    
     const start_date = sessionStorage.getItem('start-date')
     const end_date = sessionStorage.getItem('end-date')
     // const start_date = sqlDate(unf_start_date)
