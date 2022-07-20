@@ -24,20 +24,23 @@
         />
       </div>
 
+      {{!-- <form action='#'>
+        <p class='range-field'>
+          <input type='range' id='test5' min='0' max='5' />
+        </p>
+      </form> --}}
 
-{{!-- <div class="container">
-  <div class="card-panel">
-    <div class="input-field">
-      <select>
-        <option value=""selected disabled>Choose Your Price</option>
-        <option value="1">$</option>
-        <option value="2">$$</option>
-        <option value="3">$$$</option>
-        <option value="4">$$$$</option>
-      </select>
-    </div>
-  </div>
-</div> --}}
+      <div class='input-field col s9'>
+        <select id='price-range'>>
+          <option value='' selected disabled>Choose Your Price</option>
+          <option value='1'>$</option>
+          <option value='2'>$$</option>
+          <option value='3'>$$$</option>
+          <option value='4'>$$$$</option>
+        </select>
+        <label>Price Range</label>
+        <button id='filter-btn'>Submit</button>
+      </div>
 
     </form>
 

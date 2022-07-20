@@ -4,11 +4,26 @@ const yelpURL = "https://api.yelp.com/v3/businesses/search";
 //yelp does not support cross origin requests, so this is the work around:
 const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
 
-
 function findHotels(criteria) {
     console.log(criteria)
-    fetch(`${corsAnywhereUrl}/${yelpURL}?term=${criteria.term}&location=${criteria.location}&price=${criteria.price}`, {
-        headers: { Authorization: yelpKey }
+
+    let priceRange = document.querySelector("#price-range");
+    let price = "";
+    // let rating = document.querySelector("#rating");
+    let yelpQuery;
+
+    if (!priceRange.value && !rating.value) {
+        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=${criteria.term}&location=${criteria.location}`         
+    } else if (priceRange.value && !rating.value) {
+        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=${criteria.term}&location=${criteria.location}&price=${criteria.price}`
+    } else if (!priceRange.value && rating.value) {
+        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=${criteria.term}&location=${criteria.location}&rating=${criteria.rating}`
+    } else { 
+        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=${criteria.term}&location=${criteria.location}&price=${criteria.price}&rating=${criteria.rating}`
+    }
+    
+    fetch (yelpQuery, {
+        headers: { Authorization: yelpKey }       
     })
         .then(function (res) {
             return res.json();
@@ -46,13 +61,41 @@ function sqlDate(date) {
 }
 
 
+// var submitButton = document.querySelector("#filter-btn");
+
+// submitButton.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     price = priceRange.value;
+// });
+
+// function filterYelp(data){
+//     let newBusinesses = data.businesses.filter((shop) => {
+//     let isValid = true;
+//     // This allows user to select a subset of filters
+//     if (price && isValid) {
+//         isValid = shop.price === price;
+// }})
+//     return data.businesses = newBusinesses
+// }
+
+
+//   rating.addEventListener("change", function (event) {
+//     event.preventDefault();
+//     rate = this.value;
+//   });
+
+
 $('#search-hotel-button').on("click", async function (event) {
     event.preventDefault();
 
+    let priceRange = document.querySelector("#price-range");
+    // let rating = document.querySelector("#rating");
+
     const criteria = {
         location: $("#location").children().children().val().trim(),
-        price: "4",
-        term: "hotels"
+        price: priceRange.value,
+        term: "hotels",
+        rating: rating.value
     }
     const start_date = sessionStorage.getItem('start-date')
     const end_date = sessionStorage.getItem('end-date')
@@ -109,7 +152,7 @@ function genHotel(data) {
     const rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
     
-    for (let i = 0; i < 5; i++){
+    for (let i = 0; i < 15; i++){
         // let rowDiv = document.createElement('div')
         let colDiv = document.createElement('div')
         let hotelDiv = document.createElement('div');
@@ -189,7 +232,7 @@ async function selectHotel(e) {
 };
 
 function genActivity(data) {
-    for (let i = 0; i < 5; i++){
+    for (let i = 0; i < 15; i++){
         let activityDiv = document.createElement('div');
         let activityTitleEl = document.createElement('h3')
         let activityAddressEl = document.createElement('h6')
