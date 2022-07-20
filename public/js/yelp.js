@@ -97,7 +97,7 @@ function genHotel(data) {
     let rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
     
-    for (let i = 0; i < 15; i++){
+    for (let i = 0; i < 18; i++){
         
         let colDiv = document.createElement('div')
         let hotelDiv = document.createElement('div');
@@ -227,7 +227,7 @@ function genActivity(data) {
     let rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
     contentBlock.textContent = ''
-    for (let i = 0; i < 15; i++){
+    for (let i = 0; i < 18; i++){
         let colDiv = document.createElement('col');
         let activityDiv = document.createElement('div');
         let imgDiv = document.createElement('div');
