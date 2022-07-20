@@ -44,7 +44,7 @@ function emailFormat(trip, activities) {
     const tripDates = getDates(start_date, end_date)
     let tableTextArr = []
     // let tableRowsArr = []
-    //Render table headers with the dates of the triip
+    //Render table headers with the dates of the trip
     for (let i=0; i < tripDates.length; i++) {
         tableTextArr.push(`<tr style="border: 1px solid black;"><th style="border: 1px solid black;">${tripDates[i]}</th></tr>`);
     }
