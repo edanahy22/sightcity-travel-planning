@@ -6,6 +6,25 @@ A trip planning app where you can enter upcoming travel dates/cities saved to th
 
 ![alt text](/public/images/logo.png)
 
+This project was completed over the course of 14 days in a group of three people. To facilitate successful collaboration over the duration of the project, we used a shared Google drive spreadsheet to set ourselves task deadlines, Figma to wireframe our app, GitHub, and Slack to facilitate communication whilst coding.
+
+Below is our Figma wireframe: 
+
+Landing Page
+![alt text](/public/images/figmalanding.png)
+
+Entry Page
+![alt text](/public/images/figmaentry.png)
+
+Hotel Page
+![alt text](/public/images/figmahotels.png)
+
+Activity Page
+![alt text](/public/images/figmaactivity.png)
+
+No Trips Planned
+![alt text](/public/images/figmanone.png)
+
 
 ## Table of Contents 
 
@@ -21,17 +40,24 @@ A trip planning app where you can enter upcoming travel dates/cities saved to th
 
 ## Installation
 
-In order to run the application, you can clone the repo locally. On the command line, run "npm i" in order to run all necessary package installs. Next, you can start the server using "node server.js" on the commnad line.
+In order to run the application, you can clone the repo locally. On the command line, run "npm i" in order to run all necessary package installs. Next, you can start the server using "node server.js" on the commnad line. Please see below instructions for step-by-step instructions to successfully run this applicaton. 
+
+NPM Install
+![alt text](/public/images/npmi.png)
+
+
+Start the Server by Running "node server.js"
+![alt text](/public/images/nodeserver.png)
 
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+ The user is initially prompted with a landing page to the SightCity Travel Planning application. The user is prompted to click on the "Start Planning Your Trip" button displayed on the screen. Next, the user is prompted to either "Login" or "Signup" for the first time. On the next page, the user views a navigation bar at the top right with options to visit "Profile," "Plan a New Trip, " "About Us," or "Logout." 
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+ If the user selects "Profile," the user is presented with trips previously planned and saved. If the user selects "Plan a New Trip," the user is prompted to type a city wtih an autocomplete option, pick start and end dates of the hotel stay, and filter for specific pricing based on Yelp. The user selects one hotel to add to its itinerary. Next the user is taken to a screen to pick activities. The user has the capability to select multiple activities. Next, the user is displayed with a summary of the trip. If the user goes to "About Us," they can view LinkedIn and Github profiles for project contributors. 
 
-<Insert Link to Demo>
-
+Demo Video
+Link: https://drive.google.com/file/d/1yvlHUFmcNX6Qz0o5logSqNMdSWFYx3gW/view
 
 ## User_Story
 
@@ -75,6 +101,10 @@ Technologies and features used in this application are listed below:
 - Bcrypt
 - NPM Node Mailer
 - Yelp! API to pull in hotel and things to do information and images
+
+Additionally, the application is mobile friendly. Once the browser is shrunk, the navigation bar disappears and a menu button appears in the top left corner as shown in the below image.
+
+![alt text](/public/images/mobile.png)
 
 
 ## Future_Developemnt_Goals

@@ -1,66 +1,69 @@
+<h1 class='col s12'>Plan your trip</h1>
+
 <div class='row'>
-  <h1 class='col s12'>Plan your trip</h1>
-  <div class='col s12 m9'>
-    <form class="row">
-      <div class='col s7'>
-        <label for='location'>Where do you want to go?</label>
-        <div class='autocomplete-container' id='location' name='location'></div>
-      </div>
+  <div class='col s9'>
+    <div class="row">
+      <form>
+        <div class='col s6'>
+          <label for='location'>Where do you want to go?</label>
+          <div class='autocomplete-container' id='location' name='location'></div>
+        </div>
 
-      <div class='col s3 mt-3'>
-        <input
-          type='text'
-          name='start date'
-          class='start'
-          id='1'
-          placeholder='Start Date'
-        />
-        <input
-          type='text'
-          name='end date'
-          class='end'
-          id='1'
-          placeholder='End Date'
-        />
-      </div>
+        <div class='col s3 mt-3'>
+          <input type='text' name='start date' class='start' id='1' placeholder='Start Date' />
+          <input type='text' name='end date' class='end' id='1' placeholder='End Date' />
+        </div>
 
-      <div class='input-field col s2 mb-1'>
-        <select id='price-filter'>
-          <option value=''>Filter By Price</option>
-          <option value='1'>$</option>
-          <option value='2'>$$</option>
-          <option value='3'>$$$</option>
-          <option value='4'>$$$$</option>
-        </select>
-              <button type='submit' class='btn btn-primary s2' id='search-hotel-button'>Find Hotels</button>
-      </div>
 
-    </form>
-
-    <div id='content'>
-
+        <div class='input-field col s3'>
+          <select id='price-filter'>
+            <option value=''>Filter By Price</option>
+            <option value='1'>$</option>
+            <option value='2'>$$</option>
+            <option value='3'>$$$</option>
+            <option value='4'>$$$$</option>
+          </select>
+          <button type='submit' class='btn btn-primary s2' id='search-hotel-button'>Find Hotels</button>
+        </div>
+      </form>
     </div>
+    <div id='content'></div>
   </div>
 
-  <aside class='col s2 offset-s1'>
-    <h2>Trips by Other Users</h2>
-    <div class='social-trips'>
-      {{#each trips as |trip|}}
-        <a href='/socialtrip/{{trip.id}}'>
-          <h3>{{trip.location}}</h3>
-        </a>
-        Planned by:
-        {{user.first_name}}
-        {{user.last_name}}
+
+  <div class="col s3">
+  {{!-- <aside class='col s6 offset-s6'> --}}
+    <ul class="collection with-header">
+      <li class="collection-header">
+        <h4>Trips by Other Users</h4>
+      </li>
+      {{!-- <h2>Trips by Other Users</h2> --}}
+
+      {{!-- <div class='social-trips'> --}}
+        {{#each trips as |trip|}}
+        <li class="collection-item">
+          <div>
+            <a href="#!" class="secondary-content"><i class="material-icons">favorite</i></a>
+            <p class="card-title"><a href='/socialtrip/{{trip.id}}'>{{trip.location}}</a></p>
+            <p>Planned by: {{user.first_name}} {{user.last_name}}</p>
+          </div>
+          {{!-- <a href='/socialtrip/{{trip.id}}'>
+            <h3>{{trip.location}}</h3>
+          </a> --}}
+        </li>
+        {{!--
+      </div>
+      Planned by:
+      {{user.first_name}}
+      {{user.last_name}} --}}
       {{/each}}
-    </div>
-  </aside>
+      </li>
+    </ul>
+  </div>
 </div>
 
-<a
-  class='btn-floating btn-large waves-effect waves-light red pulse'
-  href='/summary'
-><i class='material-icons'>done</i></a>
+<a class='btn-floating btn-large waves-effect waves-light red pulse' href='/summary'><i
+    class='material-icons'>done</i></a>
 
 <script src="https://unpkg.com/js-datepicker"></script>
 <script src='/js/yelp.js'></script>

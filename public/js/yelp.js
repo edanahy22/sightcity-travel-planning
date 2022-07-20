@@ -127,7 +127,7 @@ function genHotel(data) {
         hotelBtnEl.addEventListener('click', searchActBtn);
 
         //materialize classes for styling
-        colDiv.classList.add('col', 's12', 'm6', 'l4');
+        colDiv.classList.add('col', 's12', 'm4');
         hotelDiv.classList.add('card', 'medium');
         imgDiv.classList.add('card-image');
         hotelImgEl.classList.add('responsive-img');
@@ -256,7 +256,7 @@ function genActivity(data) {
         activityBtnEl.addEventListener('focus', scheduleActivity);
 
         //materialize classes
-        colDiv.classList.add('col', 's12', 'm6', 'l4');
+        colDiv.classList.add('col', 's12', 'm4');
         activityDiv.classList.add('card', 'medium');
         imgDiv.classList.add('card-image');
         activityImgEl.classList.add('responsive-img');
