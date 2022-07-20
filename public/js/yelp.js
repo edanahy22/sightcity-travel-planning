@@ -11,8 +11,10 @@ function sqlDate(date) {
     const [month, day, year] = date.split('/')
     return `${year}${month}${day}`
 }
+let searchBtnEl = document.getElementById('search-hotel-button')
+searchBtnEl.addEventListener('click', searchHotel);
 
-$('#search-hotel-button').on("click", async function (event) {
+async function searchHotel(event) {
     event.preventDefault();
     contentBlock.textContent = ''
     let priceFil = document.getElementById('price-filter')
@@ -24,8 +26,6 @@ $('#search-hotel-button').on("click", async function (event) {
     
     const start_date = sessionStorage.getItem('start-date')
     const end_date = sessionStorage.getItem('end-date')
-    // const start_date = sqlDate(unf_start_date)
-    // const end_date = sqlDate(unf_end_date);
 
     if (criteria.location && start_date && end_date) {
         const response = await fetch('/api/trip' , {
@@ -53,7 +53,7 @@ $('#search-hotel-button').on("click", async function (event) {
     }
 
     findHotels(criteria);
-});
+}
 
 function findHotels(criteria) {
     let yelpQuery;
@@ -72,45 +72,6 @@ function findHotels(criteria) {
         .then(function (data) {
             console.log(data);
             genHotel(data)
-        })
-        .catch(function (err) {
-            console.error(err)
-        })
-}
-
-const searchActivity = (event) => {
-    event.preventDefault();
-    let hotelBtn = document.getElementById('search-hotel-button')
-    hotelBtn.classList.add('display-none')
-    let priceFil = document.getElementById('price-filter')
-    const criteria = {
-        location: $("#location").children().children().val().trim(),
-        price: priceFil.value,
-    }
-    // const location= $("#location").children().children().val().trim();
-    if (criteria.location === "" || criteria.location === null){
-        alert('Please enter a location');
-    }
-    
-    findActivities(criteria);
-};
-
-function findActivities(criteria) {
-    let yelpQuery;
-    if (!criteria.price) {
-        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=activities&location=${criteria.location}`         
-    } else {
-        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=activities&location=${criteria.location}&price=${criteria.price}`
-    }
-    fetch(yelpQuery, {
-        headers: { Authorization: yelpKey }
-    })
-        .then(function (res) {
-            return res.json();
-        })
-        .then(function (data) {
-            console.log(data);
-            genActivity(data)
         })
         .catch(function (err) {
             console.error(err)
@@ -149,6 +110,7 @@ function genHotel(data) {
         hotelBtnEl.setAttribute('href', '/api/hotel')
         hotelBtnEl.addEventListener('click', selectHotel);
         hotelBtnEl.addEventListener('click', searchActivity);
+        hotelBtnEl.addEventListener('click', searchActBtn);
 
         //materialize classes for styling
         colDiv.classList.add('col', 's12', 'm6', 'l4');
@@ -173,6 +135,49 @@ function genHotel(data) {
         contentBlock.appendChild(rowDiv)
     }
 };
+
+const searchActBtn = () => {
+    searchBtnEl.removeEventListener('click', searchHotel)
+    searchBtnEl.textContent = 'Search Activity'
+    searchBtnEl.addEventListener('click', searchActivity)
+}
+
+const searchActivity = (event) => {
+    event.preventDefault();
+
+    let priceFil = document.getElementById('price-filter')
+    const criteria = {
+        location: $("#location").children().children().val().trim(),
+        price: priceFil.value,
+    }
+    // const location= $("#location").children().children().val().trim();
+    if (criteria.location === "" || criteria.location === null){
+        alert('Please enter a location');
+    }
+    findActivities(criteria);
+};
+
+function findActivities(criteria) {
+    let yelpQuery;
+    if (!criteria.price) {
+        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=activities&location=${criteria.location}`         
+    } else {
+        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=activities&location=${criteria.location}&price=${criteria.price}`
+    }
+    fetch(yelpQuery, {
+        headers: { Authorization: yelpKey }
+    })
+        .then(function (res) {
+            return res.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            genActivity(data)
+        })
+        .catch(function (err) {
+            console.error(err)
+        })
+}
 
 async function selectHotel(e) {
     e.preventDefault()
@@ -207,6 +212,7 @@ async function selectHotel(e) {
 function genActivity(data) {
     let rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
+    contentBlock.textContent = ''
     for (let i = 0; i < 15; i++){
         let colDiv = document.createElement('col');
         let activityDiv = document.createElement('div');
