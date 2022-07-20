@@ -4,56 +4,7 @@ const yelpURL = "https://api.yelp.com/v3/businesses/search";
 //yelp does not support cross origin requests, so this is the work around:
 const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
 
-function findHotels(criteria) {
-    console.log(criteria)
-
-    let priceRange = document.querySelector("#price-range");
-    let price = "";
-    let yelpQuery;
-
-
-    
-    if (!priceRange.value && !rating.value) {
-        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=${criteria.term}&location=${criteria.location}`         
-    } else if (priceRange.value && !rating.value) {
-        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=${criteria.term}&location=${criteria.location}&price=${criteria.price}`
-    } else if (!priceRange.value && rating.value) {
-        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=${criteria.term}&location=${criteria.location}&rating=${criteria.rating}`
-    } else { 
-        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=${criteria.term}&location=${criteria.location}&price=${criteria.price}&rating=${criteria.rating}`
-    }
-    
-    fetch (yelpQuery, {
-        headers: { Authorization: yelpKey }       
-    })
-        .then(function (res) {
-            return res.json();
-        })
-        .then(function (data) {
-            console.log(data);
-            genHotel(data)
-        })
-        .catch(function (err) {
-            console.error(err)
-        })
-}
-
-function findActivities(criteria) {
-    console.log(criteria)
-    fetch(`${corsAnywhereUrl}/${yelpURL}?term=activities&location=${criteria.location}&price=${criteria.price}`, {
-        headers: { Authorization: yelpKey }
-    })
-        .then(function (res) {
-            return res.json();
-        })
-        .then(function (data) {
-            console.log(data);
-            genActivity(data)
-        })
-        .catch(function (err) {
-            console.error(err)
-        })
-}
+let contentBlock = document.getElementById('content')
 
 //function to change date to a sortable friendly 
 function sqlDate(date) {
@@ -61,44 +12,14 @@ function sqlDate(date) {
     return `${year}${month}${day}`
 }
 
-// var submitButton = document.querySelector("#filter-btn");
-
-// submitButton.addEventListener("click", function (event) {
-//     event.preventDefault();
-//     price = priceRange.value;
-// });
-
-// function filterYelp(data){
-//     let newBusinesses = data.businesses.filter((shop) => {
-//     let isValid = true;
-//     // This allows user to select a subset of filters
-//     if (price && isValid) {
-//         isValid = shop.price === price;
-// }})
-//     return data.businesses = newBusinesses
-// }
-
-
-//   rating.addEventListener("change", function (event) {
-//     event.preventDefault();
-//     rate = this.value;
-//   });
-
-
 $('#search-hotel-button').on("click", async function (event) {
     event.preventDefault();
-
-    let priceRange = document.querySelector("#price-range");
-    // let rating = document.querySelector("#rating");
-
-    let rating = document.querySelector("#rating")
-    rating = rating.value
+    contentBlock.textContent = ''
+    let priceFil = document.getElementById('price-filter')
 
     const criteria = {
         location: $("#location").children().children().val().trim(),
-        price: priceRange.value,
-        term: "hotels",
-        rating: rating
+        price: priceFil.value,
     }
     
     const start_date = sessionStorage.getItem('start-date')
@@ -134,11 +55,37 @@ $('#search-hotel-button').on("click", async function (event) {
     findHotels(criteria);
 });
 
+function findHotels(criteria) {
+    let yelpQuery;
+    if (!criteria.price) {
+        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=hotels&location=${criteria.location}`         
+    } else {
+        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=hotels&location=${criteria.location}&price=${criteria.price}`
+    }
+    
+    fetch (yelpQuery, {
+        headers: { Authorization: yelpKey }       
+    })
+        .then(function (res) {
+            return res.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            genHotel(data)
+        })
+        .catch(function (err) {
+            console.error(err)
+        })
+}
+
 const searchActivity = (event) => {
     event.preventDefault();
+    let hotelBtn = document.getElementById('search-hotel-button')
+    hotelBtn.classList.add('display-none')
+    let priceFil = document.getElementById('price-filter')
     const criteria = {
         location: $("#location").children().children().val().trim(),
-        price: "1",
+        price: priceFil.value,
     }
     // const location= $("#location").children().children().val().trim();
     if (criteria.location === "" || criteria.location === null){
@@ -148,8 +95,27 @@ const searchActivity = (event) => {
     findActivities(criteria);
 };
 
-let contentBlock = document.getElementById('content')
-
+function findActivities(criteria) {
+    let yelpQuery;
+    if (!criteria.price) {
+        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=activities&location=${criteria.location}`         
+    } else {
+        yelpQuery = `${corsAnywhereUrl}/${yelpURL}?term=activities&location=${criteria.location}&price=${criteria.price}`
+    }
+    fetch(yelpQuery, {
+        headers: { Authorization: yelpKey }
+    })
+        .then(function (res) {
+            return res.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            genActivity(data)
+        })
+        .catch(function (err) {
+            console.error(err)
+        })
+}
 
 function genHotel(data) {
     console.log(data)
