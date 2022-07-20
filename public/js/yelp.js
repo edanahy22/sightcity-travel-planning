@@ -6,11 +6,6 @@ const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
 
 let contentBlock = document.getElementById('content')
 
-//function to change date to a sortable friendly 
-function sqlDate(date) {
-    const [month, day, year] = date.split('/')
-    return `${year}${month}${day}`
-}
 let searchBtnEl = document.getElementById('search-hotel-button')
 searchBtnEl.addEventListener('click', searchHotel);
 

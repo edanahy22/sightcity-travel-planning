@@ -22,7 +22,7 @@ Activity.init(
       type: DataTypes.STRING,
     },
     activity_date: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
     },
     activity_price: {
       type: DataTypes.STRING,

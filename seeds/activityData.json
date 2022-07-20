@@ -3,112 +3,112 @@
         "activity_name": "Upstairs Cricus",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20220627",
+        "activity_date": "2022-06-27",
         "activity_price": "$$$$"
     },
     {
         "activity_name": "Blue Hole Regional Park",
         "activity_address": "123 Blue Street",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20231217",
+        "activity_date": "2023-12-17",
         "activity_price": "$"
     },
     {
         "activity_name": "The Partheonon",
         "activity_address": "124 Historical Ave",
         "activity_img":"https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20220627",
+        "activity_date": "2022-06-27",
         "activity_price": "$$$"
     },
     {
         "activity_name": "The Bean",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20230211",
+        "activity_date": "2023-02-11",
         "activity_price": "$"
     },
     {
         "activity_name": "Luya",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20231217",
+        "activity_date": "2023-12-17",
         "activity_price": "$$$"
     },
     {
         "activity_name": "Pitchfork",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20230211",
+        "activity_date": "2023-02-11",
         "activity_price": "$$$$"
     },
     {
         "activity_name": "Lolla",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20220627",
+        "activity_date": "2022-06-27",
         "activity_price": "$$$$$"
     },
     {
         "activity_name": "Taste of the City",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20230624",
+        "activity_date": "2023-06-24",
         "activity_price": "$$"
     },
     {
         "activity_name": "Downstairs Circus",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20220527",
+        "activity_date": "2022-05-27",
         "activity_price": "$$$$"
     },
     {
         "activity_name": "Green Hole Regional Park",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20220527",
+        "activity_date": "2022-05-27",
         "activity_price": "$"
     },
     {
         "activity_name": "Eataly",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20220627",
+        "activity_date": "2022-06-27",
         "activity_price": "$$$"
     },
     {
         "activity_name": "Fireworks",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20231217",
+        "activity_date": "2023-12-17",
         "activity_price": "$"
     },
     {
         "activity_name": "Marathon",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20230624",
+        "activity_date": "2023-06-24",
         "activity_price": "$$$"
     },
     {
         "activity_name": "Boat Tour",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20230907",
+        "activity_date": "2023-09-07",
         "activity_price": "$$$$"
     },
     {
         "activity_name": "Underground Tour",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20220527",
+        "activity_date": "2022-05-27",
         "activity_price": "$$$"
     },
     {
         "activity_name": "Ribfest",
         "activity_address": "122 Circle Way",
         "activity_img": "https://s3-media2.fl.yelpcdn.com/bphoto/C42eSQ0jqMRWtIyemUjDsA/o.jpg",
-        "activity_date": "20220527",
+        "activity_date": "2022-05-27",
         "activity_price": "$$"
     }
 ]

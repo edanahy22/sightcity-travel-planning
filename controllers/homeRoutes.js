@@ -2,7 +2,7 @@ const router = require('express').Router();
 const {Sequelize, Op} = require('sequelize');
 const { Trip, User, Hotel, Activity} = require('../models');
 const withAuth = require('../utils/auth');
-const unSqlDate = require('../utils/helpers')
+// const unSqlDate = require('../utils/helpers')
 
 router.get('/', async (req, res) => {
   try {
@@ -83,6 +83,11 @@ router.get('/trip/:id', withAuth, async (req, res) => {
       ]
     });
     const trip = tripData.get({ plain: true });
+    let start_date = new Date(trip.start_date)
+    trip.start_date = start_date.toDateString()
+    let end_date = new Date(trip.end_date)
+    trip.end_date = end_date.toDateString();
+
     const activityData = await Activity.findAll({
       where: {
         trip_id: {
@@ -91,6 +96,10 @@ router.get('/trip/:id', withAuth, async (req, res) => {
       }
     })
     const activities = activityData.map((activity) => activity.get({ plain: true }))
+    for (let i=0; i<activities.length; i++) {
+      let activity_date = new Date(activities[i].activity_date)
+      activities[i].activity_date = activity_date.toDateString()
+    }
     res.render('trip', {
       ...trip,
       activities,
@@ -114,6 +123,11 @@ router.get('/socialtrip/:id', withAuth, async (req, res) => {
         }
       ]
     });
+    const trip = tripData.get({ plain: true });
+    let start_date = new Date(trip.start_date)
+    trip.start_date = start_date.toDateString()
+    let end_date = new Date(trip.end_date)
+    trip.end_date = end_date.toDateString();
 
     const activityData = await Activity.findAll({
       where: {
@@ -122,15 +136,12 @@ router.get('/socialtrip/:id', withAuth, async (req, res) => {
         }
       }
     })
-
     const activities = activityData.map((activity) => activity.get({ plain: true }))
     //format date into more readable text
     for (let i=0; i<activities.length; i++) {
-      activities[i].activity_date = unSqlDate(activities[i].activity_date)
+      let activity_date = new Date(activities[i].activity_date)
+      activities[i].activity_date = activity_date.toDateString()
     }
-    const trip = tripData.get({ plain: true });
-    trip.start_date = unSqlDate(trip.start_date)
-    trip.end_date = unSqlDate(trip.end_date)
 
     res.render('socialtrip', {
       ...trip,
@@ -156,6 +167,12 @@ router.get('/newtrip', withAuth, async (req, res) => {
       }],
     })
     const trips = tripData.map((trip) => trip.get({ plain: true }));
+    for (let i=0; i<trips.length; i++) {
+      let start_date = new Date(trips[i].start_date)
+      trips[i].start_date = start_date.toDateString()
+      let end_date = new Date(trips[i].end_date)
+      trips[i].end_date = end_date.toDateString()
+    };
     res.status(200).render('newtrip', {
       trips,
       logged_in: req.session.logged_in
@@ -194,8 +211,10 @@ router.get('/profile', withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
     //renders the dates from sql into more human readable format
     for (let i=0; i<user.trips.length; i++){
-      user.trips[i].start_date = unSqlDate(user.trips[i].start_date)
-      user.trips[i].end_date = unSqlDate(user.trips[i].end_date)
+      let start_date = new Date(user.trips[i].start_date)
+      user.trips[i].start_date = start_date.toDateString()
+      let end_date = new Date(user.trips[i].end_date)
+      user.trips[i].end_date = end_date.toDateString()
     };
     res.render('profile', {
       ...user,
@@ -259,12 +278,12 @@ router.get('/login', (req, res) => {
 
 router.get('/summary', withAuth, async (req, res) => {
   try{
-     const tripData= await Trip.findByPk(req.session.trip_id, {
-         include: [{ model: Hotel }],
-        //  order: [['start_date','ASC']],
-     });
+    const tripData= await Trip.findByPk(req.session.trip_id, {
+      include: [{ model: Hotel }],
+      //  order: [['start_date','ASC']],
+    });
 
-     const activityData = await Activity.findAll({
+    const activityData = await Activity.findAll({
       where: {
         trip_id: {
           [Op.eq]: `${req.session.trip_id}`
@@ -275,15 +294,24 @@ router.get('/summary', withAuth, async (req, res) => {
     const userData = await User.findByPk(req.session.user_id);
 
     const activities = activityData.map((activity) => activity.get({ plain: true }))
+    for (let i=0; i<activities.length; i++) {
+      let activity_date = new Date(activities[i].activity_date)
+      activities[i].activity_date = activity_date.toDateString()
+    }
     const user= userData.get({ plain: true});
     const trip = tripData.get({ plain: true });
+    let start_date = new Date(trip.start_date)
+    trip.start_date = start_date.toDateString()
+    let end_date = new Date(trip.end_date)
+    trip.end_date = end_date.toDateString();
+
+    console.log(user);
     console.log(trip);
     console.log(activities);
-     
-     
-     res.render('summary', {
+
+    res.render('summary', {
       user, trip, activities, logged_in: req.session.logged_in
-     })
+    })
 
   }
   catch (err) {
