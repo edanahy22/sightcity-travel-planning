@@ -119,11 +119,11 @@ function findActivities(criteria) {
 
 function genHotel(data) {
     console.log(data)
-    const rowDiv = document.createElement('div');
+    let rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
     
     for (let i = 0; i < 15; i++){
-        // let rowDiv = document.createElement('div')
+        
         let colDiv = document.createElement('div')
         let hotelDiv = document.createElement('div');
         let imgDiv = document.createElement('div')
@@ -133,6 +133,7 @@ function genHotel(data) {
         let hotelImgEl = document.createElement('img')
         let hotelBtnEl = document.createElement('button')
         let contentDiv = document.createElement('div')
+        let btnDiv = document.createElement('div')
 
 
         hotelBtnEl.setAttribute('data-title', data.businesses[i].name)
@@ -150,23 +151,25 @@ function genHotel(data) {
         hotelBtnEl.addEventListener('click', searchActivity);
 
         //materialize classes for styling
-        
-        colDiv.classList.add('col', 's12', 'm4');
+        colDiv.classList.add('col', 's12', 'm6', 'l4');
         hotelDiv.classList.add('card', 'medium');
         imgDiv.classList.add('card-image');
+        hotelImgEl.classList.add('responsive-img');
         hotelTitleEl.classList.add('card-title');
-        hotelBtnEl.classList.add('btn');
+        hotelBtnEl.classList.add('waves-effect', 'waves-light', 'btn');
         contentDiv.classList.add('card-content');
+        btnDiv.classList.add('card-action');
 
         rowDiv.appendChild(colDiv);
         colDiv.appendChild(hotelDiv);
         hotelDiv.appendChild(imgDiv);
         hotelDiv.appendChild(contentDiv);
+        hotelDiv.appendChild(btnDiv);
         imgDiv.appendChild(hotelImgEl);
         imgDiv.appendChild(hotelTitleEl);
         contentDiv.appendChild(hotelAddressEl);
         contentDiv.appendChild(hotelPriceEl);
-        contentDiv.appendChild(hotelBtnEl);
+        btnDiv.appendChild(hotelBtnEl);
         contentBlock.appendChild(rowDiv)
     }
 };
@@ -202,11 +205,17 @@ async function selectHotel(e) {
 };
 
 function genActivity(data) {
+    let rowDiv = document.createElement('div');
+    rowDiv.classList.add('row');
     for (let i = 0; i < 15; i++){
+        let colDiv = document.createElement('col');
         let activityDiv = document.createElement('div');
-        let activityTitleEl = document.createElement('h3')
-        let activityAddressEl = document.createElement('h6')
-        let activityPriceEl = document.createElement('h6')
+        let imgDiv = document.createElement('div');
+        let btnDiv = document.createElement('div');
+        let contentDiv = document.createElement('div');
+        let activityTitleEl = document.createElement('span');
+        let activityAddressEl = document.createElement('p');
+        let activityPriceEl = document.createElement('p')
         let activityImgEl = document.createElement('img')
         let activityBtnEl = document.createElement('button')
 
@@ -225,13 +234,27 @@ function genActivity(data) {
         activityBtnEl.classList.add('datepicker')
         activityBtnEl.addEventListener('focus', scheduleActivity);
 
-        activityDiv.appendChild(activityTitleEl)
-        activityDiv.appendChild(activityAddressEl)
-        activityDiv.appendChild(activityPriceEl)
-        activityDiv.appendChild(activityImgEl)
-        activityDiv.appendChild(activityBtnEl)
+        //materialize classes
+        colDiv.classList.add('col', 's12', 'm6', 'l4');
+        activityDiv.classList.add('card', 'medium');
+        imgDiv.classList.add('card-image');
+        activityImgEl.classList.add('responsive-img');
+        activityTitleEl.classList.add('card-title');
+        activityBtnEl.classList.add('waves-effect', 'waves-light', 'btn');
+        contentDiv.classList.add('card-content');
+        btnDiv.classList.add('card-action');
 
-        contentBlock.appendChild(activityDiv)
+        rowDiv.appendChild(colDiv);
+        colDiv.appendChild(activityDiv);
+        activityDiv.appendChild(imgDiv);
+        activityDiv.appendChild(contentDiv);
+        activityDiv.appendChild(btnDiv);
+        imgDiv.appendChild(activityImgEl);
+        imgDiv.appendChild(activityTitleEl);
+        contentDiv.appendChild(activityAddressEl);
+        contentDiv.appendChild(activityPriceEl);
+        btnDiv.appendChild(activityBtnEl);
+        contentBlock.appendChild(rowDiv)
     }
 };
 
