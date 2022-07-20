@@ -132,7 +132,7 @@ main {
 
 .text-font {
   font-family: 'Monterrat', sans-serif;
-  font-size:25px;
+  font-size:250%;
   margin-right:10px;
 }
 
@@ -140,3 +140,9 @@ main {
   padding: 2rem;
   margin:1rem;
 }
+
+.all-trips-card {
+  max-height:200px;
+ 
+}
+
