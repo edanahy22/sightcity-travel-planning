@@ -1,8 +1,8 @@
 <div class='row'>
   <h1 class='col s12'>Plan your trip</h1>
   <div class='col s12 m9'>
-    <form>
-      <div class='col s9'>
+    <form class="row">
+      <div class='col s7'>
         <label for='location'>Where do you want to go?</label>
         <div class='autocomplete-container' id='location' name='location'></div>
       </div>
@@ -24,34 +24,22 @@
         />
       </div>
 
-      {{!-- <form action='#'>
-        <p class='range-field'>
-          <input type='range' id='test5' min='0' max='5' />
-        </p>
-      </form> --}}
-
-      <div class='input-field col s9'>
-        <select id='price-range'>>
-          <option value='' selected disabled>Choose Your Price</option>
+      <div class='input-field col s2'>
+        <select id='price-filter'>>
+          <option value=''>Filter By Price</option>
           <option value='1'>$</option>
           <option value='2'>$$</option>
           <option value='3'>$$$</option>
           <option value='4'>$$$$</option>
         </select>
-        <label>Price Range</label>
-        <button id='filter-btn'>Submit</button>
       </div>
-
     </form>
 
-    <div id='content'>
-      <button
-        type='submit'
-        class='btn btn-primary'
-        id='search-hotel-button'
-      >Find Hotels</button>
-    </div>
+    <button type='submit' class='btn btn-primary mb-2' id='search-hotel-button'>Find Hotels</button>
 
+    <div id='content'>
+
+    </div>
   </div>
 
   <aside class='col s2 offset-s1'>
