@@ -6,19 +6,6 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    // // Get all trips and JOIN with user data
-    // const tripData = await Trip.findAll({
-    //   include: [
-    //     {
-    //       model: User,
-    //       attributes: ['first_name'],
-    //     },
-    //   ],
-    // });
-
-    // // Serialize data so the template can read it
-    // const trips = tripData.map((trip) => trip.get({ plain: true }));
-
     // Pass serialized data and session flag into template
     res.render('landingpage', {
       logged_in: req.session.logged_in
@@ -27,47 +14,6 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-// router.get('/trips', withAuth, async (req, res) => {
-//   try {
-//     const tripData = await Trip.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['first_name'],
-//         },
-//       ],
-//     });
-
-//     const trip = tripData.get({ plain: true });
-
-//     res.render('trip', {
-//       ...trip,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-// router.get('/trip', withAuth, async (req, res) => {
-//   try {
-//     const tripData = await Trip.findAll({
-//       where: {
-//         user_id: req.session.user_id
-//       },
-//   });
-
-//     const trips = tripData.map((trip) => trip.get({ plain: true}));
-
-//     res.render('alltrips', {
-//       trips,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 router.get('/trip/:id', withAuth, async (req, res) => {
   try {
@@ -202,25 +148,38 @@ router.get('/newtrip', withAuth, async (req, res) => {
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
-  
-  console.log('working')
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Trip }],
+      // include: [{ model: Trip }],
     });
+
+    const tripData = await Trip.findAll({
+      where: {
+        user_id: {
+          [Op.eq]: `${req.session.user_id}`
+        }
+      },
+      order: [
+        ['start_date', 'ASC']
+      ]
+    })
+
+    const trips = tripData.map((trip) => trip.get({ plain: true }))
     const user = userData.get({ plain: true });
     //renders the dates from sql into more human readable format
-    for (let i=0; i<user.trips.length; i++){
-      let start_date = new Date(user.trips[i].start_date)
-      user.trips[i].start_date = start_date.toDateString()
-      let end_date = new Date(user.trips[i].end_date)
-      user.trips[i].end_date = end_date.toDateString()
+    console.log(user.trips)
+    for (let i=0; i<trips.length; i++){
+      let start_date = new Date(trips[i].start_date)
+      trips[i].start_date = start_date.toDateString()
+      let end_date = new Date(trips[i].end_date)
+      trips[i].end_date = end_date.toDateString()
     };
     res.render('profile', {
       ...user,
-      logged_in: true
+      trips,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -246,28 +205,6 @@ router.get('/about', withAuth, async (req, res) => {
   }
 });
 
-// router.get('/', async (req, res) => {
-//   try {
-//     // Get all trips and JOIN with user data
-//     const tripData = await Trip.findAll({
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['first_name'],
-//         },
-//       ],
-//     });
-
-//     // Serialize data so the template can read it
-//     const trips = tripData.map((trip) => trip.get({ plain: true }));
-
-//     // Pass serialized data and session flag into template
-//     res.render('landingpage');
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -281,8 +218,9 @@ router.get('/login', (req, res) => {
 router.get('/summary', withAuth, async (req, res) => {
   try{
     const tripData= await Trip.findByPk(req.session.trip_id, {
-      include: [{ model: Hotel }],
-      //  order: [['start_date','ASC']],
+      include: [
+        { model: Hotel }
+      ],
     });
 
     const activityData = await Activity.findAll({
@@ -290,7 +228,10 @@ router.get('/summary', withAuth, async (req, res) => {
         trip_id: {
           [Op.eq]: `${req.session.trip_id}`
         }
-      }
+      },
+      order: [
+        ['activity_date', 'ASC']
+      ]
     })
 
     const userData = await User.findByPk(req.session.user_id);
@@ -302,17 +243,17 @@ router.get('/summary', withAuth, async (req, res) => {
     }
     const user= userData.get({ plain: true});
     const trip = tripData.get({ plain: true });
+    
     let start_date = new Date(trip.start_date)
     trip.start_date = start_date.toDateString()
     let end_date = new Date(trip.end_date)
     trip.end_date = end_date.toDateString();
 
-    console.log(user);
-    console.log(trip);
-    console.log(activities);
-
     res.render('summary', {
-      user, trip, activities, logged_in: req.session.logged_in
+      user, 
+      trip,
+      activities,
+      logged_in: req.session.logged_in
     })
 
   }
