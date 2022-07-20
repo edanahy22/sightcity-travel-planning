@@ -21,10 +21,10 @@
 //   },
 // };
 
-module.exports = function unSqlDate(input) {
-    const dateArr = input.split('')
-    const year = dateArr.slice(0,4).join('')
-    const month = dateArr.slice(4,6).join('')
-    const day = dateArr.slice(6).join('')
-    return `${month}/${day}/${year}`
-}
+// module.exports = function unSqlDate(input) {
+//     const dateArr = input.split('')
+//     const year = dateArr.slice(0,4).join('')
+//     const month = dateArr.slice(4,6).join('')
+//     const day = dateArr.slice(6).join('')
+//     return `${month}/${day}/${year}`
+// }
