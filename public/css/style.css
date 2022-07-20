@@ -15,19 +15,13 @@ header,
   color: white;
   text-decoration: none;
   font-size: 100%;
+  
 }
 
 .no-button:hover {
   color: #065b83;
   text-decoration: underline;
 }
-
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
-}
-
 
 /* keeps footer sticky */
 body {
@@ -124,7 +118,24 @@ main {
 .clear-button:hover {
   color: rgba(0, 0, 0, 0.6);
 }
-/* 
-.card {
-  max-width: 50%;
-} */
+
+.title {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  
+}
+
+.cursive-font {
+  font-family: 'Sacramento', 'cursive'; 
+  margin-left: 1rem;
+}
+
+.text-font {
+  font-family: 'Monterrat', sans-serif;
+  font-size:25px;
+  margin-right:10px;
+}
+
+.about-container {
+  padding: 2rem;
+  margin:1rem;
+}

@@ -105,7 +105,7 @@
 //Navbar desktop and mobile function
 document.addEventListener('DOMContentLoaded', function () {
   var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems, { edge: true });
+  var instances = M.Sidenav.init(elems, { draggable: true });
 });
 
 //https://materializecss.com/select.html
