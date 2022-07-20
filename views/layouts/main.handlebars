@@ -6,30 +6,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SightCity Travel Planning</title>
-  <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
   {{!-- Import Google Icon Font --}}
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <!-- Compiled and minified CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500&family=Montserrat&family=Sacramento&display=swap" rel="stylesheet">
+ 
   <!-- Materialize -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  {{!-- custom styling --}}
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
 
 </head>
 
 <body>
   {{!-- jquery --}}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-  {{!-- <div class="flex-column">
-    <header class="display-flex justify-space-between align-center"> --}}
+  
 
       {{!-- Materialize Navigation Bar --}}
-      <nav>
-        <div class="nav-wrapper blue">
-          <a href="/" class="brand-logo">🗺️ SightCity Travel Planning</a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <nav class="nav-wrapper blue darken-1">
+        <div class="container">
+          <a href="/" class="brand-logo title">🗺️ SightCity<span class="hide-on-med-and-down cursive-font">travel planning</span></a>
+          <a href="#" data-target="moblie-links" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <!-- Conditionally render login or logout links -->
             {{#if logged_in}}
@@ -44,7 +43,7 @@
         </div>
       </nav>
 
-      <ul class="sidenav" id="mobile-demo">
+      <ul class="sidenav" id="moblie-links">
             <!-- Conditionally render login or logout links -->
             {{#if logged_in}}
             <li><a href="/profile">Profile</a></li>
@@ -63,7 +62,9 @@
     </main>
 
   </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="/js/materialize.js"></script>
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
