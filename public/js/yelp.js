@@ -237,7 +237,7 @@ function genActivity(data) {
         let activityAddressEl = document.createElement('p');
         let activityPriceEl = document.createElement('p')
         let activityImgEl = document.createElement('img')
-        let activityBtnEl = document.createElement('button')
+        let activityBtnEl = document.createElement('input')
 
         activityBtnEl.setAttribute('data-title', data.businesses[i].name)
         activityBtnEl.setAttribute('data-address', `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`)
@@ -248,10 +248,11 @@ function genActivity(data) {
         activityAddressEl.textContent = `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`
         activityPriceEl.textContent = data.businesses[i].price
         activityImgEl.setAttribute('src', data.businesses[i].image_url)
-        activityBtnEl.innerHTML = 'Schedule'
-        activityBtnEl.setAttribute('href', '/api/activity')
-        activityBtnEl.setAttribute('id', 'act-datepicker')
-        activityBtnEl.classList.add('datepicker')
+        
+        activityBtnEl.setAttribute('type', 'button')
+        activityBtnEl.setAttribute('value', 'Schedule')
+        // activityBtnEl.setAttribute('href', '/api/activity')
+        activityBtnEl.setAttribute('id', 'act-date')
         activityBtnEl.addEventListener('focus', scheduleActivity);
 
         //materialize classes
@@ -279,42 +280,38 @@ function genActivity(data) {
 };
 
 function scheduleActivity(e) {
-    // e.preventDefault();
-    const elems = document.querySelectorAll('#act-datepicker');
-    const start_date = sessionStorage.getItem('start-date');
-    const end_date = $("#end-date").val().trim();
-    let instances = M.Datepicker.init(elems, {
-        autoClose: true,
-        onSelect: function(input) {
-            console.log(input)
-        },
-    });
-    // selectActivity
+    e.preventDefault();
+    const activityDate = datepicker(e.target, {
+        onSelect: (instance, date) => {
+            selectActivity(this, date)
+        }
+    })
 }
 
-async function selectActivity(e) {
+async function selectActivity(e, data, date) {
     e.preventDefault();
-    const activity_name = this.dataset.title;
-    const activity_address = this.dataset.address;
-    const activity_img = this.dataset.img;
-    const activity_price = this.dataset.price;
-    console.log(this);
+    alert(date)
+    console.log(data)
+    // const activity_name = this.dataset.title;
+    // const activity_address = this.dataset.address;
+    // const activity_img = this.dataset.img;
+    // const activity_price = this.dataset.price;
 
-    const response = await fetch('/api/activity', {
-        method: 'POST',
-        body: JSON.stringify({ activity_name, activity_address, activity_img, activity_price }),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    })
-    console.log(response)
-    if (response.ok) {
-        M.toast({
-            html: 'Activity Added!',
-            classes: 'teal accent-3'
-        })
-        // document.location.replace('/activity')
-    } else {
-        alert('Failed to post to database')
-    }
+    // const response = await fetch('/api/activity', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ activity_name, activity_address, activity_img, activity_price }),
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    // })
+    // console.log(response)
+    // if (response.ok) {
+    //     M.toast({
+    //         html: 'Activity Added!',
+    //         classes: 'teal accent-3'
+    //     })
+    //     // document.location.replace('/activity')
+    // } else {
+    //     alert('Failed to post to database')
+    // }
 };
