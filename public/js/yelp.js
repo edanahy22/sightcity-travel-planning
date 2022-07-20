@@ -110,14 +110,13 @@ function genHotel(data) {
         let contentDiv = document.createElement('div')
         let btnDiv = document.createElement('div')
 
-
         hotelBtnEl.setAttribute('data-title', data.businesses[i].name)
-        hotelBtnEl.setAttribute('data-address', `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`)
+        hotelBtnEl.setAttribute('data-address', `${data.businesses[i].location.address1}`)
         hotelBtnEl.setAttribute('data-price', data.businesses[i].price)
         hotelBtnEl.setAttribute('data-img', data.businesses[i].image_url)
 
         hotelTitleEl.textContent = data.businesses[i].name
-        hotelAddressEl.textContent = `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`
+        hotelAddressEl.textContent = `${data.businesses[i].location.address1}`
         hotelPriceEl.textContent = data.businesses[i].price
         hotelImgEl.setAttribute('src', data.businesses[i].image_url)
         hotelBtnEl.innerHTML = 'Select'
@@ -128,9 +127,9 @@ function genHotel(data) {
 
         //materialize classes for styling
         colDiv.classList.add('col', 's12', 'm4');
-        hotelDiv.classList.add('card', 'medium');
+        hotelDiv.classList.add('card', 'large');
         imgDiv.classList.add('card-image');
-        hotelImgEl.classList.add('responsive-img');
+        hotelImgEl.classList.add('img-styles');
         hotelTitleEl.classList.add('card-title');
         hotelBtnEl.classList.add('waves-effect', 'waves-light', 'btn');
         contentDiv.classList.add('card-content');
@@ -142,7 +141,7 @@ function genHotel(data) {
         hotelDiv.appendChild(contentDiv);
         hotelDiv.appendChild(btnDiv);
         imgDiv.appendChild(hotelImgEl);
-        imgDiv.appendChild(hotelTitleEl);
+        contentDiv.appendChild(hotelTitleEl);
         contentDiv.appendChild(hotelAddressEl);
         contentDiv.appendChild(hotelPriceEl);
         btnDiv.appendChild(hotelBtnEl);
@@ -259,10 +258,10 @@ function genActivity(data) {
         colDiv.classList.add('col', 's12', 'm4');
         activityDiv.classList.add('card', 'medium');
         imgDiv.classList.add('card-image');
-        activityImgEl.classList.add('responsive-img');
+        activityImgEl.classList.add('img-styles');
         activityTitleEl.classList.add('card-title');
         activityBtnEl.classList.add('waves-effect', 'waves-light', 'btn');
-        contentDiv.classList.add('card-content');
+        contentDiv.classList.add('card-content', 'black-text');
         btnDiv.classList.add('card-action');
 
         rowDiv.appendChild(colDiv);
@@ -271,7 +270,7 @@ function genActivity(data) {
         activityDiv.appendChild(contentDiv);
         activityDiv.appendChild(btnDiv);
         imgDiv.appendChild(activityImgEl);
-        imgDiv.appendChild(activityTitleEl);
+        contentDiv.appendChild(activityTitleEl);
         contentDiv.appendChild(activityAddressEl);
         contentDiv.appendChild(activityPriceEl);
         btnDiv.appendChild(activityBtnEl);

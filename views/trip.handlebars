@@ -1,5 +1,27 @@
+{{!-- <div class="row text-center">
+  <div class="col s6">
+    <h1 class="card-title">{{location}}</h1>
+    <div>
+      <p><span for="img" aria-label="money" class="align-center">📅</span></p>
+      <p>Start Date: <span class="dollar-amount"> {{start_date}}</span></p>
+      <p>End Date: <span class="dollar-amount"> {{end_date}}</span></p>
+      </p>
+    </div>
+    <p>Planned by: {{user.first_name}} {{user.last_name}}</p>
+    <hr>
+  </div>
+
+  <div class="col s6">
+    
+  </div>
+</div> --}}
+
+
+
 <div class="text-center">
-  <p><h2>{{location}}</h2></p>
+  <p>
+  <h2>{{location}}</h2>
+  </p>
   <p>Created by {{user.first_name}}</p>
   <p>
     <span for="img" aria-label="money">📅</span>
@@ -8,13 +30,15 @@
     <br>
     End Date: <span class="dollar-amount"> {{end_date}}</span>
 
-{{!-- test of passing in hotel to template======================================================== --}}
+    {{!-- test of passing in hotel to template======================================================== --}}
     {{hotel.hotel_name}} {{hotel.hotel_address}}
   </p>
 
   <h3>Activities</h3>
-    {{#each activities as |activity| }}
-    <a href="/socialtrip/{{activity.id}}"><h3>{{activity.activity_name}}</h3></a>
-    {{activity.activity_date}}
-    {{/each}}
+  {{#each activities as |activity| }}
+  <a href="/socialtrip/{{activity.id}}">
+    <h3>{{activity.activity_name}}</h3>
+  </a>
+  {{activity.activity_date}}
+  {{/each}}
 </div>
