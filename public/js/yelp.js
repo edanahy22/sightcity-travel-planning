@@ -282,36 +282,39 @@ function genActivity(data) {
 function scheduleActivity(e) {
     e.preventDefault();
     const activityDate = datepicker(e.target, {
+        startDate: new Date(sessionStorage.getItem('start-date')),
+        minDate: new Date(sessionStorage.getItem('start-date')),
+        maxDate: new Date(sessionStorage.getItem('end-date')),
         onSelect: (instance, date) => {
             selectActivity(this, date)
         }
     })
 }
 
-async function selectActivity(e, data, date) {
-    e.preventDefault();
-    alert(date)
-    console.log(data)
-    // const activity_name = this.dataset.title;
-    // const activity_address = this.dataset.address;
-    // const activity_img = this.dataset.img;
-    // const activity_price = this.dataset.price;
+async function selectActivity(data, date) {
+    console.log(date)
+    console.log(data.dataset.address)
+    const activity_name = data.dataset.title;
+    const activity_address = data.dataset.address;
+    const activity_img = data.dataset.img;
+    const activity_date = date.toISOString().split('T')[0]
+    const activity_price = data.dataset.price;
 
-    // const response = await fetch('/api/activity', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ activity_name, activity_address, activity_img, activity_price }),
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    // })
-    // console.log(response)
-    // if (response.ok) {
-    //     M.toast({
-    //         html: 'Activity Added!',
-    //         classes: 'teal accent-3'
-    //     })
-    //     // document.location.replace('/activity')
-    // } else {
-    //     alert('Failed to post to database')
-    // }
+    const response = await fetch('/api/activity', {
+        method: 'POST',
+        body: JSON.stringify({ activity_name, activity_address, activity_img, activity_date, activity_price }),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    console.log(response)
+    if (response.ok) {
+        M.toast({
+            html: 'Activity Added!',
+            classes: 'teal accent-3'
+        })
+        // document.location.replace('/activity')
+    } else {
+        alert('Failed to post to add activity')
+    }
 };
