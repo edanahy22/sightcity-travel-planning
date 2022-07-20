@@ -6,11 +6,25 @@ const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
 
 let contentBlock = document.getElementById('content')
 
-//function to change date to a sortable friendly 
-function sqlDate(date) {
-    const [month, day, year] = date.split('/')
-    return `${year}${month}${day}`
-}
+//Datepickers
+const tripStart = datepicker('.start', {
+    id:1,
+    onSelect: (instance, date) => {
+        const start_date = date.toISOString().split('T')[0]
+        sessionStorage.setItem('start-date', start_date)
+    }
+})
+
+const tripEnd = datepicker('.end', {
+    id:1,
+    onSelect: (instance, date) => {
+        const end_date = date.toISOString().split('T')[0]
+        sessionStorage.setItem('end-date', end_date)
+    }
+})
+//Sets minDate for second calendar
+tripEnd.getRange()
+
 let searchBtnEl = document.getElementById('search-hotel-button')
 searchBtnEl.addEventListener('click', searchHotel);
 
@@ -83,7 +97,7 @@ function genHotel(data) {
     let rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
     
-    for (let i = 0; i < 15; i++){
+    for (let i = 0; i < 18; i++){
         
         let colDiv = document.createElement('div')
         let hotelDiv = document.createElement('div');
@@ -213,7 +227,7 @@ function genActivity(data) {
     let rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
     contentBlock.textContent = ''
-    for (let i = 0; i < 15; i++){
+    for (let i = 0; i < 18; i++){
         let colDiv = document.createElement('col');
         let activityDiv = document.createElement('div');
         let imgDiv = document.createElement('div');
