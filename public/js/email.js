@@ -3,23 +3,6 @@ function emailInit() {
 }
 emailInit();
 
-// window.onload = function() {
-//     document.getElementById('itinerary-form').addEventListener('submit', function(event) {
-//         event.preventDefault();
-
-//         this.contact_number.value = Math.random() * 100000 | 0;
-//         this.from_name.value = 'SightCity Travel';
-//         this.message.value = `Are you ready for your trip to <h3 style ="color: purple">${this.destination.value}</h3>\nfrom <b>${this.start_date.value}</b> to <b>${this.end_date.value}</b>\nYou will be staying at\n<h6 style="color: aqua">${this.hotel.value}</h6>`;
-
-//         emailjs.sendForm('service_e25c33t', 'trip_itinerary', this)
-//             .then(function() {
-//                 console.log('SUCCESS!');
-//             }, function(error) {
-//                 console.log('FAILED...', error);
-//             });
-//     });
-// }
-
 //date function
 Date.prototype.addDays = function(days) {
     var date = new Date(this.valueOf());
@@ -43,23 +26,45 @@ function emailFormat(data) {
     const end_date = new Date(data.trip.end_date);
     const tripDates = getDates(start_date, end_date)
     let tableTextArr = []
-    // let tableRowsArr = []
     //Render table headers with the dates of the trip
     for (let i=0; i < tripDates.length; i++) {
-        tableTextArr.push(`<tr style="border: 1px solid black;"><th style="border: 1px solid black;">${tripDates[i]}</th></tr>`);
+        tableTextArr.push(`<tr><th style="border: 3px solid black;">${tripDates[i]}</th></tr>`);
     }
     //Creates table data tag with the image, name and address of the activity if the activity date matches the trip date in the calendar
     for (let i=0; i<tripDates.length; i++) {
         for (let j=0; j<data.trip.activities.length; j++) {
             if(data.trip.activities[j].activity_date == tripDates[i]) {
-                tableTextArr[i] = tableTextArr[i] + `<tr><td><img src="${data.trip.activities[j].activity_img}"></td>\n <td>${data.trip.activities[j].activity_name}</td><td>${data.trip.activities[j].activity_address}</td><td>${data.trip.activities[j]}</td></tr>`
-            } else {
-                tableTextArr[i] = tableTextArr[i] + `<tr><td>No activities planned</td></tr>`
+                tableTextArr[i] = tableTextArr[i] + `<tr><td style="font-weight: bolder; font-size: large;">${data.trip.activities[j].activity_name}</td></tr> <tr><td><img src="${data.trip.activities[j].activity_img}" style="max-width: 100px; max-height: 100px"></td></tr> <tr><td>${data.trip.activities[j].activity_address}</td></tr>`
             }
+        }
+        if(tableTextArr[i].length === 99) {
+            tableTextArr[i] = tableTextArr[i] + `<tr><td>No activities planned</td></tr>`
         }
     }
     return tableTextArr.join(' ')
 }
+
+//Compose and send email
+function emailContent(data, activityTable) {
+
+}
+
+window.onload = function() {
+    document.getElementById('itinerary-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        this.contact_number.value = Math.random() * 100000 | 0;
+        this.from_name.value = 'SightCity Travel';
+        this.message.value = `Are you ready for your trip to <h3 style ="color: purple">${this.destination.value}</h3>\nfrom <b>${this.start_date.value}</b> to <b>${this.end_date.value}</b>\nYou will be staying at\n<h6 style="color: aqua">${this.hotel.value}</h6>`;
+
+        emailjs.sendForm('service_e25c33t', 'trip_itinerary', this)
+            .then(function() {
+                console.log(this);
+            }, function(error) {
+                console.log('FAILED...', error);
+            });
+    });
+};
 
 let emailBtn = document.getElementById('email-button')
 emailBtn.addEventListener('click', callData)
@@ -70,8 +75,8 @@ function callData(e) {
     .then(res => res.json())
     .then(data => {
         console.log(data)
-        let test = emailFormat(data)
-        console.log(test)
+        let activityTable = emailFormat(data)
+        emailContent(data, activityTable)
     })
 }
 

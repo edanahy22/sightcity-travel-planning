@@ -10,8 +10,17 @@ Planned by: {{user.first_name}} {{user.last_name}}
     <a href="/summary/{{activity.id}}"><h3>{{activity.activity_name}}</h3></a>
     {{activity.activity_date}}
     {{/each}}
+<br>
 
-<button id="email-button">Email it!</button>
+<form id="itinerary-email">
+    <input type="hidden" name="to_name">
+    <input type="hidden" name="to_email">
+    <input type="hidden" name="destination">
+    <input type="hidden" name="start_date">
+    <input type="hidden" name="end_date">
+    <input type="hidden" name="message">
+    <input type="submit" value="Email It!">
+</form>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script src="/js/email.js"></script>
