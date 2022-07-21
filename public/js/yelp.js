@@ -87,6 +87,7 @@ function findHotels(criteria) {
             return res.json();
         })
         .then(function (data) {
+            console.log(data);
             genHotel(data)
         })
         .catch(function (err) {
@@ -95,6 +96,7 @@ function findHotels(criteria) {
 }
 
 function genHotel(data) {
+    console.log(data)
     let rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
     
@@ -195,6 +197,7 @@ function findActivities(criteria) {
             return res.json();
         })
         .then(function (data) {
+            console.log(data);
             genActivity(data)
         })
         .catch(function (err) {
@@ -313,6 +316,8 @@ function scheduleActivity(e) {
 }
 
 async function selectActivity(data, date) {
+    console.log(date)
+    console.log(data.dataset.address)
     const activity_name = data.dataset.title;
     const activity_address = data.dataset.address;
     const activity_img = data.dataset.img;
@@ -326,6 +331,7 @@ async function selectActivity(data, date) {
             'Content-Type': 'application/json'
         },
     })
+    console.log(response)
     if (response.ok) {
         M.toast({
             html: 'Activity Added!',
