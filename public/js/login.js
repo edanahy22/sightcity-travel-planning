@@ -30,6 +30,10 @@ const signupFormHandler = async (event) => {
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
+  if (password.length < 8) {
+    alert('Passwords must be at least 8 characters long')
+  }
+
   if (first_name && last_name && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
@@ -40,7 +44,7 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/newtrip');
     } else {
-      alert(response.statusText);
+      console.log(response.statusText);
     }
   }
 };
