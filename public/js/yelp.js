@@ -5,10 +5,12 @@ const yelpURL = "https://api.yelp.com/v3/businesses/search";
 const corsAnywhereUrl = "https://cors-anywhere-bc.herokuapp.com";
 
 let contentBlock = document.getElementById('content')
+const now = Date.now()
 
 //Datepickers
 const tripStart = datepicker('.start', {
     id:1,
+    minDate: new Date(now),
     onSelect: (instance, date) => {
         const start_date = date.toISOString().split('T')[0]
         sessionStorage.setItem('start-date', start_date)
@@ -224,10 +226,6 @@ async function selectHotel(e) {
             classes: 'teal accent-3'
         })
         contentBlock.textContent= '';
-        const location = $("#location").children().children().val().trim();
-        let activityTitle = document.createElement('h1')
-        activityTitle.textContent = `What would you like to do in ${location}?`
-        contentBlock.appendChild(activityTitle)
     } else {
         alert('Failed to post to database')
     }
@@ -239,6 +237,10 @@ function genActivity(data) {
     let doneBtnEl = document.querySelector('.pulse');
     doneBtnEl.setAttribute('style', 'display:flex')
     contentBlock.textContent = ''
+    const location = $("#location").children().children().val().trim();
+    let activityTitle = document.createElement('h1')
+    activityTitle.innerHTML = `What would you like to do in <b>${location}</b>?`
+    contentBlock.appendChild(activityTitle)
     for (let i = 0; i < 18; i++){
         let colDiv = document.createElement('col');
         let activityDiv = document.createElement('div');
