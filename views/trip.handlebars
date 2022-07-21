@@ -1,44 +1,37 @@
-{{!-- <div class="row text-center">
-  <div class="col s6">
-    <h1 class="card-title">{{location}}</h1>
-    <div>
-      <p><span for="img" aria-label="money" class="align-center">📅</span></p>
-      <p>Start Date: <span class="dollar-amount"> {{start_date}}</span></p>
-      <p>End Date: <span class="dollar-amount"> {{end_date}}</span></p>
-      </p>
-    </div>
-    <p>Planned by: {{user.first_name}} {{user.last_name}}</p>
-    <hr>
-  </div>
-
-  <div class="col s6">
-    
-  </div>
-</div> --}}
-
-
-
-<div class="text-center">
-  <p>
-  <h2>{{location}}</h2>
-  </p>
-  <p>Created by {{user.first_name}}</p>
-  <p>
-    <span for="img" aria-label="money">📅</span>
-    <br>
-    Start Date: <span class="dollar-amount"> {{start_date}}</span>
-    <br>
-    End Date: <span class="dollar-amount"> {{end_date}}</span>
-
-    {{!-- test of passing in hotel to template======================================================== --}}
-    {{hotel.hotel_name}} {{hotel.hotel_address}}
-  </p>
-
-  <h3>Activities</h3>
-  {{#each activities as |activity| }}
+  {{!-- {{#each activities as |activity| }}
   <a href="/socialtrip/{{activity.id}}">
     <h3>{{activity.activity_name}}</h3>
   </a>
   {{activity.activity_date}}
   {{/each}}
 </div>
+ --}}
+
+<div class="summary-container">
+   <ul class="collection with-header">
+        <li class="collection-header">
+          <h4>{{location}}</h4>
+          <p><span for="img" aria-label="edit"> ✍ </span>Created by {{user.first_name}}</p>
+        </li>
+
+        <li class="collection-item">
+          <p><span for="img" aria-label="calendar">📅  </span> {{start_date}} - {{end_date}}</p>
+        </li>
+
+        <li class="collection-item">
+          <p><span for="img" aria-label="hotel"> 🏨 </span> {{hotel.hotel_name}} - {{hotel.hotel_address}} </p>
+        </li>
+        <li class="collection-header">
+          <h5>Activities</h5>
+        </li>
+        <li class="collection-item">
+          {{#each activities as |activity| }}
+             <h6><span for="img" aria-label="activity"> 🚲 </span>{{activity.activity_date}} -
+             <a href="/socialtrip/{{activity.id}}">{{activity.activity_name}}</a></h6>
+           
+          {{/each}}
+        </li>
+      </ul>
+</div>
+
+
