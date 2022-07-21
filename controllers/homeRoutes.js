@@ -128,24 +128,6 @@ router.get('/newtrip', withAuth, async (req, res) => {
   }
 })
 
-// Not sure if we need this code now that activities is not on a separate page
-
-// router.get('/activity', withAuth, async (req, res) => {
-//   try {
-//     const userData = await User.findByPk(req.session.user_id, {
-//       attributes: { exclude: ['password'] },
-//     });
-//     const tripData = await Trip.findByPk(req.session.trip_id)
-//     res.status(200).render('activity', {
-//       logged_in: req.session.logged_in,
-//       ...userData.get(),
-//       ...tripData.get()
-//     })
-//   } catch (err) {
-//     res.status(500).json(err)
-//   }
-// })
-
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
   try {
@@ -169,7 +151,6 @@ router.get('/profile', withAuth, async (req, res) => {
     const trips = tripData.map((trip) => trip.get({ plain: true }))
     const user = userData.get({ plain: true });
     //renders the dates from sql into more human readable format
-    console.log(user.trips)
     for (let i=0; i<trips.length; i++){
       let start_date = new Date(trips[i].start_date)
       trips[i].start_date = start_date.toDateString()

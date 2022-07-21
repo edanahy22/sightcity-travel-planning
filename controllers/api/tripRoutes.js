@@ -42,11 +42,9 @@ router.post('/', withAuth, async (req, res) => {
 router.delete('/:id', withAuth, async (req, res) => {
   
   try {
-    console.log("here");
     const tripData = await Trip.destroy({
       where: {
         id: req.params.id,
-        // user_id: req.session.user_id,
       },
     });
 

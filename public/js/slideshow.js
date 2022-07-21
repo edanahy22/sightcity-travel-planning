@@ -1,5 +1,3 @@
-// document.body.classList.add('slideshow')
-
 let landingBackground = $('body')
 landingBackground.addClass('slideshow')
 
@@ -13,8 +11,6 @@ let backgrounds = [
 ]
 
 let current = 0;
-
-// nextBackground()
 
 function nextBackground() {
     current++;
