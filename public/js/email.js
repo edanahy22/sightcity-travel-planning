@@ -52,15 +52,13 @@ document.getElementById('itinerary-email').addEventListener('submit', function(e
     this.to_email.value = data.user.email
     this.to_name.value = data.user.first_name
     this.destination.value = data.trip.location
-    this.hotel.value = data.trip.hotel.hotel_name
     this.start_date.value = data.trip.start_date
     this.end_date.value = data.trip.end_date
     this.message.value = message
-    this.from_name.value = 'SightCity Travel';
 
     emailjs.sendForm('service_e25c33t', 'trip_itinerary', this)
         .then(function() {
-            console.log(this);
+            console.log('success');
         }, function(error) {
             console.log('FAILED...', error);
         });
