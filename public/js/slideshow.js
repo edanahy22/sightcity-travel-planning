@@ -8,6 +8,7 @@ let backgrounds = [
     'url(/images/slideshow/nyc.png)',
     'url(/images/slideshow/streets.png)',
     'url(/images/slideshow/seattle.png)',
+    'url(/images/slideshow/beach.png)'
 ]
 
 let current = 0;
