@@ -34,11 +34,11 @@ function emailFormat(data) {
     for (let i=0; i<tripDates.length; i++) {
         for (let j=0; j<data.trip.activities.length; j++) {
             if(data.trip.activities[j].activity_date == tripDates[i]) {
-                tableTextArr[i] = tableTextArr[i] + `<tr><td style="font-weight: bolder; font-size: large;">${data.trip.activities[j].activity_name}</td></tr> <tr><td><img src="${data.trip.activities[j].activity_img}" style="max-width: 100px; max-height: 100px"></td></tr> <tr><td>${data.trip.activities[j].activity_address}</td></tr>`
+                tableTextArr[i] = tableTextArr[i] + `<tr><td style="font-weight: bolder; font-size: large;">${data.trip.activities[j].activity_name}</td></tr> <tr><td><img src="${data.trip.activities[j].activity_img}" style="max-width: 400px; max-height: 400px"></td></tr> <tr><td>${data.trip.activities[j].activity_address}</td></tr><br>`
             }
         }
         if(tableTextArr[i].length === 66) {
-            tableTextArr[i] = tableTextArr[i] + `<tr><td>No activities planned</td></tr>`
+            tableTextArr[i] = tableTextArr[i] + `<tr><td>No activities planned<br></td></tr>`
         }
     }
     return tableTextArr.join(' ')
@@ -58,6 +58,7 @@ document.getElementById('itinerary-email').addEventListener('submit', function(e
     this.start_date.value = start_date
     this.end_date.value = end_date
     this.message.value = message
+    this.from_name.value = 'SightCity Travel Planning'
 
     emailjs.sendForm('service_e25c33t', 'trip_itinerary', this)
         .then(function() {
@@ -85,9 +86,6 @@ function callData(e) {
 
 //Compose and send email
 function emailContent(data, activityTable) {
-    let fullEmail = `Are you ready for your trip to\n <b>${data.trip.location}</b>?\n You will be staying at ${data.trip.hotel.hotel_name}<hr>Here is your itinerary:<hr><table style="font-size:16px; margin-left: auto; margin-right: auto; display: flex; justify-content: center;" width="auto" height="auto" cellpadding="5px" cellspacing="5px">${activityTable}</table>`
+    let fullEmail = `<h1 style="font-size:20;">Are you ready for your trip to <b>${data.trip.location}</b>?</h1> <h2 style="font-size:18px;">You will be staying at <b>${data.trip.hotel.hotel_name}</b></h2><h2 style="font-size:18px;">Here is your itinerary:</h2><table style="font-size:16px; margin-left: auto; margin-right: auto; display: flex; justify-content: center;" width="auto" height="auto" cellpadding="5px" cellspacing="5px">${activityTable}</table>`
     sessionStorage.setItem('full-email', fullEmail)
 }
-
-//include in whatever page this will be implemented in, so probably finalpage.handlebars
-//<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>

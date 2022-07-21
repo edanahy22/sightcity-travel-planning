@@ -2,30 +2,31 @@
   <h2 class="page-title">Upcoming Trips</h2>
   <hr>
   <div class="row mt-2">
-    <div class="col s12 m4 profile-cards">
-      {{#each trips as |trip| }}
 
+    <div class="col m4 profile-cards">
       
-        <div class="card small all-trips-card">
-          <div class="card-content">
-            <span class="card-title" for="img" aria-label="pin">📍 <a
-                href="/trip/{{trip.id}}">{{trip.location}}</a></span>
-            <p class="ml-5 all-trips-text">
-              <!-- Pass needed_funding value to the helper function -->
-              <span>Trip Start: </span>{{trip.start_date}}
-            </p>
-            <p class="ml-5">
-              <span id="all-trips-text"> Trip End: </span>{{trip.end_date}}
-            </p>
-            <div class="card-action right-align">
-              <a class="btn-floating waves-effect waves-light red" id="deleteBtn"
-                onclick="delButtonHandler({{trip.id}})"><i class="material-icons">delete</i></a>
-            </div>
-          </div>
+      <div class="row">
+        {{#each trips as |trip| }}
+         
+    <div class="col s12">
+      <div class="card small all-trips-card">
+        <div class="card-content">
+           <span class="card-title" for="img" aria-label="pin">📍 <a href="/trip/{{trip.id}}">{{trip.location}}</a></span>
+          <p class="ml-5 all-trips-text">
+          <span>Trip Start: </span>{{trip.start_date}}
+          </p>
+          <p class="ml-5">
+            <span id="all-trips-text"> Trip End: </span>{{trip.end_date}}
+        </p>
+        <div class="card-action right-align">
+         <a class="btn-floating waves-effect waves-light red"  id="deleteBtn" onclick="delButtonHandler({{trip.id}})"><i class="material-icons">delete</i></a>
         </div>
-      
+        </div>
+      </div>
+    </div>       
+        {{/each}}
+      </div>
 
-      {{/each}}
     </div>
 
     <div class="col m7 ml-1 newtrip-prof-btn">
