@@ -40,14 +40,11 @@
 
 
   <div class="col s12 m3 profile-cards">
-  {{!-- <aside class='col s6 offset-s6'> --}}
     <ul class="collection with-header">
       <li class="collection-header">
         <h4>Trips by Other Users</h4>
       </li>
-      {{!-- <h2>Trips by Other Users</h2> --}}
 
-      {{!-- <div class='social-trips'> --}}
         {{#each trips as |trip|}}
         <li class="collection-item">
           <div>
@@ -55,15 +52,7 @@
             <p class="card-title"><a href='/socialtrip/{{trip.id}}'>{{trip.location}}</a></p>
             <p>Planned by: {{user.first_name}} {{user.last_name}}</p>
           </div>
-          {{!-- <a href='/socialtrip/{{trip.id}}'>
-            <h3>{{trip.location}}</h3>
-          </a> --}}
         </li>
-        {{!--
-      </div>
-      Planned by:
-      {{user.first_name}}
-      {{user.last_name}} --}}
       {{/each}}
       </li>
     </ul>

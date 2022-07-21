@@ -14,15 +14,4 @@ router.post('/', async (req, res) => {
     };
 })
 
-// router.get('/', async (req, res) => {
-//     try {
-//         const hotelData = await Hotel.findAll;
-//         const hotels = hotelData.map((hotel) => hotel.get({ plain: true}))
-
-//         res.status(200).json(hotels)
-//     } catch (err) {
-//         res.status(500).json(err)
-//     }
-// })
-
 module.exports = router;
