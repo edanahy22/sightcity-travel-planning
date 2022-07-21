@@ -5,6 +5,7 @@
           <p><span for="img" aria-label="edit"> ✍ </span>Created by {{user.first_name}}</p>
         </li>
 
+
         <li class="collection-item">
           <p><span for="img" aria-label="calendar">📅  </span> {{trip.start_date}} - {{trip.end_date}}</p>
         </li>
@@ -25,7 +26,16 @@
       </ul>
 </div>
 
-<button id="email-button">Email it!</button>
+
+<form id="itinerary-email">
+    <input type="hidden" name="to_name">
+    <input type="hidden" name="to_email">
+    <input type="hidden" name="destination">
+    <input type="hidden" name="start_date">
+    <input type="hidden" name="end_date">
+    <input type="hidden" name="message">
+    <input type="submit" value="Email It!" class="waves-effect waves-light btn">
+</form>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script src="/js/email.js"></script>

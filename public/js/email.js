@@ -3,24 +3,7 @@ function emailInit() {
 }
 emailInit();
 
-// window.onload = function() {
-//     document.getElementById('itinerary-form').addEventListener('submit', function(event) {
-//         event.preventDefault();
-
-//         this.contact_number.value = Math.random() * 100000 | 0;
-//         this.from_name.value = 'SightCity Travel';
-//         this.message.value = `Are you ready for your trip to <h3 style ="color: purple">${this.destination.value}</h3>\nfrom <b>${this.start_date.value}</b> to <b>${this.end_date.value}</b>\nYou will be staying at\n<h6 style="color: aqua">${this.hotel.value}</h6>`;
-
-//         emailjs.sendForm('service_e25c33t', 'trip_itinerary', this)
-//             .then(function() {
-//                 console.log('SUCCESS!');
-//             }, function(error) {
-//                 console.log('FAILED...', error);
-//             });
-//     });
-// }
-
-//date function
+//Gets all dates in between start and end date of trip
 Date.prototype.addDays = function(days) {
     var date = new Date(this.valueOf());
     date.setDate(date.getDate() + days);
@@ -43,39 +26,68 @@ function emailFormat(data) {
     const end_date = new Date(data.trip.end_date);
     const tripDates = getDates(start_date, end_date)
     let tableTextArr = []
-    // let tableRowsArr = []
     //Render table headers with the dates of the trip
     for (let i=0; i < tripDates.length; i++) {
-        tableTextArr.push(`<tr style="border: 1px solid black;"><th style="border: 1px solid black;">${tripDates[i]}</th></tr>`);
+        tableTextArr.push(`<tr><th style="border: 3px solid black;">${tripDates[i]}</th></tr>`);
     }
     //Creates table data tag with the image, name and address of the activity if the activity date matches the trip date in the calendar
     for (let i=0; i<tripDates.length; i++) {
         for (let j=0; j<data.trip.activities.length; j++) {
             if(data.trip.activities[j].activity_date == tripDates[i]) {
-                tableTextArr[i] = tableTextArr[i] + `<tr><td><img src="${data.trip.activities[j].activity_img}"></td>\n <td>${data.trip.activities[j].activity_name}</td><td>${data.trip.activities[j].activity_address}</td><td>${data.trip.activities[j]}</td></tr>`
-            } else {
-                tableTextArr[i] = tableTextArr[i] + `<tr><td>No activities planned</td></tr>`
+                tableTextArr[i] = tableTextArr[i] + `<tr><td style="font-weight: bolder; font-size: large;">${data.trip.activities[j].activity_name}</td></tr> <tr><td><img src="${data.trip.activities[j].activity_img}" style="max-width: 100px; max-height: 100px"></td></tr> <tr><td>${data.trip.activities[j].activity_address}</td></tr>`
             }
+        }
+        if(tableTextArr[i].length === 66) {
+            tableTextArr[i] = tableTextArr[i] + `<tr><td>No activities planned</td></tr>`
         }
     }
     return tableTextArr.join(' ')
 }
 
-let emailBtn = document.getElementById('email-button')
-emailBtn.addEventListener('click', callData)
+document.getElementById('itinerary-email').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const data = JSON.parse(sessionStorage.getItem('email-data'));
+    const message = sessionStorage.getItem('full-email');
+
+    const start_date = new Date(data.trip.start_date).toDateString()
+    const end_date = new Date(data.trip.end_date).toDateString()
+
+    this.to_email.value = data.user.email
+    this.to_name.value = data.user.first_name
+    this.destination.value = data.trip.location
+    this.start_date.value = start_date
+    this.end_date.value = end_date
+    this.message.value = message
+
+    emailjs.sendForm('service_e25c33t', 'trip_itinerary', this)
+        .then(function() {
+            M.toast({
+                html: 'Email Sent!',
+                classes: 'teal accent-3'
+            });
+        }, function(error) {
+            console.log('FAILED...', error);
+        });
+});
+
+window.addEventListener('load', callData)
 
 function callData(e) {
     e.preventDefault();
     fetch('/api/summary')
     .then(res => res.json())
     .then(data => {
-        console.log(data)
-        let test = emailFormat(data)
-        console.log(test)
+        sessionStorage.setItem('email-data', JSON.stringify(data))
+        let activityTable = emailFormat(data)
+        emailContent(data, activityTable)
     })
 }
 
-
+//Compose and send email
+function emailContent(data, activityTable) {
+    let fullEmail = `Are you ready for your trip to\n <b>${data.trip.location}</b>?\n You will be staying at ${data.trip.hotel.hotel_name}<hr>Here is your itinerary:<hr><table style="font-size:16px; margin-left: auto; margin-right: auto; display: flex; justify-content: center;" width="auto" height="auto" cellpadding="5px" cellspacing="5px">${activityTable}</table>`
+    sessionStorage.setItem('full-email', fullEmail)
+}
 
 //include in whatever page this will be implemented in, so probably finalpage.handlebars
 //<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
