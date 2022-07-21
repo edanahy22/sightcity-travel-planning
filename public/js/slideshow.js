@@ -16,7 +16,6 @@ let current = 0;
 
 function nextBackground() {
     current++;
-    // current = current % backgrounds.length;
     if (current >= backgrounds.length) {
         current = 0
     }
