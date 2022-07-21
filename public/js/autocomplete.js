@@ -120,7 +120,7 @@ function addressAutocomplete(containerElement, callback, options) {
                 /* Set the value for the autocomplete text field and notify: */
                 itemElement.addEventListener("click", function(e) {
                     if(currentItems[index].country === 'United States'){
-                        inputElement.value = currentItems[index].address_line1;
+                        inputElement.value = `${currentItems[index].city}, ${currentItems[index].state_code}`;
                     } else {
                         inputElement.value = currentItems[index].formatted;
                     }

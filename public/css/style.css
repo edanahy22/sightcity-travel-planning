@@ -47,6 +47,7 @@ main {
 
 .newtrip-prof-btn {
   display: flex;
+  margin-top: 12.8rem;
   justify-content: center;
   align-items: center;
   background-image: url('/images/plane.jpg');
@@ -143,7 +144,6 @@ main {
 
 .all-trips-card {
   max-height:200px;
- 
 }
 
 .img-styles {

@@ -11,7 +11,6 @@
         <div class="card-content">
            <span class="card-title" for="img" aria-label="pin">📍 <a href="/trip/{{trip.id}}">{{trip.location}}</a></span>
           <p class="ml-5 all-trips-text">
-          <!-- Pass needed_funding value to the helper function -->
           <span>Trip Start: </span>{{trip.start_date}}
           </p>
           <p class="ml-5">
@@ -22,19 +21,7 @@
         </div>
         </div>
       </div>
-    </div>
-  
-        {{!-- <h3>
-          <span for="img" aria-label="pin">📍</span>
-          <a href="/trip/{{trip.id}}">{{trip.location}}</a>
-        </h3>
-        <p class="ml-5">
-          <!-- Pass needed_funding value to the helper function -->
-          Trip Start: {{trip.start_date}}<br>
-          Trip End: {{trip.end_date}}
-        </p> --}}
-        
-        
+    </div>       
         {{/each}}
       </div>
     </div>
