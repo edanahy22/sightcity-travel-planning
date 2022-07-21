@@ -177,6 +177,7 @@ main {
   margin-left: 3rem;
 }
 
+
 .login-img {
   display: flex;
   justify-content: center;
@@ -192,3 +193,4 @@ main {
 .login-card {
   max-height: 5rem;
 }
+
