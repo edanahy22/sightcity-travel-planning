@@ -4,28 +4,36 @@
   <div class='col s12 m9'>
     <div class="row">
       <form>
-        <div class='col s6'>
+        <div class='col s12 m6'>
           <label for='location'>Where do you want to go?</label>
           <div class='autocomplete-container' id='location' name='location'></div>
         </div>
 
-        <div class='col s3 mt-3'>
+        <div class='col s6 m3 mt-3'>
+      
           <input type='text' name='start date' class='start' id='1' placeholder='Start Date' />
           <input type='text' name='end date' class='end' id='1' placeholder='End Date' />
+          
         </div>
 
 
-        <div class='input-field col s3'>
+        <div class='input-field col s6 m3'>
           <select id='price-filter'>
-            <option value=''>Filter By Price</option>
+            <option value=''></option>
             <option value='1'>$</option>
             <option value='2'>$$</option>
             <option value='3'>$$$</option>
             <option value='4'>$$$$</option>
           </select>
+          <label>Filter By Price</label>
           <button type='submit' class='btn btn-primary s2' id='search-hotel-button'>Find Hotels</button>
         </div>
       </form>
+    </div>
+
+    <div class="fixed-action-btn">
+       <a class='btn-floating btn-large waves-effect waves-light red pulse' href='/summary'><i
+          class='material-icons'>done</i></a>
     </div>
     <div id='content'></div>
   </div>
@@ -61,9 +69,6 @@
     </ul>
   </div>
 </div>
-
-<a class='btn-floating btn-large waves-effect waves-light red pulse' href='/summary'><i
-    class='material-icons'>done</i></a>
 
 <script src="https://unpkg.com/js-datepicker"></script>
 <script src='/js/yelp.js'></script>
