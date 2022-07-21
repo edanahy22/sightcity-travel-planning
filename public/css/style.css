@@ -47,7 +47,7 @@ main {
 
 .newtrip-prof-btn {
   display: flex;
-  margin-top: 12.8rem;
+  /* margin-top: 12.8rem; */
   justify-content: center;
   align-items: center;
   background-image: url('/images/plane.jpg');
@@ -55,7 +55,7 @@ main {
   background-position: center;
   background-size: cover;
   max-width: 100%;
-  max-height: 800px;
+  max-height: 700px;
 }
 
 /* autocomplete styling */
@@ -161,7 +161,7 @@ main {
 }
 
 .profile-cards {
-  max-height: 800px;
+  max-height: 700px;
   overflow: scroll;
 }
 
