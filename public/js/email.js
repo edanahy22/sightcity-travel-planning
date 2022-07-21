@@ -48,17 +48,23 @@ document.getElementById('itinerary-email').addEventListener('submit', function(e
     e.preventDefault();
     const data = JSON.parse(sessionStorage.getItem('email-data'));
     const message = sessionStorage.getItem('full-email');
-    // this.contact_number.value = Math.random() * 100000 | 0;
+
+    const start_date = new Date(data.trip.start_date).toDateString()
+    const end_date = new Date(data.trip.end_date).toDateString()
+
     this.to_email.value = data.user.email
     this.to_name.value = data.user.first_name
     this.destination.value = data.trip.location
-    this.start_date.value = data.trip.start_date
-    this.end_date.value = data.trip.end_date
+    this.start_date.value = start_date
+    this.end_date.value = end_date
     this.message.value = message
 
     emailjs.sendForm('service_e25c33t', 'trip_itinerary', this)
         .then(function() {
-            console.log('success');
+            M.toast({
+                html: 'Email Sent!',
+                classes: 'teal accent-3'
+            });
         }, function(error) {
             console.log('FAILED...', error);
         });
