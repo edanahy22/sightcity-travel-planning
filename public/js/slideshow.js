@@ -5,6 +5,7 @@ landingBackground.addClass('slideshow')
 
 let backgrounds = [
     'url(/images/slideshow/greece.png)',
+    'url(/images/slideshow/mountains.jpg)',
     'url(/images/slideshow/nyc.png)',
     'url(/images/slideshow/streets.png)',
     'url(/images/slideshow/seattle.png)',
