@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 
 router.get('/trip/:id', withAuth, async (req, res) => {
   try {
-    const tripData = await Trip.findByPk(req.session.trip_id, {
+    const tripData = await Trip.findByPk(req.params.id, {
       include: [
         {
           model: Hotel
