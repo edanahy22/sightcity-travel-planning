@@ -22,6 +22,7 @@ const tripEnd = datepicker('.end', {
         sessionStorage.setItem('end-date', end_date)
     }
 })
+
 //Sets minDate for second calendar
 tripEnd.getRange()
 
@@ -118,7 +119,17 @@ function genHotel(data) {
         hotelTitleEl.textContent = data.businesses[i].name
         hotelAddressEl.textContent =  `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`
         hotelPriceEl.textContent = data.businesses[i].price
-        hotelImgEl.setAttribute('src', data.businesses[i].image_url)
+
+        function genImg (data) {
+            if (!data.businesses[i].image_url) {
+                return hotelImgEl.setAttribute('src', '/images/logo.png');
+             } else {
+                return hotelImgEl.setAttribute('src', data.businesses[i].image_url)
+             }
+        }
+        genImg(data);
+       
+
         hotelBtnEl.innerHTML = 'Select'
         hotelBtnEl.setAttribute('href', '/api/hotel')
         hotelBtnEl.addEventListener('click', selectHotel);
@@ -132,6 +143,7 @@ function genHotel(data) {
         hotelImgEl.classList.add('img-styles');
         hotelTitleEl.classList.add('card-title');
         hotelBtnEl.classList.add('waves-effect', 'waves-light', 'btn');
+        contentDiv.setAttribute('style', 'overflow: scroll')
         contentDiv.classList.add('card-content');
         btnDiv.classList.add('card-action');
 
@@ -224,6 +236,8 @@ async function selectHotel(e) {
 function genActivity(data) {
     let rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
+    let doneBtnEl = document.querySelector('.pulse');
+    doneBtnEl.setAttribute('style', 'display:flex')
     contentBlock.textContent = ''
     for (let i = 0; i < 18; i++){
         let colDiv = document.createElement('col');
@@ -246,7 +260,16 @@ function genActivity(data) {
         activityAddressEl.textContent = `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`
         activityPriceEl.textContent = data.businesses[i].price
         activityImgEl.setAttribute('src', data.businesses[i].image_url)
-        
+
+        function genImg (data) {
+            if (!data.businesses[i].image_url) {
+                return activityImgEl.setAttribute('src', '/images/logo.png');
+             } else {
+                return activityImgEl.setAttribute('src', data.businesses[i].image_url)
+             }
+        }
+        genImg(data);
+
         activityBtnEl.setAttribute('type', 'button')
         activityBtnEl.setAttribute('value', 'Schedule')
         // activityBtnEl.setAttribute('href', '/api/activity')
@@ -260,6 +283,7 @@ function genActivity(data) {
         activityImgEl.classList.add('img-styles');
         activityTitleEl.classList.add('card-title');
         activityBtnEl.classList.add('waves-effect', 'waves-light', 'btn');
+        contentDiv.setAttribute('style', 'overflow: scroll')
         contentDiv.classList.add('card-content', 'black-text');
         btnDiv.classList.add('card-action');
 
