@@ -49,6 +49,9 @@ NPM Install
 Start the Server by Running "node server.js"
 ![alt text](/public/images/nodeserver.png)
 
+Install Demo Video
+https://drive.google.com/file/d/1jMcTWA49i0cGHpfsCYDJGYpraUe3IY_M/view
+
 
 ## Usage
 
@@ -57,7 +60,7 @@ Start the Server by Running "node server.js"
  If the user selects "Profile," the user is presented with trips previously planned and saved. If the user selects "Plan a New Trip," the user is prompted to type a city wtih an autocomplete option, pick start and end dates of the hotel stay, and filter for specific pricing based on Yelp. The user selects one hotel to add to its itinerary. Next the user is taken to a screen to pick activities. The user has the capability to select multiple activities. Next, the user is displayed with a summary of the trip. If the user goes to "About Us," they can view LinkedIn and Github profiles for project contributors. 
 
 Demo Video
-Link: https://drive.google.com/file/d/1yvlHUFmcNX6Qz0o5logSqNMdSWFYx3gW/view
+Link: https://drive.google.com/file/d/1YIUfdSJcsrS69hNHJJQQQIjoTzAIPW6V/view
 
 ## User_Story
 
@@ -99,13 +102,16 @@ Technologies and features used in this application are listed below:
 - Sequelize
 - MySQL
 - Bcrypt
-- NPM Node Mailer
+- Email JS
 - Yelp! API to pull in hotel and things to do information and images
 
 Additionally, the application is mobile friendly. Once the browser is shrunk, the navigation bar disappears and a menu button appears in the top left corner as shown in the below image.
 
 ![alt text](/public/images/mobile.png)
 
+A feature implemented into the app is an e-mail being sent to the user's login e-mail with an itinerary by date. Example below.
+
+![alt text](/public/images/email.png)
 
 ## Future_Developemnt_Goals
 
