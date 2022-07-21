@@ -153,3 +153,7 @@ main {
   object-fit: cover !important;
 }
 
+.summary-container {
+  margin:2rem;
+
+}

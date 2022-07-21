@@ -111,12 +111,12 @@ function genHotel(data) {
         let btnDiv = document.createElement('div')
 
         hotelBtnEl.setAttribute('data-title', data.businesses[i].name)
-        hotelBtnEl.setAttribute('data-address', `${data.businesses[i].location.address1}`)
+        hotelBtnEl.setAttribute('data-address',  `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`)
         hotelBtnEl.setAttribute('data-price', data.businesses[i].price)
         hotelBtnEl.setAttribute('data-img', data.businesses[i].image_url)
 
         hotelTitleEl.textContent = data.businesses[i].name
-        hotelAddressEl.textContent = `${data.businesses[i].location.address1}`
+        hotelAddressEl.textContent =  `${data.businesses[i].location.display_address[0]} ${data.businesses[i].location.display_address[1]}`
         hotelPriceEl.textContent = data.businesses[i].price
         hotelImgEl.setAttribute('src', data.businesses[i].image_url)
         hotelBtnEl.innerHTML = 'Select'
@@ -157,7 +157,6 @@ const searchActBtn = () => {
 
 const searchActivity = (event) => {
     event.preventDefault();
-
     let priceFil = document.getElementById('price-filter')
     const criteria = {
         location: $("#location").children().children().val().trim(),
@@ -312,7 +311,6 @@ async function selectActivity(data, date) {
             html: 'Activity Added!',
             classes: 'teal accent-3'
         })
-        // document.location.replace('/activity')
     } else {
         alert('Failed to post to add activity')
     }
