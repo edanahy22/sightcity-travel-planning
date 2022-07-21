@@ -4,10 +4,10 @@
   <div class="row mt-2">
 
     <div class="col s12 m4 profile-cards">
-
+      {{#if trips}}
         {{#each trips as |trip| }}
 
-        <div class="card small all-trips-card">
+        <div class="card small all-trips-card teal lighten-5">
           <div class="card-content">
             <span class="card-title" for="img" aria-label="pin">📍 <a
                 href="/trip/{{trip.id}}">{{trip.location}}</a></span>
@@ -23,8 +23,22 @@
             </div>
           </div>
         </div>
-      
         {{/each}}
+      {{else}}
+      <div class="card large all-trips-card teal lighten-4">
+          <div class="card-content center-align">
+            <span class="card-title" for="img" aria-label="pin">📍 No trips planned...yet!</span>
+
+            
+          </div>
+          <div class="card-action center-align">
+              <p>Click "Plan a New Trip" to get started.</p>
+          </div>
+        </div>
+      {{/if}}
+
+        
+
     </div>
 
     <div class="col m7 ml-1 newtrip-prof-btn">
