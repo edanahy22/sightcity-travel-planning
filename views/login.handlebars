@@ -1,47 +1,68 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col s12 m6">
     <h2>Login</h2>
+    <hr>
 
-
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-    </form>
+    <div class="row">
+      <form class="col s12 login-form">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
+          <input id="email-login" type="text" class="validate" />
+          <label for="email-login">Enter your Email</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">security</i>
+          <input class="validate" type="password" id="password-login" />
+          <label for="password-login">Enter your Password</label>
+        </div>
+        <div class="right-align">
+          <button class="waves-effect waves-light teal lighten-1 btn" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
   </div>
-  <div class="col-md-6">
 
+  <div class="col-md-6">
 
     <h2>Signup</h2>
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="first-name-signup">first name:</label>
-        <input class="form-input" type="text" id="first-name-signup" />
+    <hr>
+    <div class="row">
+      <form class="col s12 signup-form">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="first-name-signup" type="text" class="validate" />
+          <label for="first-name-signup">Enter your First Name</label>
+        </div>
+        <div class="input-field col s6">
+
+          <input class="validate" type="text" id="last-name-signup" />
+          <label for="last-name-signup">Enter your Last Name</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">email</i>
+          <input id="email-signup" type="text" class="validate" />
+          <label for="email-signup">Enter your Email</label>
+        </div>
+        <div class="input-field col s12">
+          <i class="material-icons prefix">security</i>
+          <input class="validate" type="password" id="password-signup" />
+          <label for="password-signup">Enter your Password</label>
+        </div>
+        <div class="right-align">
+          <button class="waves-effect waves-light teal lighten-1 btn" type="submit">Signup</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s12 login-img">
+    <div class="card blue darken-3 login-card">
+      <div class="card-content white-text ">
+        <span class="card-title">Plan your next adventure</span>
       </div>
-      <div class="form-group">
-        <label for="last-name-signup">last name:</label>
-        <input class="form-input" type="text" id="last-name-signup" />
-      </div>
-      <div class="form-group">
-        <label for="email-signup">email:</label>
-        <input class="form-input" type="text" id="email-signup" />
-      </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
-    </form>
+    </div>
   </div>
 </div>
 
