@@ -1,5 +1,4 @@
 // courtesy of Geoapify (geoapify.com)
-
 function addressAutocomplete(containerElement, callback, options) {
 
     const MIN_ADDRESS_LENGTH = 3;
@@ -44,7 +43,6 @@ function addressAutocomplete(containerElement, callback, options) {
     
         /* Close any already open dropdown list */
         closeDropDownList();
-    
     
         // Cancel previous timeout
         if (currentTimeout) {
